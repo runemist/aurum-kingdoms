@@ -66,7 +66,7 @@
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ForDesc,
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-cover,
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-media { flex:0 0 232px; width:100%; height:232px; min-height:232px; border:0; background-position:center !important; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row h3.hierarchy { position:absolute; z-index:4; left:18px; bottom:13px; max-width:calc(100% - 36px); margin:0; padding:10px 17px; background:rgba(9,15,19,.82); border-left:2px solid var(--ak-gold); }
+#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row h3.hierarchy { position:absolute; z-index:6; left:18px; bottom:13px; max-width:calc(100% - 36px); margin:0; padding:10px 17px; background:rgba(9,15,19,.82); border-left:2px solid var(--ak-gold); }
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost { display:block; flex:0 0 44px; width:calc(100% - 32px); height:44px; min-height:44px; max-height:44px; margin:0 16px; padding:0; box-sizing:border-box; border-top:1px solid var(--ak-line); overflow:hidden; white-space:nowrap; font:11px/43px Arial,sans-serif; }
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost > span:not(.lastpost-avatar) { display:flex; align-items:center; gap:8px; width:100%; min-width:0; height:43px; overflow:hidden; white-space:nowrap; }
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost br { display:none; }
