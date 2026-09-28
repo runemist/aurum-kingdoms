@@ -80,5 +80,19 @@
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_content { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px; color:var(--ak-text); text-align:center; }
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_links { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
 #main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_links a { color:var(--ak-gold); }
+/* Añadir al final de css/ak-foros.css. El JS asigna la clase y el color de grupo. */
+#main-content .forabg.ak-private-areas .topiclist.forums {grid-template-columns:1fr}
+#main-content .forabg.ak-private-areas .topiclist.forums > li.row.ak-private-card {min-height:360px;border-radius:8px;border-color:var(--ak-private-color,var(--ak-line));--ak-gold:var(--ak-private-color,#c7aa78)}
+#main-content .forabg.ak-private-areas li.ak-private-card dl.icon {min-height:360px}
+#main-content .forabg.ak-private-areas li.ak-private-card dd.dterm {position:relative;flex:0 0 265px}
+#main-content .forabg.ak-private-areas li.ak-private-card .ForDesc,
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-cover,
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-media {height:265px;min-height:265px;border-bottom-color:var(--ak-private-color,var(--ak-line))}
+#main-content .forabg.ak-private-areas li.ak-private-card h3.hierarchy {position:absolute;z-index:4;left:20px;bottom:14px;max-width:calc(100% - 40px);padding:12px 20px;background:rgba(9,15,19,.8);border-left:2px solid var(--ak-private-color,var(--ak-gold))}
+#main-content .forabg.ak-private-areas li.ak-private-card dd.lastpost {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 22px;min-height:76px;margin:0 20px 12px;padding:10px 0;border-top-color:var(--ak-private-color,var(--ak-line))}
+#main-content .forabg.ak-private-areas li.ak-private-card .FDescLinks a,
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-links a,
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-reveal a {color:var(--ak-private-color,var(--ak-gold));border-color:var(--ak-private-color,var(--ak-line))}
+
 @media(max-width:900px) { #main-content .forabg .topiclist.forums { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:600px) { #main-content .forabg .topiclist.forums { grid-template-columns:1fr; } }
