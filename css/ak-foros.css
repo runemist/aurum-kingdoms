@@ -54,7 +54,7 @@
 /* Un solo arco externo; las imágenes completas se ven con bandas discretas si cambia la proporción. */
 #main-content .forabg li.row .ForDesc,
 #main-content .forabg li.row .ak-forum-cover,
-#main-content .forabg li.row .ak-forum-media { background-size:contain !important; background-repeat:no-repeat !important; background-position:center !important; background-color:#26333a !important; }
+#main-content .forabg li.row .ak-forum-media { background-size:cover !important; background-repeat:no-repeat !important; background-position:center !important; background-color:#26333a !important; }
 #main-content .forabg li.row .ak-forum-media img { object-fit:contain; background:#26333a; }
 
 /* Áreas Privadas: ancho completo aun cuando un miembro solo vea una ficha. */
