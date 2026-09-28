@@ -1,21 +1,14 @@
-/* Aurum · Estadísticas del índice */
-.ak-stats { clear:both; margin:36px 0 0; padding-top:8px; border-top:1px solid var(--ak-line); }
-.ak-stats-title { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:16px; }
-.ak-stats-title h2 { margin:18px 0; color:var(--ak-text); font:400 22px Georgia,serif; letter-spacing:.2em; text-transform:uppercase; }
-.ak-totals { display:flex; gap:20px; color:var(--ak-muted); font:12px Arial,sans-serif; text-transform:uppercase; letter-spacing:.1em; }
-.ak-totals strong { margin-right:5px; color:var(--ak-text); font:20px Georgia,serif; }
-.ak-stats-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,.8fr) minmax(0,1fr); border-top:1px solid var(--ak-line); border-bottom:1px solid var(--ak-line); background:var(--ak-panel-deep); }
-.ak-stat-col { min-width:0; padding:22px; border-right:1px solid var(--ak-line); }
-.ak-stat-col:last-child { border:0; }
-.ak-stat-col h3 { margin:0 0 14px; color:var(--ak-gold); font:400 13px Georgia,serif; text-transform:uppercase; letter-spacing:.16em; }
-.ak-names { overflow-wrap:anywhere; font:13px/1.9 Georgia,serif; }
-.ak-names a { display:inline; margin-right:7px; }
-.ak-member { display:flex; align-items:center; gap:16px; }
-.ak-member-photo { display:flex; flex:0 0 82px; width:82px; height:108px; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--ak-line); background:#29343a; color:var(--ak-gold); font:32px Georgia,serif; }
-.ak-member-photo img { width:100%; height:100%; object-fit:cover; }
-.ak-member a { color:var(--ak-text); font:17px Georgia,serif; }
-.ak-groups { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:8px; padding:24px 0; }
-.ak-groups a { color:var(--ak-text); text-align:center; text-decoration:none; font:12px Georgia,serif; letter-spacing:.1em; text-transform:uppercase; }
-.ak-groups .ak-symbol { display:block; color:var(--ak-gold); font:32px/1.4 Georgia,serif; }
-@media(max-width:900px) { .ak-groups { grid-template-columns:repeat(4,minmax(0,1fr)); } }
-@media(max-width:700px) { .ak-stats-grid { grid-template-columns:1fr; } .ak-stat-col { border-right:0; border-bottom:1px solid var(--ak-line); } }
+/* Aurum · estadísticas nativas del index_body, visibles sin JS. */
+body:has(#ak-hero) #main-content > .h3:has(a[href="/viewonline"]),
+body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) { clear:both; margin:36px 0 0; padding:16px 0; border-top:1px solid var(--ak-line); color:var(--ak-text); font:400 21px Georgia,serif; letter-spacing:.17em; text-transform:uppercase; }
+body:has(#ak-hero) #main-content > .h3 a { color:inherit; }
+body:has(#ak-hero) #main-content > .img-whois { display:none; }
+body:has(#ak-hero) #main-content > .img-whois + p { margin:0; padding:22px 26px; border:1px solid var(--ak-line); background:var(--ak-panel-deep); color:var(--ak-muted); font:13px/1.9 Georgia,serif; }
+body:has(#ak-hero) #main-content > .img-whois + p a { color:var(--ak-gold); }
+body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom,
+body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom,
+body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom + p.page-bottom { display:inline-block; vertical-align:top; width:calc((100% - 32px)/3); min-height:105px; margin:0 12px 16px 0; padding:16px; box-sizing:border-box; border:1px solid var(--ak-line); background:var(--ak-panel-deep); color:var(--ak-muted); text-align:center; font:13px/1.6 Georgia,serif; }
+body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom + p.page-bottom { margin-right:0; }
+body:has(#ak-hero) #main-content > p.page-bottom strong { color:var(--ak-text); font-size:17px; }
+body:has(#ak-hero) #main-content > p.page-bottom a { color:var(--ak-gold); }
+@media(max-width:700px) { body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) ~ p.page-bottom { width:100%; margin-right:0; } }
