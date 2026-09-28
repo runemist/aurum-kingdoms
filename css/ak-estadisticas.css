@@ -1,14 +1,152 @@
-/* Aurum · estadísticas nativas del index_body, visibles sin JS. */
-body:has(#ak-hero) #main-content > .h3:has(a[href="/viewonline"]),
-body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) { clear:both; margin:36px 0 0; padding:16px 0; border-top:1px solid var(--ak-line); color:var(--ak-text); font:400 21px Georgia,serif; letter-spacing:.17em; text-transform:uppercase; }
-body:has(#ak-hero) #main-content > .h3 a { color:inherit; }
-body:has(#ak-hero) #main-content > .img-whois { display:none; }
-body:has(#ak-hero) #main-content > .img-whois + p { margin:0; padding:22px 26px; border:1px solid var(--ak-line); background:var(--ak-panel-deep); color:var(--ak-muted); font:13px/1.9 Georgia,serif; }
-body:has(#ak-hero) #main-content > .img-whois + p a { color:var(--ak-gold); }
-body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom,
-body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom,
-body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom + p.page-bottom { display:inline-block; vertical-align:top; width:calc((100% - 32px)/3); min-height:105px; margin:0 12px 16px 0; padding:16px; box-sizing:border-box; border:1px solid var(--ak-line); background:var(--ak-panel-deep); color:var(--ak-muted); text-align:center; font:13px/1.6 Georgia,serif; }
-body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) + p.page-bottom + p.page-bottom + p.page-bottom { margin-right:0; }
-body:has(#ak-hero) #main-content > p.page-bottom strong { color:var(--ak-text); font-size:17px; }
-body:has(#ak-hero) #main-content > p.page-bottom a { color:var(--ak-gold); }
-@media(max-width:700px) { body:has(#ak-hero) #main-content > .h3:has(a[href="/statistics"]) ~ p.page-bottom { width:100%; margin-right:0; } }
+/* Aurum · estadísticas nativas del índice. Requiere el bloque .ak-stats de index_body.tpl. */
+#main-content .ak-stats {
+  clear:both;
+  max-width:1320px;
+  margin:58px auto 38px;
+  color:var(--ak-text,#e6ddce);
+  font-family:Georgia,serif;
+}
+#main-content .ak-stats * { box-sizing:border-box; }
+#main-content .ak-stats-header {
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px 24px;
+  margin:0 0 16px;
+  padding:0 0 14px;
+  border-bottom:1px solid var(--ak-line,rgba(190,162,115,.55));
+}
+#main-content .ak-stats-header-secondary { margin-top:35px; }
+#main-content .ak-stats-kicker {
+  color:var(--ak-gold,#c7aa78);
+  font:11px/1.4 Arial,sans-serif;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+#main-content .ak-stats-header h2 {
+  order:1;
+  margin:0;
+  color:var(--ak-text,#e6ddce);
+  font:400 clamp(19px,2.2vw,26px)/1.2 Georgia,serif;
+  letter-spacing:.12em;
+  text-align:right;
+  text-transform:uppercase;
+}
+#main-content .ak-stats-header h2 a { color:inherit; text-decoration:none; }
+#main-content .ak-stats-header h2 a:hover { color:var(--ak-gold,#c7aa78); }
+#main-content .ak-online-grid,
+#main-content .ak-totals-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+#main-content .ak-online-card,
+#main-content .ak-total {
+  min-width:0;
+  padding:23px 25px;
+  border:1px solid var(--ak-line,rgba(190,162,115,.55));
+  background:linear-gradient(145deg,rgba(30,42,48,.94),rgba(13,21,26,.98));
+  box-shadow:inset 0 0 0 6px rgba(8,14,17,.32);
+}
+#main-content .ak-online-card { min-height:195px; }
+#main-content .ak-online-card h3 {
+  margin:0 0 15px;
+  padding-bottom:11px;
+  border-bottom:1px solid rgba(199,170,120,.3);
+  color:var(--ak-gold,#c7aa78);
+  font:400 16px/1.3 Georgia,serif;
+  letter-spacing:.08em;
+}
+#main-content .ak-online-card p {
+  margin:0 0 10px;
+  color:var(--ak-text,#e6ddce);
+  font:14px/1.6 Georgia,serif;
+  overflow-wrap:anywhere;
+}
+#main-content .ak-online-card p:empty { display:none; }
+#main-content .ak-online-card p:last-child { margin-bottom:0; }
+#main-content .ak-online-now p strong {
+  color:var(--ak-gold,#c7aa78);
+  font-size:23px;
+  font-weight:400;
+}
+#main-content .ak-online-card .ak-online-record {
+  color:var(--ak-muted,#b7ae9f);
+  font-size:12px;
+}
+#main-content .ak-online-card a { text-decoration:none; }
+#main-content .ak-online-card a:hover { text-decoration:underline; }
+#main-content .ak-group-legend {
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:12px 24px;
+  align-items:start;
+  margin:16px 0 0;
+  padding:18px 22px;
+  border:1px solid rgba(199,170,120,.34);
+  background:rgba(15,23,28,.75);
+}
+#main-content .ak-group-legend > span {
+  padding-top:7px;
+  color:var(--ak-gold,#c7aa78);
+  font:11px/1.3 Arial,sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+/* Foroactivo incluye corchetes como nodos de texto alrededor de cada grupo. */
+#main-content .ak-group-legend > div { font-size:0; line-height:0; }
+#main-content .ak-group-legend b { display:inline; font-weight:400; }
+#main-content .ak-group-legend a {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  max-width:100%;
+  margin:3px 7px 3px 0;
+  padding:6px 10px;
+  border:1px solid currentColor;
+  background:rgba(255,255,255,.035);
+  font:12px/1.3 Georgia,serif;
+  text-decoration:none;
+  white-space:normal;
+}
+#main-content .ak-group-legend a:hover { background:rgba(199,170,120,.13); }
+#main-content .ak-group-legend .group-icon { display:none; }
+#main-content .ak-total {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:145px;
+  text-align:center;
+}
+#main-content .ak-total-label {
+  color:var(--ak-gold,#c7aa78);
+  font:11px/1.4 Arial,sans-serif;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+#main-content .ak-total p {
+  margin:12px 0 0;
+  color:var(--ak-muted,#b7ae9f);
+  font:0/0 Georgia,serif;
+}
+#main-content .ak-total p > strong {
+  display:block;
+  margin:2px 0;
+  color:var(--ak-text,#e6ddce);
+  font:400 clamp(27px,3vw,38px)/1.15 Georgia,serif;
+  overflow-wrap:anywhere;
+}
+#main-content .ak-total p > strong a { color:inherit; text-decoration:none; }
+#main-content .ak-total p > strong a:hover { text-decoration:underline; }
+@media(max-width:900px) {
+  #main-content .ak-online-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #main-content .ak-online-birthdays { grid-column:1/-1; min-height:0; }
+}
+@media(max-width:650px) {
+  #main-content .ak-stats { margin-top:40px; }
+  #main-content .ak-stats-header { display:block; }
+  #main-content .ak-stats-header h2 { margin-top:8px; text-align:left; }
+  #main-content .ak-online-grid,#main-content .ak-totals-grid { grid-template-columns:1fr; gap:10px; }
+  #main-content .ak-online-card,#main-content .ak-total { min-height:0; padding:20px; }
+  #main-content .ak-group-legend { grid-template-columns:1fr; padding:15px; }
+}
