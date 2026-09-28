@@ -26,3 +26,27 @@
 @media(max-width:1100px) {#main-content .forumbg ul.topiclist.topics {grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:780px) {#main-content .forumbg ul.topiclist.topics {grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px) {#main-content .forumbg ul.topiclist.topics {grid-template-columns:1fr}}
+#main-content .forumbg ul.topiclist.topics > li.row:has(.lastpost-avatar img) > dl::before {
+  content: none;
+}
+
+#main-content .forumbg ul.topiclist.topics > li.row dd.lastpost .lastpost-avatar {
+  inset: 0 0 auto !important;
+  box-sizing: border-box;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+#main-content .forumbg ul.topiclist.topics > li.row dd.lastpost .lastpost-avatar img {
+  display: block;
+  box-sizing: border-box;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  object-fit: cover;
+}
