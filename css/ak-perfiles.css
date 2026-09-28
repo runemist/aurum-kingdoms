@@ -1,0 +1,403 @@
+/* Aurum · Perfiles y rangos */
+/* =====================================
+   AURUM — PERFIL BASE
+===================================== */
+
+.perfilreal {
+  --perfil-bg: rgba(18,17,16,.92);
+  --perfil-bg2: rgba(28,27,25,.85);
+  --perfil-texto: #b9b4a8;
+
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: var(--perfil-texto);
+}
+
+.perfilreal * {
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR */
+
+.perfil-card {
+  width: 100%;
+  background: var(--perfil-bg);
+  border: 1px solid var(--grupo-color);
+  padding: 25px;
+  position: relative;
+  min-height: 800px;
+}
+
+.perfil-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--grupo-color);
+  pointer-events: none;
+}
+
+/* HEADER */
+
+.perfil-header {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--grupo-color);
+}
+
+.perfil-nombre {
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--grupo-color);
+}
+
+/* BODY */
+
+.perfil-body {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 25px;
+}
+
+/* COLUMNA IZQUIERDA */
+
+.perfil-info {
+  min-width: 0;
+}
+
+/* CONTACTOS */
+
+.perfil-contactos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+  height: 50px;
+  background: var(--grupo-color);
+  padding: 5px;
+  align-items: center;
+  width: fit-content;
+}
+
+.perfil-contacto-item {
+  margin: 0;
+}
+
+.perfil-contactos img{
+  width: 35px;
+}
+  
+.perfil-contacto-item dt {
+  display: none;
+}
+
+.perfil-contacto-item dd {
+  margin: 0;
+}
+
+/* CAMPOS */
+
+.perfil-campos {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.perfil-campo{
+  display: flex;
+}
+
+.pslabel {
+  width: 150px;
+  padding: 10px;
+  background: var(--grupo-color);
+  color: #151515;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  align-content: center;
+}
+
+.pscont {
+  padding: 10px;
+  font-size: 15px;
+  width: 170px;
+  align-content: center;
+}
+
+.pslabel span{
+  color: #151515!important;
+}
+/* COLUMNA DERECHA */
+
+.perfil-lateral {
+  width: 260px;
+}
+
+/* AVATAR */
+
+.perfil-avatar dl,
+.perfil-avatar dd {
+  margin: 0;
+}
+
+.perfil-avatar img {
+  width: 250px;
+  display: block;
+  margin: auto;
+  border: 1px solid var(--grupo-color);
+}
+
+/* RANGO */
+
+.perfil-rango {
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  background: var(--perfil-bg2);
+}
+
+/* FOOTER */
+
+.perfil-extra {
+  width: 260px;
+  position: absolute;
+  right: 25px;
+  top: 600px;
+}
+
+.perfil-links {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.perfil-links a {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: var(--grupo-color);
+  color: #151515 !important;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+.perfil-links a:hover {
+  background: #151515;
+  color: var(--grupo-color) !important;
+}
+
+.perfil-ultima-visita {
+  padding: 10px;
+  background: var(--perfil-bg2);
+  border: 1px solid var(--grupo-color);
+  font-size: 11px;
+}
+
+.perfil-ultima-visita dl {
+  margin: 0;
+}
+
+.perfil-card {
+    --grupo-color: var(--aurum);
+}
+
+.perfil-card:has(.akaeris) {
+    --grupo-color: var(--aeris);
+}
+
+.perfil-card:has(.aklux) {
+    --grupo-color: var(--lux);
+}
+
+.perfil-card:has(.akumbra) {
+    --grupo-color: var(--umbra);
+}
+
+.perfil-card:has(.aktuono) {
+    --grupo-color: var(--tuono);
+}
+
+.perfil-card:has(.akignis) {
+    --grupo-color: var(--ignis);
+}
+
+.perfil-card:has(.akteram) {
+    --grupo-color: var(--teram);
+}
+
+.perfil-card:has(.akcascata) {
+    --grupo-color: var(--cascata);
+}
+
+.perfil-card:has(.akadmin) {
+    --grupo-color: var(--aurum);
+}
+/* =====================================
+   RPG
+===================================== */
+
+.perfil-rpg {
+  margin-top: 25px;
+  background: var(--perfil-bg);
+  border: 1px solid var(--grupo-color);
+  padding: 25px;
+  position: relative;
+}
+
+.perfil-rpg::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--grupo-color);
+  pointer-events: none;
+}
+
+.perfil-rpg-header {
+  margin-bottom: 20px;
+}
+
+.perfil-rpg-titulo {
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--grupo-color);
+}
+
+.perfil-rpg-imagen {
+  margin-bottom: 20px;
+}
+
+.perfil-rpg-imagen img {
+  width: 100%;
+}
+
+.perfil-rpg-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.perfil-rpg-detalle {
+  margin: 0 0 10px;
+}
+
+.perfil-rpg-detalle dt {
+  padding: 10px;
+  background: var(--grupo-color);
+  color: #151515;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.perfil-rpg-detalle dd {
+  margin: 0;
+  padding: 10px;
+  background: var(--perfil-bg2);
+}
+
+.perfil-contacto-item:has(#i_icon_email) {
+    display: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px){
+
+  .perfil-body {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-lateral {
+    width: 100%;
+  }
+
+  .perfil-avatar img {
+    margin: auto;
+  }
+
+  .perfil-rpg-campos {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================
+   AURUM — INSIGNIAS DE GRUPO
+   ========================================= */
+
+.akadmin,
+.aklux,
+.akumbra,
+.aktuono,
+.akignis,
+.akteram,
+.akaeris,
+.akcascata {
+    display: block;
+    width: 240px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* ADMINISTRACIÓN */
+
+.akadmin {
+    background-image: url("https://2img.net/i.imgur.com/QiAPIjv.png");
+}
+
+/* LUX */
+
+.aklux {
+    background-image: url("https://2img.net/i.imgur.com/GlsNpMa.png");
+}
+
+/* UMBRA */
+
+.akumbra {
+    background-image: url("https://2img.net/i.imgur.com/azMEJgE.png");
+}
+
+/* TUONO */
+
+.aktuono {
+    background-image: url("https://2img.net/i.imgur.com/ywjkvgJ.png");
+}
+
+/* IGNIS */
+
+.akignis {
+    background-image: url("https://2img.net/i.imgur.com/5oveyaI.png");
+}
+
+/* TERAM */
+
+.akteram {
+    background-image: url("https://2img.net/i.imgur.com/ECvwLyW.png");
+}
+
+/* AERIS */
+
+.akaeris {
+    background-image: url("https://2img.net/i.imgur.com/PnlJcUW.png");
+}
+
+/* CASCATA */
+
+.akcascata {
+    background-image: url("https://2img.net/i.imgur.com/ZxHAfBQ.png");
+}
+
