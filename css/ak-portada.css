@@ -114,6 +114,17 @@ body:has(#ak-hero) #ak-hero {
   align-self: center;
   color: var(--ak-gold);
 }
+#ak-latest-list .ak-topic-info {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+#ak-latest-list .ak-topic-info time {
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
+}
 /* Los enlaces inferiores vienen de index_box y pueden retirarse allí. */
 @media (max-width: 900px) {
   .ak-search-grid {
