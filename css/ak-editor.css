@@ -28,8 +28,8 @@
   height: 420px !important;
   max-height: 420px !important;
   margin: 0 !important;
-  border: 1px solid var(--ak-border) !important;
-  background: var(--ak-editor-deep) !important;
+  border: 1px solid var(--ak-aurum) !important;
+  background: #0c1519 !important;
   box-shadow: none !important;
   overflow: hidden !important;
 }
@@ -50,8 +50,8 @@
   margin: 0 !important;
   padding: 9px 11px !important;
   border: 0 !important;
-  border-bottom: 1px solid var(--ak-border) !important;
-  background: var(--ak-editor-panel) !important;
+  border-bottom: 1px solid var(--ak-aurum) !important;
+  background: #172429 !important;
   overflow-y: auto !important;
   scrollbar-width: thin;
 }
@@ -84,7 +84,7 @@
 }
 #main-content .sceditor-container .sceditor-button:hover,
 #main-content .sceditor-container .sceditor-button.active {
-  border-color: var(--ak-border) !important;
+  border-color: var(--ak-aurum) !important;
   background: rgba(199, 170, 120, 0.17) !important;
 }
 #main-content .sceditor-container .sceditor-button.disabled {
@@ -249,7 +249,7 @@
   height: auto !important;
   max-height: none !important;
   width: 100% !important;
-  background: var(--ak-editor-deep) !important;
+  background: #0c1519 !important;
 }
 #main-content .sceditor-container iframe,
 #main-content .sceditor-container textarea {
@@ -257,7 +257,7 @@
   min-height: 0 !important;
   max-height: 100% !important;
   width: 100% !important;
-  background: var(--ak-editor-deep) !important;
+  background: #0c1519 !important;
 }
 #main-content .sceditor-container textarea {
   padding: 17px !important;
@@ -292,16 +292,16 @@
   box-sizing: border-box;
   min-height: 32px;
   padding: 5px 9px;
-  border: 1px solid var(--ak-border);
-  background: var(--ak-editor-deep);
+  border: 1px solid var(--ak-aurum);
+  background: #0c1519;
   color: var(--ak-text);
 }
 #main-content #smiley-box {
   box-sizing: border-box;
   max-width: 230px;
   padding: 12px;
-  border: 1px solid var(--ak-border);
-  background: var(--ak-editor-deep);
+  border: 1px solid var(--ak-aurum);
+  background: #0c1519;
   color: var(--ak-text);
 }
 #main-content #smiley-box img {
@@ -313,9 +313,9 @@
   min-height: 35px;
   padding: 8px 17px;
   margin: 5px;
-  border: 1px solid var(--ak-border);
-  background: var(--ak-editor-panel);
-  color: var(--ak-accent);
+  border: 1px solid var(--ak-aurum);
+  background: #172429;
+  color: var(--ak-aurum);
   font:
     11px Arial,
     sans-serif;
