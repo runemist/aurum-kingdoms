@@ -57,7 +57,7 @@
 #main-content .forabg .topiclist .header .table-title::after {
   content: "◆";
   flex: 1;
-  color: var(--ak-aurum);
+  color: var(--ak-line);
   font:
     10px Georgia,
     serif;
@@ -80,7 +80,7 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  border: 3px solid var(--ak-aurum);
+  border: 3px solid var(--ak-line);
   border-radius: 47% 47% 7px 7px / 22% 22% 7px 7px;
   background: var(--ak-panel-deep);
 }
