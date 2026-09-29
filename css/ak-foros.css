@@ -134,7 +134,7 @@
   display: none;
 }
 
-#main-content .forabg li.row h3.hierarchy {
+#main-content .forabg li.row :is(h2, h3).hierarchy {
   order: 2;
   margin: 0;
   padding: 12px 17px 2px;
@@ -496,7 +496,7 @@ li.row .ak-forum-media {
   :has(a.forumtitle[href^="/f79-"]),
   :has(.ak-private-cover)
 )
-li.row h3.hierarchy {
+li.row :is(h2, h3).hierarchy {
   position: absolute;
   z-index: 6;
   left: 18px;
@@ -681,7 +681,7 @@ li.row .aurum_links a {
   border-bottom-color: var(--ak-aurum);
 }
 
-#main-content .forabg.ak-private-areas li.ak-private-card h3.hierarchy {
+#main-content .forabg.ak-private-areas li.ak-private-card :is(h2, h3).hierarchy {
   position: absolute;
   z-index: 6;
   left: 20px;
