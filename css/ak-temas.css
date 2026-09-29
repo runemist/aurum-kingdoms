@@ -28,9 +28,9 @@
   padding: 0;
   overflow: hidden;
   box-sizing: border-box;
-  border: 3px solid var(--ak-line, rgba(199, 170, 120, 0.45));
+  border: 3px solid var(--ak-aurum);
   border-radius: 48% 48% 6px 6px / 22% 22% 6px 6px;
-  background: var(--ak-panel-deep, #10191d);
+  background: #10171c;
 }
 #main-content .forumbg ul.topiclist.topics > li.row::before {
   content: none;
@@ -59,7 +59,7 @@
   height: 249px;
   display: grid;
   place-items: center;
-  border-bottom: 1px solid var(--ak-line, rgba(199, 170, 120, 0.45));
+  border-bottom: 1px solid var(--ak-aurum);
   border-radius: 50% 50% 0 0 / 31% 31% 0 0;
   background: #27343b;
   color: var(--ak-gold, #c7aa78);
@@ -147,7 +147,7 @@
   height: 249px;
   overflow: hidden;
   display: block;
-  border-bottom: 1px solid var(--ak-line, rgba(199, 170, 120, 0.45));
+  border-bottom: 1px solid var(--ak-aurum);
 }
 #main-content
   .forumbg
@@ -293,7 +293,7 @@
   width: calc(100% - 26px);
   margin: 8px 13px 0;
   padding: 7px 18px 0 0;
-  border-top: 1px solid var(--ak-line, rgba(190, 162, 115, 0.55));
+  border-top: 1px solid var(--ak-aurum);
   text-align: left !important;
   font-size: 10px;
   line-height: 1.3;
