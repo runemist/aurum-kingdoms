@@ -1,8 +1,8 @@
 /* Aurum · tarjetas de temas. Usa el avatar y la imagen de estado de Foroactivo. */
 #main-content .forumbg {width:100%;margin:0 0 26px;padding:0;border:0;background:transparent}
-#main-content .forumbg ul.topiclist.topics {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:0 0 22px;padding:0;list-style:none;background:none}
+#main-content .forumbg ul.topiclist.topics {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px;margin:0 0 22px;padding:0;list-style:none;background:none}
 #main-content .forumbg ul.topiclist.topics > li.header {display:none}
-#main-content .forumbg ul.topiclist.topics > li.row {position:relative;float:none;width:100%;min-width:0;height:360px;margin:0;padding:0;overflow:hidden;box-sizing:border-box;border:1px solid var(--ak-line,rgba(199,170,120,.45));border-radius:48% 48% 6px 6px / 22% 22% 6px 6px;background:var(--ak-panel-deep,#10191d)}
+#main-content .forumbg ul.topiclist.topics > li.row {position:relative;float:none;width:100%;min-width:0;height:360px;margin:0;padding:0;overflow:hidden;box-sizing:border-box;border:3px solid var(--ak-line,rgba(199,170,120,.45));border-radius:48% 48% 6px 6px / 22% 22% 6px 6px;background:var(--ak-panel-deep,#10191d)}
 #main-content .forumbg ul.topiclist.topics > li.row::before {content:none}
 #main-content .forumbg ul.topiclist.topics > li.row > dl {display:flex;flex-direction:column;box-sizing:border-box;height:100%;min-height:0;margin:0;padding:254px 12px 9px;text-align:center;background-color:transparent;background-repeat:no-repeat;background-position:right 8px bottom 7px;background-size:17px 17px}
 /* Fondo de respaldo mientras no haya avatar. */
