@@ -1,296 +1,98 @@
-/* Aurum · Mensajes dentro de temas */
-/* ==============================
-   AURUM — TEMAS / POSTS
-============================== */
-
+/* AURUM · Mensajes y respuesta rápida · sustituye el ak-mensajes.css anterior.
+   Basado en viewtopic_body de phpBB3. No requiere JavaScript. */
 #main-content {
-  background: transparent;
+  --ak-post-bg:#101a1e;
+  --ak-post-panel:#172429;
+  --ak-post-panel-deep:#0c1519;
+  --ak-post-ink:var(--ak-text,#e6ddce);
+  --ak-post-muted:var(--ak-muted,#b7ae9f);
+  --ak-post-line:var(--ak-line,rgba(190,162,115,.45));
+  --ak-post-gold:var(--ak-gold,#c7aa78);
 }
-
-#main-content .post,
-#main-content .post.row1,
-#main-content .post.row2,
-#main-content .post .inner {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
+#main-content .post[id^="p"]:not([id^="ptrafic"]) {width:100%;margin:24px 0 32px;padding:0;border:1px solid var(--ak-post-line);background:var(--ak-post-bg);box-shadow:0 12px 28px rgba(0,0,0,.16)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) * {box-sizing:border-box}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:grid;grid-template-columns:minmax(185px,225px) minmax(0,1fr);gap:0 22px;align-items:start;min-height:0;margin:0;padding:18px;background:transparent;border:0;box-shadow:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .corners-top,#main-content .post[id^="p"]:not([id^="ptrafic"]) .corners-bottom {display:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > .clear {display:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {position:static;grid-column:1;grid-row:1;float:none;width:auto;min-width:0;min-height:0;height:auto;margin:0;padding:0;color:var(--ak-post-ink);text-align:center;background:var(--ak-post-panel-deep);border:1px solid var(--ak-post-line)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dl,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd {float:none;width:auto;height:auto;margin:0;padding:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {padding:10px 10px 0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > img {display:block;max-width:100%}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {display:block;width:100%;max-width:100%;height:auto;max-height:350px;margin:0 auto 12px;object-fit:cover;object-position:center 24%;border:1px solid var(--ak-post-line);border-radius:48% 48% 3px 3px / 18% 18% 3px 3px}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt strong {display:block;margin:0;padding:7px 4px 10px;color:var(--ak-post-gold);font:400 clamp(15px,1.6vw,20px)/1.2 Georgia,serif;letter-spacing:.07em;text-transform:uppercase;overflow-wrap:anywhere}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile a {text-decoration:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile a:hover {text-decoration:underline}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd {padding:4px 15px;color:var(--ak-post-muted);font:11px/1.55 Arial,sans-serif;text-align:left;overflow-wrap:anywhere}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:first-of-type {padding:9px 15px 11px;border-bottom:1px solid var(--ak-post-line);text-align:center;color:var(--ak-post-gold);letter-spacing:.08em;text-transform:uppercase}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd img {max-width:100%;height:auto}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile .label {color:var(--ak-post-gold);font-weight:600}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child {display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px;margin-top:12px;padding:13px 10px;border-top:1px solid var(--ak-post-line);text-align:center}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child a {display:inline-flex;align-items:center;justify-content:center;min-width:24px;min-height:24px;padding:3px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child img {max-width:17px;max-height:17px}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody {position:static;grid-column:2;grid-row:1;float:none;display:flex;flex-direction:column;min-width:0;width:auto;height:auto;margin:0;padding:0;background:transparent!important;border:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons {position:static;order:0;align-self:flex-end;display:flex;flex-wrap:wrap;gap:6px;max-width:100%;min-height:30px;margin:0 0 9px;padding:0;list-style:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons li {float:none;margin:0;padding:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons a {display:inline-flex;align-items:center;justify-content:center;min-width:29px;min-height:27px;padding:4px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons a:hover {background:rgba(199,170,120,.13)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons img {display:block;width:auto;max-width:17px;height:auto;max-height:17px;opacity:.84;object-fit:contain}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title {position:static;order:1;width:100%;height:auto;min-height:0;margin:0;padding:12px 18px 8px;border:1px solid var(--ak-post-line);border-bottom:0;background:var(--ak-post-panel);color:var(--ak-post-gold);font:400 clamp(17px,2vw,24px)/1.25 Georgia,serif;letter-spacing:.08em;text-align:left;text-transform:uppercase;overflow-wrap:anywhere}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title a * {color:inherit!important;text-decoration:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title img {max-width:17px;max-height:17px;vertical-align:middle}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author {position:static;order:2;width:100%;height:auto;margin:0;padding:0 18px 13px;border:1px solid var(--ak-post-line);border-top:0;background:var(--ak-post-panel);color:var(--ak-post-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.04em;text-align:left;text-transform:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author img {max-width:14px;max-height:14px;vertical-align:middle}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author a {color:var(--ak-post-gold);text-decoration:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .clearfix:empty {display:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {order:4;min-height:340px;margin:14px 0 0;padding:clamp(20px,3vw,36px);border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep);color:var(--ak-post-ink);font:14px/1.8 Georgia,serif;text-align:left;overflow-wrap:anywhere;overflow:visible}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content > div {color:inherit}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content img {max-width:100%;height:auto}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content a {color:var(--ak-post-gold)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content blockquote,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content .codebox {max-width:100%;margin:16px 0;padding:14px 18px;border:1px solid var(--ak-post-line);border-left:3px solid var(--ak-post-gold);background:var(--ak-post-panel);color:var(--ak-post-ink);overflow:auto}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .signature_div {order:6;max-width:100%;margin:16px 0 0;padding:18px 5px 0;border-top:1px solid var(--ak-post-line);overflow-wrap:anywhere}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .signature_div img {max-width:100%;height:auto}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .vote {order:3;align-self:flex-end;margin:8px 0 0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div {grid-column:2;grid-row:auto;margin:15px 0 0;padding:10px 0;text-align:left;border-top:1px solid var(--ak-post-line)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button {padding:7px 12px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel);color:var(--ak-post-ink);cursor:pointer}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button:hover {color:var(--ak-post-gold)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right {grid-column:2;margin:12px 0 0;text-align:right;color:var(--ak-post-muted);font:11px Arial,sans-serif}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right a {color:var(--ak-post-muted)}
+/* Encabezado y navegación propios de la página del tema. */
+#main-content > h1.page-title {margin:28px 0 18px;color:var(--ak-post-gold);font:400 clamp(26px,3vw,38px)/1.2 Georgia,serif;letter-spacing:.07em;text-transform:uppercase}
+#main-content > h1.page-title a {color:inherit;text-decoration:none}
+#main-content .topic-actions {display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin:18px 0;padding:14px 17px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep)}
+#main-content .topic-actions .buttons {float:none;margin:0}
+#main-content .topic-actions .pathname-box {float:none;min-width:0;margin:0}
+#main-content .topic-actions .pagination {margin-left:auto;color:var(--ak-post-muted)}
+#main-content .topic-actions a {color:var(--ak-post-ink)}
+/* Respuesta rápida: Foraactivo inserta este formulario mediante QUICK_REPLY_FORM. */
+#main-content #quick_reply,#main-content form#quick_reply,#main-content .quickreply {max-width:100%;margin:38px 0 30px;padding:22px;border:1px solid var(--ak-post-line);background:var(--ak-post-bg);color:var(--ak-post-ink)}
+#main-content #quick_reply .h3,#main-content #quick_reply h2,#main-content .quickreply .h3 {margin:0 0 17px;padding:0 0 12px;border:0;border-bottom:1px solid var(--ak-post-line);background:transparent;color:var(--ak-post-gold);font:400 22px/1.25 Georgia,serif;letter-spacing:.1em;text-transform:uppercase}
+#main-content #quick_reply fieldset,#main-content #quick_reply .inner,#main-content .quickreply fieldset {max-width:100%;border:0;background:transparent}
+#main-content #textarea_content,#main-content .sceditor-container {box-sizing:border-box;max-width:100%;width:100%!important;border:1px solid var(--ak-post-line)!important;background:var(--ak-post-panel-deep)!important;box-shadow:none!important}
+#main-content .sceditor-container .sceditor-toolbar {display:flex;flex-wrap:wrap;gap:2px;padding:8px!important;border:0!important;border-bottom:1px solid var(--ak-post-line)!important;background:var(--ak-post-panel)!important}
+#main-content .sceditor-container .sceditor-group {margin:2px!important;padding:2px!important;border:1px solid rgba(199,170,120,.22)!important;background:rgba(0,0,0,.12)!important}
+#main-content .sceditor-container .sceditor-button {opacity:.88}
+#main-content .sceditor-container .sceditor-button:hover {opacity:1;background:rgba(199,170,120,.18)!important}
+#main-content .sceditor-container .sceditor-toolbar + div,#main-content .sceditor-container .sceditor-editor {max-width:100%;background:var(--ak-post-panel-deep)!important}
+#main-content .sceditor-container iframe {display:block;width:100%!important;min-height:260px;background:#ece8df}
+#main-content .sceditor-container textarea,#main-content textarea#text_editor_textarea,#main-content #quick_reply textarea {box-sizing:border-box;max-width:100%;width:100%!important;min-height:260px;padding:18px!important;border:0!important;background:var(--ak-post-panel-deep)!important;color:var(--ak-post-ink)!important;font:14px/1.65 Georgia,serif!important;resize:vertical}
+#main-content #quick_reply input[type="submit"],#main-content #quick_reply .button1,#main-content #quick_reply .button2,#main-content .quickreply input[type="submit"] {min-height:36px;margin:8px 5px 0 0;padding:8px 20px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel);color:var(--ak-post-gold);font:11px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+#main-content #quick_reply input[type="submit"]:hover,#main-content #quick_reply .button1:hover,#main-content #quick_reply .button2:hover {background:rgba(199,170,120,.15)}
+#main-content .jumpbox,#main-content .quickmod {display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;color:var(--ak-post-muted)}
+#main-content .jumpbox select,#main-content .quickmod select {max-width:100%;min-height:34px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep);color:var(--ak-post-ink)}
+@media(max-width:850px) {
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {grid-template-columns:minmax(150px,190px) minmax(0,1fr);gap:0 15px;padding:14px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {padding:19px;min-height:260px}
 }
-
-#main-content .post {
-  width: 92%;
-  margin: 40px auto;
-  padding: 0;
+@media(max-width:620px) {
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:flex;flex-direction:column;gap:0;padding:12px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {order:0;width:100%;margin:0 0 14px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {display:flex;align-items:center;gap:14px;padding:10px;text-align:left}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > a {flex:0 0 80px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {width:80px;height:100px;max-height:none;margin:0}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt strong {padding:0}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody {order:1;width:100%}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {min-height:200px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div {order:2;width:100%}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right {order:3;width:100%}
+  #main-content #quick_reply {padding:12px}
 }
-
-#main-content .post .inner {
-  position: relative;
-  min-height: 460px;
-  padding: 92px 0 0;
-}
-
-#main-content .corners-top,
-#main-content .corners-bottom {
-  display: none;
-}
-
-/* ENCABEZADO COMPLETO */
-
-#main-content .postbody h2.topic-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 74px;
-  margin: 0;
-  padding: 18px 260px 8px;
-  box-sizing: border-box;
-  background: rgba(18, 17, 16, 0.96);
-  border: 1px solid var(--aurum-dark);
-  color: var(--aurum-light);
-  font: 400 23px/1.2 "Cinzel", serif;
-  letter-spacing: 1.5px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#main-content .postbody h2.topic-title img {
-  display: none;
-}
-
-#main-content .postbody h2.topic-title a {
-  color: var(--aurum-light);
-  text-decoration: none;
-}
-
-/* AUTOR / FECHA */
-
-#main-content .postbody p.author {
-  position: absolute;
-  top: 51px;
-  left: 245px;
-  right: 245px;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  color: #aaa49a;
-  font: 10px/1 Arial, sans-serif;
-  letter-spacing: 0.8px;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#main-content .postbody p.author img {
-  display: none;
-}
-
-#main-content .postbody p.author a {
-  color: var(--aurum-light);
-  text-decoration: none;
-}
-
-/* ICONOS DE POST */
-
-#main-content .postbody .profile-icons {
-  position: absolute;
-  top: 51px;
-  right: 16px;
-  z-index: 5;
-  display: flex;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-#main-content .postbody .profile-icons li {
-  margin: 0;
-  padding: 0;
-}
-
-#main-content .postbody .profile-icons img {
-  width: 13px;
-  height: 13px;
-  object-fit: contain;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
-#main-content .postbody .profile-icons img:hover {
-  opacity: 1;
-}
-
-/* PERFIL IZQUIERDO */
-
-#main-content .postprofile {
-  width: 250px;
-  min-height: 400px;
-  margin: 0 22px 0 0;
-  box-sizing: border-box;
-  color: var(--aurum-light);
-  text-align: center;
-  position: absolute;
-  top: 91px;
-}
-
-#main-content .postprofile dl,
-#main-content .postprofile dt,
-#main-content .postprofile dd {
-  margin: 0;
-  padding: 0;
-}
-
-#main-content .postprofile dt img {
-  display: block;
-  width: 90%;
-  margin: 0 auto 14px;
-  object-fit: cover;
-  border: 2px solid var(--aurum-dark);
-}
-
-#main-content .postprofile dt strong {
-  display: block;
-  margin: 0 0 10px;
-  font: 400 17px/1.2 "Cinzel", serif;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-#main-content .postprofile dt a {
-  text-decoration: none;
-}
-
-#main-content .postprofile dd {
-  font: 10px/1.7 Arial, sans-serif;
-  color: #aaa49a;
-  text-align: left;
-}
-
-#main-content .postprofile .label {
-  color: var(--aurum-dark);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-/* ICONOS PERFIL / MP / EXPEDIENTE */
-
-#main-content .postprofile dd:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(126, 120, 109, 0.45);
-  text-align: center;
-}
-
-#main-content .postprofile dd:last-child a {
-  display: inline-flex;
-  width: 20px;
-  height: 20px;
-  align-items: center;
-  justify-content: center;
-  background: #242321;
-  border: 1px solid rgba(126, 120, 109, 0.55);
-}
-
-#main-content .postprofile dd:last-child img {
-  max-width: 13px;
-  max-height: 13px;
-  object-fit: contain;
-  opacity: 0.65;
-}
-
-/* CUERPO DEL POST */
-
-#main-content .postbody {
-  float: none;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent!important;
-}
-
-#main-content .postbody .content {
-  min-height: 730px;
-  margin: 0 0 0 270px;
-  padding: 30px;
-  box-sizing: border-box;
-  background: #242321;
-  color: var(--aurum-light);
-  font: 14px/1.75 Arial, sans-serif;
-  text-align: justify;
-  overflow: visible;
-}
-
-#main-content .postbody .content > div {
-  color: inherit;
-}
-
-/* CITAS / CÓDIGO / SPOILERS */
-
-#main-content .postbody blockquote,
-#main-content .postbody .codebox {
-  background: #1b1a18;
-  border: 1px solid rgba(126, 120, 109, 0.55);
-  color: var(--aurum-light);
-}
-
-/* LIKES */
-
-#main-content .fa_like_div {
-  margin: 14px 0 0 242px;
-  text-align: center;
-}
-
-#main-content .rep-button {
-  background: #242321;
-  border: 1px solid rgba(126, 120, 109, 0.5);
-  color: var(--aurum-light);
-}
-
-/* FLECHAS */
-
-#main-content .post .right {
-  margin: 10px 0 0 242px;
-  text-align: right;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 850px) {
-  #main-content .post .inner {
-    padding-top: 120px;
-  }
-
-  #main-content .postbody h2.topic-title {
-    height: 96px;
-    padding: 18px 20px 34px;
-  }
-
-  #main-content .postbody p.author {
-    top: 62px;
-    left: 20px;
-    right: 20px;
-  }
-
-  #main-content .postbody .profile-icons {
-    top: 94px;
-    right: 20px;
-  }
-
-  #main-content .postprofile {
-    width: 100%;
-    min-height: auto;
-    margin: 0 0 18px;
-  }
-
-  #main-content .postbody .content,
-  #main-content .fa_like_div,
-  #main-content .post .right {
-    margin-left: 0;
-  }
-}
-
