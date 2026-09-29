@@ -683,13 +683,13 @@ li.row .aurum_links a {
 
 #main-content .forabg.ak-private-areas li.ak-private-card h3.hierarchy {
   position: absolute;
-  z-index: 4;
+  z-index: 6;
   left: 20px;
   bottom: 14px;
   max-width: calc(100% - 40px);
   padding: 12px 20px;
   background: rgba(9,15,19,.8);
-  border-left: 10px solid var(--ak-aurum);
+  border-left: 15px solid var(--ak-aurum);
 }
 
 #main-content .forabg.ak-private-areas li.ak-private-card dd.lastpost {
