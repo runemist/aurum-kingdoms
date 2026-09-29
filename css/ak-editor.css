@@ -94,30 +94,64 @@
   background:rgba(199,170,120,.17)!important;
 }
 #main-content .sceditor-container .sceditor-button.disabled {opacity:.4!important;cursor:default}
-/* Los mandos más usados llevan símbolos claros; los demás conservan el icono nativo. */
-#main-content .sceditor-container .sceditor-button-bold div,
-#main-content .sceditor-container .sceditor-button-italic div,
-#main-content .sceditor-container .sceditor-button-underline div,
-#main-content .sceditor-container .sceditor-button-strike div,
-#main-content .sceditor-container .sceditor-button-code div,
-#main-content .sceditor-container .sceditor-button-quote div,
-#main-content .sceditor-container .sceditor-button-link div,
-#main-content .sceditor-container .sceditor-button-unlink div {
-  width:20px!important;
-  height:20px!important;
-  background:none!important;
-  font:700 16px/20px Arial,sans-serif;
-  text-align:center;
-  color:var(--ak-editor-gold)!important;
+/* Iconos CSS sobre el botón: el texto accesible y el comando original permanecen. */
+#main-content .sceditor-container .sceditor-button {
+  position:relative!important;
+  background:transparent!important;
+  text-indent:0!important;
+  overflow:visible!important;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
-#main-content .sceditor-button-bold div::before {content:'B'}
-#main-content .sceditor-button-italic div::before {content:'I';font-style:italic}
-#main-content .sceditor-button-underline div::before {content:'U';text-decoration:underline}
-#main-content .sceditor-button-strike div::before {content:'S';text-decoration:line-through}
-#main-content .sceditor-button-code div::before {content:'</>';font:700 11px/20px ui-monospace,monospace}
-#main-content .sceditor-button-quote div::before {content:'❞'}
-#main-content .sceditor-button-link div::before {content:'↗'}
-#main-content .sceditor-button-unlink div::before {content:'×'}
+#main-content .sceditor-container .sceditor-button > div {
+  box-sizing:border-box;
+  opacity:.68;
+  filter:grayscale(1) brightness(1.65);
+}
+#main-content .sceditor-container .sceditor-button:hover > div {opacity:1;filter:none}
+/* Sólo reemplazamos iconos cuando conocemos el comando. */
+#main-content .sceditor-container :is(
+  .sceditor-button-bold,.sceditor-button-italic,.sceditor-button-underline,
+  .sceditor-button-strike,.sceditor-button-left,.sceditor-button-center,
+  .sceditor-button-right,.sceditor-button-justify,.sceditor-button-bulletlist,
+  .sceditor-button-orderedlist,.sceditor-button-quote,.sceditor-button-code,
+  .sceditor-button-link,.sceditor-button-unlink,.sceditor-button-image,
+  .sceditor-button-youtube,.sceditor-button-horizontalrule
+) > div {visibility:hidden!important}
+#main-content .sceditor-container :is(
+  .sceditor-button-bold,.sceditor-button-italic,.sceditor-button-underline,
+  .sceditor-button-strike,.sceditor-button-left,.sceditor-button-center,
+  .sceditor-button-right,.sceditor-button-justify,.sceditor-button-bulletlist,
+  .sceditor-button-orderedlist,.sceditor-button-quote,.sceditor-button-code,
+  .sceditor-button-link,.sceditor-button-unlink,.sceditor-button-image,
+  .sceditor-button-youtube,.sceditor-button-horizontalrule
+)::after {
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:#ddc59c;
+  font:600 15px/1 Arial,sans-serif;
+  text-indent:0!important;
+  visibility:visible!important;
+  pointer-events:none;
+}
+#main-content .sceditor-button-bold::after {content:'B';font-weight:900!important}
+#main-content .sceditor-button-italic::after {content:'I';font-style:italic!important}
+#main-content .sceditor-button-underline::after {content:'U';text-decoration:underline!important}
+#main-content .sceditor-button-strike::after {content:'S';text-decoration:line-through!important}
+#main-content .sceditor-button-left::after {content:'≡';justify-items:start;padding-left:6px}
+#main-content .sceditor-button-center::after {content:'≡'}
+#main-content .sceditor-button-right::after {content:'≡';justify-items:end;padding-right:6px}
+#main-content .sceditor-button-justify::after {content:'☰'}
+#main-content .sceditor-button-bulletlist::after {content:'•≡';font-size:13px!important}
+#main-content .sceditor-button-orderedlist::after {content:'1≡';font-size:13px!important}
+#main-content .sceditor-button-quote::after {content:'❝';font-size:20px!important}
+#main-content .sceditor-button-code::after {content:'</>';font:700 11px/1 ui-monospace,monospace!important}
+#main-content .sceditor-button-link::after {content:'🔗';font-size:15px!important}
+#main-content .sceditor-button-unlink::after {content:'×';font-size:21px!important}
+#main-content .sceditor-button-image::after {content:'▧';font-size:19px!important}
+#main-content .sceditor-button-youtube::after {content:'▶';font-size:15px!important}
+#main-content .sceditor-button-horizontalrule::after {content:'─';font-size:20px!important}
 /* SCEditor puede usar iframe (visual) o textarea (BBCode). */
 #main-content .sceditor-container .sceditor-editor,
 #main-content .sceditor-container > iframe,
@@ -145,3 +179,18 @@
   #main-content .sceditor-container .sceditor-toolbar {max-height:145px;padding:7px!important}
   #main-content .sceditor-container .sceditor-button {width:27px!important;min-width:27px;height:27px!important}
 }
+
+/* Controles del formulario completo: campos y acciones con la paleta Aurum. */
+#main-content #postingbox input[type="text"],#main-content #postingbox select,
+#main-content form[action*="/post"] input[type="text"],#main-content form[action*="/post"] select {
+  box-sizing:border-box;min-height:32px;padding:5px 9px;border:1px solid var(--ak-editor-line);
+  background:var(--ak-editor-deep);color:var(--ak-editor-ink)
+}
+#main-content #smiley-box {box-sizing:border-box;max-width:230px;padding:12px;border:1px solid var(--ak-editor-line);background:var(--ak-editor-deep);color:var(--ak-editor-ink)}
+#main-content #smiley-box img {max-width:100%;height:auto}
+#main-content #postingbox input[type="submit"],#main-content form[action*="/post"] input[type="submit"] {
+  min-height:35px;padding:8px 17px;margin:5px;border:1px solid var(--ak-editor-line);
+  background:var(--ak-editor-panel);color:var(--ak-editor-gold);
+  font:11px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer
+}
+#main-content #postingbox input[type="submit"]:hover,#main-content form[action*="/post"] input[type="submit"]:hover {background:rgba(199,170,120,.15)}
