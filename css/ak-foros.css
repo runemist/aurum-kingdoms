@@ -505,7 +505,7 @@ li.row h3.hierarchy {
   margin: 0;
   padding: 10px 17px;
   background: rgba(9,15,19,.82);
-  border-left: 2px solid var(--ak-aurum);
+  border-left: 10px solid var(--ak-aurum);
 }
 
 #main-content
