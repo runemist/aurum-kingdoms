@@ -80,10 +80,10 @@
   margin: 0;
 }
 
-.perfil-contactos img {
+.perfil-contactos img{
   width: 35px;
 }
-
+  
 .perfil-contacto-item dt {
   display: none;
 }
@@ -102,7 +102,7 @@
   justify-content: space-between;
 }
 
-.perfil-campo {
+.perfil-campo{
   display: flex;
 }
 
@@ -125,8 +125,8 @@
   align-content: center;
 }
 
-.pslabel span {
-  color: #151515 !important;
+.pslabel span{
+  color: #151515!important;
 }
 /* COLUMNA DERECHA */
 
@@ -181,7 +181,7 @@
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 1px;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .perfil-links a:hover {
@@ -200,55 +200,16 @@
   margin: 0;
 }
 
-/* Compatibilidad con las insignias existentes dentro de la ficha. */
-.perfil-card:has(.akaeris),
-.perfil-rpg:has(.akaeris) {
-  --ak-line: var(--ak-aeris);
-  --ak-border: var(--ak-aeris);
-  --ak-accent: var(--ak-aeris);
-}
-.perfil-card:has(.aklux),
-.perfil-rpg:has(.aklux) {
-  --ak-line: var(--ak-lux);
-  --ak-border: var(--ak-lux);
-  --ak-accent: var(--ak-lux);
-}
-.perfil-card:has(.akumbra),
-.perfil-rpg:has(.akumbra) {
-  --ak-line: var(--ak-umbra);
-  --ak-border: var(--ak-umbra);
-  --ak-accent: var(--ak-umbra);
-}
-.perfil-card:has(.aktuono),
-.perfil-rpg:has(.aktuono) {
-  --ak-line: var(--ak-tuono);
-  --ak-border: var(--ak-tuono);
-  --ak-accent: var(--ak-tuono);
-}
-.perfil-card:has(.akignis),
-.perfil-rpg:has(.akignis) {
-  --ak-line: var(--ak-ignis);
-  --ak-border: var(--ak-ignis);
-  --ak-accent: var(--ak-ignis);
-}
-.perfil-card:has(.akteram),
-.perfil-rpg:has(.akteram) {
-  --ak-line: var(--ak-teram);
-  --ak-border: var(--ak-teram);
-  --ak-accent: var(--ak-teram);
-}
-.perfil-card:has(.akcascata),
-.perfil-rpg:has(.akcascata) {
-  --ak-line: var(--ak-cascata);
-  --ak-border: var(--ak-cascata);
-  --ak-accent: var(--ak-cascata);
-}
-.perfil-card:has(.akadmin),
-.perfil-rpg:has(.akadmin) {
-  --ak-line: var(--ak-aurum);
-  --ak-border: var(--ak-aurum);
-  --ak-accent: var(--ak-aurum);
-}
+/* Compatibilidad con las insignias existentes dentro de la ficha.
+   El color principal se hereda de .perfilreal según la clase group-N. */
+.perfil-card:has(.akaeris),.perfil-rpg:has(.akaeris) { --ak-line:var(--ak-aeris); --ak-border:var(--ak-aeris); --ak-accent:var(--ak-aeris); }
+.perfil-card:has(.aklux),.perfil-rpg:has(.aklux) { --ak-line:var(--ak-lux); --ak-border:var(--ak-lux); --ak-accent:var(--ak-lux); }
+.perfil-card:has(.akumbra),.perfil-rpg:has(.akumbra) { --ak-line:var(--ak-umbra); --ak-border:var(--ak-umbra); --ak-accent:var(--ak-umbra); }
+.perfil-card:has(.aktuono),.perfil-rpg:has(.aktuono) { --ak-line:var(--ak-tuono); --ak-border:var(--ak-tuono); --ak-accent:var(--ak-tuono); }
+.perfil-card:has(.akignis),.perfil-rpg:has(.akignis) { --ak-line:var(--ak-ignis); --ak-border:var(--ak-ignis); --ak-accent:var(--ak-ignis); }
+.perfil-card:has(.akteram),.perfil-rpg:has(.akteram) { --ak-line:var(--ak-teram); --ak-border:var(--ak-teram); --ak-accent:var(--ak-teram); }
+.perfil-card:has(.akcascata),.perfil-rpg:has(.akcascata) { --ak-line:var(--ak-cascata); --ak-border:var(--ak-cascata); --ak-accent:var(--ak-cascata); }
+.perfil-card:has(.akadmin),.perfil-rpg:has(.akadmin) { --ak-line:var(--ak-aurum); --ak-border:var(--ak-aurum); --ak-accent:var(--ak-aurum); }
 /* =====================================
    RPG
 ===================================== */
@@ -313,12 +274,13 @@
 }
 
 .perfil-contacto-item:has(#i_icon_email) {
-  display: none;
+    display: none;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+@media (max-width: 900px){
+
   .perfil-body {
     grid-template-columns: 1fr;
   }
@@ -334,7 +296,9 @@
   .perfil-rpg-campos {
     grid-template-columns: 1fr;
   }
+
 }
+
 
 /* =========================================
    AURUM — INSIGNIAS DE GRUPO
@@ -348,62 +312,63 @@
 .akteram,
 .akaeris,
 .akcascata {
-  display: block;
-  width: 240px;
-  height: 50px;
-  margin: 0 auto;
-  overflow: hidden;
-  text-indent: -9999px;
-  white-space: nowrap;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+    display: block;
+    width: 240px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-indent: -9999px;
+    white-space: nowrap;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 /* ADMINISTRACIÓN */
 
 .akadmin {
-  background-image: url("https://2img.net/i.imgur.com/QiAPIjv.png");
+    background-image: url("https://2img.net/i.imgur.com/QiAPIjv.png");
 }
 
 /* LUX */
 
 .aklux {
-  background-image: url("https://2img.net/i.imgur.com/GlsNpMa.png");
+    background-image: url("https://2img.net/i.imgur.com/GlsNpMa.png");
 }
 
 /* UMBRA */
 
 .akumbra {
-  background-image: url("https://2img.net/i.imgur.com/azMEJgE.png");
+    background-image: url("https://2img.net/i.imgur.com/azMEJgE.png");
 }
 
 /* TUONO */
 
 .aktuono {
-  background-image: url("https://2img.net/i.imgur.com/ywjkvgJ.png");
+    background-image: url("https://2img.net/i.imgur.com/ywjkvgJ.png");
 }
 
 /* IGNIS */
 
 .akignis {
-  background-image: url("https://2img.net/i.imgur.com/5oveyaI.png");
+    background-image: url("https://2img.net/i.imgur.com/5oveyaI.png");
 }
 
 /* TERAM */
 
 .akteram {
-  background-image: url("https://2img.net/i.imgur.com/ECvwLyW.png");
+    background-image: url("https://2img.net/i.imgur.com/ECvwLyW.png");
 }
 
 /* AERIS */
 
 .akaeris {
-  background-image: url("https://2img.net/i.imgur.com/PnlJcUW.png");
+    background-image: url("https://2img.net/i.imgur.com/PnlJcUW.png");
 }
 
 /* CASCATA */
 
 .akcascata {
-  background-image: url("https://2img.net/i.imgur.com/ZxHAfBQ.png");
+    background-image: url("https://2img.net/i.imgur.com/ZxHAfBQ.png");
 }
+
