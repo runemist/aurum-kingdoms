@@ -484,3 +484,14 @@
     right: 14px;
   }
 }
+/* Recuperar el ancho completo */
+#main-content > .ak-stats {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Eliminar definitivamente la tarjeta duplicada */
+#main-content .ak-stats-metrics > .ak-stats-newest {
+  display: none;
+}
