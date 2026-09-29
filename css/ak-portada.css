@@ -12,6 +12,21 @@ body:has(#ak-hero) #ak-hero {
   background-size: cover;
   border-bottom: 1px solid var(--ak-aurum);
 }
+/* Portada: banner inmediatamente debajo del menú */
+body:has(#ak-hero) #wrap {
+  margin-top: 62px;
+  padding-top: 0;
+}
+
+body:has(#ak-hero) #main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+body:has(#ak-hero) #ak-hero {
+  order: -1;
+  margin-top: -4px;
+}
 #ak-hero .ak-hero-head {
   width: 100%;
   margin: 0 auto 55px;
