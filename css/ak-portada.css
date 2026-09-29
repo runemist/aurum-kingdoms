@@ -8,9 +8,8 @@ body:has(#ak-hero) #ak-hero {
   min-height: 680px;
   margin-left: calc(50% - 50vw);
   padding: 50px 0 28px;
-  background:
-    linear-gradient(180deg, rgba(8, 14, 18, 0.26), rgba(8, 14, 18, 0.9)),
-    radial-gradient(ellipse at 50% 25%, #34434b, #111b20 70%);
+  background: var(--ak-bg-portada);
+  background-size: cover;
   border-bottom: 1px solid var(--ak-aurum);
 }
 #ak-hero .ak-hero-head {
