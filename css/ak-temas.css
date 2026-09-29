@@ -156,3 +156,11 @@
   max-width:14px;
   max-height:14px;
 }
+#main-content .forumbg ul.topiclist.topics > li.row a.topictitle {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: unset;
+}
