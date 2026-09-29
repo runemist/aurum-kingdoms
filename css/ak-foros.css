@@ -1,98 +1,644 @@
 /* Aurum · Categorías y subforos. No depende de una clase añadida por JS. */
-#main-content .forabg { width:100%; margin:0 0 26px; padding:0; background:transparent; border:0; }
-#main-content .forabg .topiclist { margin:0; padding:0; list-style:none; }
-#main-content .forabg .topiclist .header { margin:42px 0 20px; padding:0; background:transparent; border:0; }
-#main-content .forabg .topiclist .header dl { display:block; min-height:0; margin:0; padding:0; background:none; }
-#main-content .forabg .topiclist .header .dterm { width:100%; height:auto; min-height:0; margin:0; padding:0; }
-#main-content .forabg .topiclist .header .topics,#main-content .forabg .topiclist .header .posts,#main-content .forabg .topiclist .header .lastpost { display:none; }
-#main-content .forabg .topiclist .header .table-title { display:flex; align-items:center; justify-content:center; gap:20px; width:100%; }
-#main-content .forabg .topiclist .header h2 { margin:0; color:var(--ak-text); font:400 18px Georgia,serif; letter-spacing:.22em; text-align:center; text-transform:uppercase; }
-#main-content .forabg .topiclist .header .table-title::before,#main-content .forabg .topiclist .header .table-title::after { content:'◆'; flex:1; color:var(--ak-line); font:10px Georgia,serif; }
-#main-content .forabg .topiclist .header .table-title::before { text-align:right; }
-#main-content .forabg .topiclist.forums { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-#main-content .forabg .topiclist.forums > li.row { position:relative; float:none; width:100%; min-width:0; min-height:350px; margin:0; padding:0; box-sizing:border-box; overflow:hidden; border:3px solid var(--ak-line); border-radius:47% 47% 7px 7px / 22% 22% 7px 7px; background:var(--ak-panel-deep); }
-#main-content .forabg .topiclist.forums > li.row::before { content:none; }
-#main-content .forabg li.row dl.icon { display:flex; flex-direction:column; width:100%; min-height:350px; margin:0; padding:0; background:none !important; }
-#main-content .forabg li.row dd.dterm { display:flex; flex:1; flex-direction:column; width:100%; height:auto; min-height:0; margin:0; padding:0; float:none; }
-#main-content .forabg li.row dd.dterm > div { display:flex !important; flex-direction:column; width:100%; height:100%; margin:0 !important; padding:0; }
-#main-content .forabg li.row h3.hierarchy { order:2; margin:0; padding:12px 17px 2px; }
-#main-content .forabg li.row a.forumtitle { color:var(--ak-text); font:400 clamp(18px,2vw,24px)/1.25 Georgia,serif; letter-spacing:.07em; text-transform:uppercase; text-decoration:none; }
-#main-content .forabg li.row a.forumtitle:hover { color:var(--ak-gold); }
-#main-content .forabg li.row dd.topics,#main-content .forabg li.row dd.posts { display:none; }
-#main-content .forabg li.row dd.lastpost { position:static; display:block; width:auto; height:auto; min-height:42px; margin:auto 17px 13px; padding:10px 0 0; border:0; border-top:1px solid var(--ak-line); background:none; color:var(--ak-muted); font:11px/1.4 Arial,sans-serif; }
-#main-content .forabg li.row dd.lastpost a { color:var(--ak-text); }
-#main-content .forabg li.row dd.lastpost .last-post-icon { display:none; }
-#main-content .forabg li.row .ForDesc { position:relative; order:1; display:block; width:100%; height:210px; min-height:210px; overflow:hidden; border:0; border-bottom:3px solid var(--ak-line); border-radius:0; background-color:#26333a !important; background-size:cover !important; background-position:center !important; filter:none; clip-path:none; }
-#main-content .forabg li.row .ForDesc::after { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(0deg,rgba(10,17,21,.55),transparent 60%); }
-#main-content .forabg li.row .ForDesc .ak-forum-media,#main-content .forabg li.row .ForDesc .ak-forum-fallback { position:absolute; inset:0; display:block; width:100%; height:100%; }
-#main-content .forabg li.row .ForDesc .ak-forum-media img,#main-content .forabg li.row .ForDesc .ak-forum-fallback img { display:block; width:100%; height:100%; object-fit:cover; }
-#main-content .forabg li.row .ForDesc > .FHover,#main-content .forabg li.row .ForDesc > .ak-forum-reveal { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:12px; width:100%; height:100%; margin:0; padding:18px; box-sizing:border-box; overflow:auto; background:rgba(10,17,21,.92); color:var(--ak-text); text-align:center; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .22s,visibility .22s; }
-#main-content .forabg li.row:hover .ForDesc > .FHover,#main-content .forabg li.row:focus-within .ForDesc > .FHover,#main-content .forabg li.row .ForDesc.ak-open > .FHover,#main-content .forabg li.row:hover .ForDesc > .ak-forum-reveal { opacity:1; visibility:visible; pointer-events:auto; }
-#main-content .forabg li.row .FDescText,#main-content .forabg li.row .ak-forum-reveal p { color:var(--ak-text); font:14px/1.55 Georgia,serif; }
-#main-content .forabg li.row .FDescLinks,#main-content .forabg li.row .ak-forum-reveal nav { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; }
-#main-content .forabg li.row .FDescLinks a,#main-content .forabg li.row .ak-forum-reveal a { display:inline-flex; align-items:center; justify-content:center; padding:6px 9px; border:1px solid var(--ak-line); color:var(--ak-gold); background:rgba(199,170,120,.08); font:10px/1.25 Arial,sans-serif; text-decoration:none; text-transform:uppercase; }
-#main-content .forabg li.row .FDescLinks a:hover,#main-content .forabg li.row .ak-forum-reveal a:hover { color:var(--ak-text); background:rgba(199,170,120,.2); }
-#main-content .forabg li.row .FHover a[href=""],#main-content .forabg li.row .FHover a[href="#"] { display:none; }
+#main-content .forabg {
+  width: 100%;
+  margin: 0 0 26px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+#main-content .forabg .topiclist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#main-content .forabg .topiclist .header {
+  margin: 42px 0 20px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+#main-content .forabg .topiclist .header dl {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+#main-content .forabg .topiclist .header .dterm {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+#main-content .forabg .topiclist .header .topics,
+#main-content .forabg .topiclist .header .posts,
+#main-content .forabg .topiclist .header .lastpost {
+  display: none;
+}
+#main-content .forabg .topiclist .header .table-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+#main-content .forabg .topiclist .header h2 {
+  margin: 0;
+  color: var(--ak-text);
+  font:
+    400 18px Georgia,
+    serif;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+#main-content .forabg .topiclist .header .table-title::before,
+#main-content .forabg .topiclist .header .table-title::after {
+  content: "◆";
+  flex: 1;
+  color: var(--ak-line);
+  font:
+    10px Georgia,
+    serif;
+}
+#main-content .forabg .topiclist .header .table-title::before {
+  text-align: right;
+}
+#main-content .forabg .topiclist.forums {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+#main-content .forabg .topiclist.forums > li.row {
+  position: relative;
+  float: none;
+  width: 100%;
+  min-width: 0;
+  min-height: 350px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 3px solid var(--ak-line);
+  border-radius: 47% 47% 7px 7px / 22% 22% 7px 7px;
+  background: var(--ak-panel-deep);
+}
+#main-content .forabg .topiclist.forums > li.row::before {
+  content: none;
+}
+#main-content .forabg li.row dl.icon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 350px;
+  margin: 0;
+  padding: 0;
+  background: none !important;
+}
+#main-content .forabg li.row dd.dterm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  float: none;
+}
+#main-content .forabg li.row dd.dterm > div {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0;
+}
+#main-content .forabg li.row h3.hierarchy {
+  order: 2;
+  margin: 0;
+  padding: 12px 17px 2px;
+}
+#main-content .forabg li.row a.forumtitle {
+  color: var(--ak-text);
+  font:
+    400 clamp(18px, 2vw, 24px)/1.25 Georgia,
+    serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#main-content .forabg li.row a.forumtitle:hover {
+  color: var(--ak-gold);
+}
+#main-content .forabg li.row dd.topics,
+#main-content .forabg li.row dd.posts {
+  display: none;
+}
+#main-content .forabg li.row dd.lastpost {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  min-height: 42px;
+  margin: auto 17px 13px;
+  padding: 10px 0 0;
+  border: 0;
+  border-top: 1px solid var(--ak-line);
+  background: none;
+  color: var(--ak-muted);
+  font:
+    11px/1.4 Arial,
+    sans-serif;
+}
+#main-content .forabg li.row dd.lastpost a {
+  color: var(--ak-text);
+}
+#main-content .forabg li.row dd.lastpost .last-post-icon {
+  display: none;
+}
+#main-content .forabg li.row .ForDesc {
+  position: relative;
+  order: 1;
+  display: block;
+  width: 100%;
+  height: 210px;
+  min-height: 210px;
+  overflow: hidden;
+  border: 0;
+  border-bottom: 3px solid var(--ak-line);
+  border-radius: 0;
+  background-color: #26333a !important;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: none;
+  clip-path: none;
+}
+#main-content .forabg li.row .ForDesc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(10, 17, 21, 0.55), transparent 60%);
+}
+#main-content .forabg li.row .ForDesc .ak-forum-media,
+#main-content .forabg li.row .ForDesc .ak-forum-fallback {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#main-content .forabg li.row .ForDesc .ak-forum-media img,
+#main-content .forabg li.row .ForDesc .ak-forum-fallback img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#main-content .forabg li.row .ForDesc > .FHover,
+#main-content .forabg li.row .ForDesc > .ak-forum-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 18px;
+  box-sizing: border-box;
+  overflow: auto;
+  background: rgba(10, 17, 21, 0.92);
+  color: var(--ak-text);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.22s,
+    visibility 0.22s;
+}
+#main-content .forabg li.row:hover .ForDesc > .FHover,
+#main-content .forabg li.row:focus-within .ForDesc > .FHover,
+#main-content .forabg li.row .ForDesc.ak-open > .FHover,
+#main-content .forabg li.row:hover .ForDesc > .ak-forum-reveal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+#main-content .forabg li.row .FDescText,
+#main-content .forabg li.row .ak-forum-reveal p {
+  color: var(--ak-text);
+  font:
+    14px/1.55 Georgia,
+    serif;
+}
+#main-content .forabg li.row .FDescLinks,
+#main-content .forabg li.row .ak-forum-reveal nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+#main-content .forabg li.row .FDescLinks a,
+#main-content .forabg li.row .ak-forum-reveal a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 9px;
+  border: 1px solid var(--ak-line);
+  color: var(--ak-gold);
+  background: rgba(199, 170, 120, 0.08);
+  font:
+    10px/1.25 Arial,
+    sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#main-content .forabg li.row .FDescLinks a:hover,
+#main-content .forabg li.row .ak-forum-reveal a:hover {
+  color: var(--ak-text);
+  background: rgba(199, 170, 120, 0.2);
+}
+#main-content .forabg li.row .FHover a[href=""],
+#main-content .forabg li.row .FHover a[href="#"] {
+  display: none;
+}
 
 /* Formato nuevo ak- y descripción de Cascata ya publicada. La tarjeta externa recorta el arco. */
 #main-content .forabg li.row .ak-forum-cover,
-#main-content .forabg li.row .ak-forum-media { position:relative; order:1; display:block; flex:none; width:100%; height:210px; min-height:210px; overflow:hidden; border:0; border-bottom:3px solid var(--ak-line); border-radius:0; background-color:#26333a; background-size:cover !important; background-position:center !important; }
-#main-content .forabg li.row .ak-forum-media img { display:block; width:100%; height:100%; object-fit:cover; }
+#main-content .forabg li.row .ak-forum-media {
+  position: relative;
+  order: 1;
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 210px;
+  min-height: 210px;
+  overflow: hidden;
+  border: 0;
+  border-bottom: 3px solid var(--ak-line);
+  border-radius: 0;
+  background-color: #26333a;
+  background-size: cover !important;
+  background-position: center !important;
+}
+#main-content .forabg li.row .ak-forum-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 #main-content .forabg li.row .ak-forum-overlay,
-#main-content .forabg li.row .ak-forum-reveal { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:12px; width:100%; height:100%; margin:0; padding:18px; box-sizing:border-box; overflow:auto; background:rgba(10,17,21,.94); color:var(--ak-text); text-align:center; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .22s,visibility .22s; }
-#main-content .forabg li.row:hover .ak-forum-overlay,#main-content .forabg li.row:focus-within .ak-forum-overlay,
-#main-content .forabg li.row:hover .ak-forum-reveal,#main-content .forabg li.row:focus-within .ak-forum-reveal { opacity:1; visibility:visible; pointer-events:auto; }
-#main-content .forabg li.row .ak-forum-description,#main-content .forabg li.row .ak-forum-reveal p { color:var(--ak-text); font:14px/1.55 Georgia,serif; }
-#main-content .forabg li.row .ak-forum-links,#main-content .forabg li.row .ak-forum-reveal nav { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; }
-#main-content .forabg li.row .ak-forum-links a,#main-content .forabg li.row .ak-forum-reveal a { display:inline-flex; align-items:center; justify-content:center; padding:6px 9px; border:1px solid var(--ak-line); color:var(--ak-gold); background:rgba(199,170,120,.08); font:10px/1.25 Arial,sans-serif; text-decoration:none; text-transform:uppercase; }
-#main-content .forabg li.row .ak-forum-links a:hover,#main-content .forabg li.row .ak-forum-reveal a:hover { color:var(--ak-text); background:rgba(199,170,120,.2); }
-#main-content .forabg li.row .FDescLinks a[href="#"],#main-content .forabg li.row .ak-forum-links a[href=""],#main-content .forabg li.row .ak-forum-links a[href="#"] { display:none; }
+#main-content .forabg li.row .ak-forum-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 18px;
+  box-sizing: border-box;
+  overflow: auto;
+  background: rgba(10, 17, 21, 0.94);
+  color: var(--ak-text);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.22s,
+    visibility 0.22s;
+}
+#main-content .forabg li.row:hover .ak-forum-overlay,
+#main-content .forabg li.row:focus-within .ak-forum-overlay,
+#main-content .forabg li.row:hover .ak-forum-reveal,
+#main-content .forabg li.row:focus-within .ak-forum-reveal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+#main-content .forabg li.row .ak-forum-description,
+#main-content .forabg li.row .ak-forum-reveal p {
+  color: var(--ak-text);
+  font:
+    14px/1.55 Georgia,
+    serif;
+}
+#main-content .forabg li.row .ak-forum-links,
+#main-content .forabg li.row .ak-forum-reveal nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+#main-content .forabg li.row .ak-forum-links a,
+#main-content .forabg li.row .ak-forum-reveal a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 9px;
+  border: 1px solid var(--ak-line);
+  color: var(--ak-gold);
+  background: rgba(199, 170, 120, 0.08);
+  font:
+    10px/1.25 Arial,
+    sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#main-content .forabg li.row .ak-forum-links a:hover,
+#main-content .forabg li.row .ak-forum-reveal a:hover {
+  color: var(--ak-text);
+  background: rgba(199, 170, 120, 0.2);
+}
+#main-content .forabg li.row .FDescLinks a[href="#"],
+#main-content .forabg li.row .ak-forum-links a[href=""],
+#main-content .forabg li.row .ak-forum-links a[href="#"] {
+  display: none;
+}
 
 /* index_box coloca <br> antes y después de FORUM_DESC. En una tarjeta flex crean una franja vacía. */
-#main-content .forabg li.row dd.dterm > div > br { display:none; }
+#main-content .forabg li.row dd.dterm > div > br {
+  display: none;
+}
 
 /* Un solo arco externo; las imágenes completas se ven con bandas discretas si cambia la proporción. */
 #main-content .forabg li.row .ForDesc,
 #main-content .forabg li.row .ak-forum-cover,
-#main-content .forabg li.row .ak-forum-media { background-size:cover !important; background-repeat:no-repeat !important; background-position:center !important; background-color:#26333a !important; }
-#main-content .forabg li.row .ak-forum-media img { object-fit:contain; background:#26333a; }
+#main-content .forabg li.row .ak-forum-media {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-color: #26333a !important;
+}
+#main-content .forabg li.row .ak-forum-media img {
+  object-fit: contain;
+  background: #26333a;
+}
 
 /* Áreas Privadas: ancho completo aun cuando un miembro solo vea una ficha. */
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) .topiclist.forums { grid-template-columns:1fr; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) .topiclist.forums > li.row { height:280px; min-height:280px; max-height:280px; border-radius:8px; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dl.icon { height:278px; min-height:0; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.dterm { position:relative; flex:0 0 232px; height:232px; min-height:0; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.dterm > div { height:232px; min-height:0; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ForDesc,
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-cover,
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-media { flex:0 0 232px; width:100%; height:232px; min-height:232px; border:0; background-position:center !important; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row h3.hierarchy { position:absolute; z-index:6; left:18px; bottom:13px; max-width:calc(100% - 36px); margin:0; padding:10px 17px; background:rgba(9,15,19,.82); border-left:10px solid var(--ak-gold); }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost { display:block; flex:0 0 44px; width:calc(100% - 32px); height:44px; min-height:44px; max-height:44px; margin:0 16px; padding:0; box-sizing:border-box; border-top:3px solid var(--ak-line); overflow:hidden; white-space:nowrap; font:11px/43px Arial,sans-serif; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost > span:not(.lastpost-avatar) { display:flex; align-items:center; gap:8px; width:100%; min-width:0; height:43px; overflow:hidden; white-space:nowrap; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost br { display:none; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost .lastpost-avatar { display:none; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost a { flex-shrink:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row dd.lastpost strong { flex-shrink:0; }
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  .topiclist.forums {
+  grid-template-columns: 1fr;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  .topiclist.forums
+  > li.row {
+  height: 280px;
+  min-height: 280px;
+  max-height: 280px;
+  border-radius: 8px;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dl.icon {
+  height: 278px;
+  min-height: 0;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.dterm {
+  position: relative;
+  flex: 0 0 232px;
+  height: 232px;
+  min-height: 0;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.dterm
+  > div {
+  height: 232px;
+  min-height: 0;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .ForDesc,
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .ak-forum-cover,
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .ak-forum-media {
+  flex: 0 0 232px;
+  width: 100%;
+  height: 232px;
+  min-height: 232px;
+  border: 0;
+  background-position: center !important;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  h3.hierarchy {
+  position: absolute;
+  z-index: 6;
+  left: 18px;
+  bottom: 13px;
+  max-width: calc(100% - 36px);
+  margin: 0;
+  padding: 10px 17px;
+  background: rgba(9, 15, 19, 0.82);
+  border-left: 2px solid var(--ak-accent);
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost {
+  display: block;
+  flex: 0 0 44px;
+  width: calc(100% - 32px);
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  margin: 0 16px;
+  padding: 0;
+  box-sizing: border-box;
+  border-top: 3px solid var(--ak-line);
+  overflow: hidden;
+  white-space: nowrap;
+  font:
+    11px/43px Arial,
+    sans-serif;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost
+  > span:not(.lastpost-avatar) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  height: 43px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost
+  br {
+  display: none;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost
+  .lastpost-avatar {
+  display: none;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost
+  a {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  dd.lastpost
+  strong {
+  flex-shrink: 0;
+}
 /* Descripciones antiguas de Cascata y Arena hasta migrarlas. */
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-media { position:absolute; inset:0 0 auto; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .ak-forum-reveal { height:232px; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_forum { position:absolute; inset:0 0 auto; height:232px; background:#26333a; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_content { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:12px; color:var(--ak-text); text-align:center; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_links { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-#main-content .forabg:is(:has(a.forumtitle[href^="/f79-"]),:has(.ak-private-cover)) li.row .aurum_links a { color:var(--ak-gold); }
-/* Añadir al final de css/ak-foros.css. El JS asigna la clase y el color de grupo. */
-#main-content .forabg.ak-private-areas .topiclist.forums {grid-template-columns:1fr}
-#main-content .forabg.ak-private-areas .topiclist.forums > li.row.ak-private-card {min-height:360px;border-radius:8px;border-color:var(--ak-private-color,var(--ak-line));--ak-gold:var(--ak-private-color,#c7aa78)}
-#main-content .forabg.ak-private-areas li.ak-private-card dl.icon {min-height:360px}
-#main-content .forabg.ak-private-areas li.ak-private-card dd.dterm {position:relative;flex:0 0 265px}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .ak-forum-media {
+  position: absolute;
+  inset: 0 0 auto;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .ak-forum-reveal {
+  height: 232px;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .aurum_forum {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 232px;
+  background: #26333a;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .aurum_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: var(--ak-text);
+  text-align: center;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .aurum_links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+#main-content
+  .forabg:is(:has(a.forumtitle[href^="/f79-"]), :has(.ak-private-cover))
+  li.row
+  .aurum_links
+  a {
+  color: var(--ak-gold);
+}
+/* El JS puede asignar ak-private-areas y la clase de nación a cada ficha. */
+#main-content .forabg.ak-private-areas .topiclist.forums {
+  grid-template-columns: 1fr;
+}
+#main-content
+  .forabg.ak-private-areas
+  .topiclist.forums
+  > li.row.ak-private-card {
+  min-height: 360px;
+  border-radius: 8px;
+  border-color: var(--ak-private-color, var(--ak-border));
+}
+#main-content .forabg.ak-private-areas li.ak-private-card dl.icon {
+  min-height: 360px;
+}
+#main-content .forabg.ak-private-areas li.ak-private-card dd.dterm {
+  position: relative;
+  flex: 0 0 265px;
+}
 #main-content .forabg.ak-private-areas li.ak-private-card .ForDesc,
 #main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-cover,
-#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-media {height:265px;min-height:265px;border-bottom-color:var(--ak-private-color,var(--ak-line))}
-#main-content .forabg.ak-private-areas li.ak-private-card h3.hierarchy {position:absolute;z-index:4;left:20px;bottom:14px;max-width:calc(100% - 40px);padding:12px 20px;background:rgba(9,15,19,.8);border-left:2px solid var(--ak-private-color,var(--ak-gold))}
-#main-content .forabg.ak-private-areas li.ak-private-card dd.lastpost {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 22px;min-height:76px;margin:0 20px 12px;padding:10px 0;border-top-color:var(--ak-private-color,var(--ak-line))}
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-media {
+  height: 265px;
+  min-height: 265px;
+  border-bottom-color: var(--ak-private-color, var(--ak-border));
+}
+#main-content .forabg.ak-private-areas li.ak-private-card h3.hierarchy {
+  position: absolute;
+  z-index: 4;
+  left: 20px;
+  bottom: 14px;
+  max-width: calc(100% - 40px);
+  padding: 12px 20px;
+  background: rgba(9, 15, 19, 0.8);
+  border-left: 2px solid var(--ak-private-color, var(--ak-accent));
+}
+#main-content .forabg.ak-private-areas li.ak-private-card dd.lastpost {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 22px;
+  min-height: 76px;
+  margin: 0 20px 12px;
+  padding: 10px 0;
+  border-top-color: var(--ak-private-color, var(--ak-border));
+}
 #main-content .forabg.ak-private-areas li.ak-private-card .FDescLinks a,
 #main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-links a,
-#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-reveal a {color:var(--ak-private-color,var(--ak-gold));border-color:var(--ak-private-color,var(--ak-line))}
+#main-content .forabg.ak-private-areas li.ak-private-card .ak-forum-reveal a {
+  color: var(--ak-private-color, var(--ak-accent));
+  border-color: var(--ak-private-color, var(--ak-border));
+}
 
-@media(max-width:900px) { #main-content .forabg .topiclist.forums { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(max-width:600px) { #main-content .forabg .topiclist.forums { grid-template-columns:1fr; } }
+@media (max-width: 900px) {
+  #main-content .forabg .topiclist.forums {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  #main-content .forabg .topiclist.forums {
+    grid-template-columns: 1fr;
+  }
+}
