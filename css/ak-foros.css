@@ -689,7 +689,7 @@ li.row .aurum_links a {
   max-width: calc(100% - 40px);
   padding: 12px 20px;
   background: rgba(9,15,19,.8);
-  border-left: 2px solid var(--ak-aurum);
+  border-left: 10px solid var(--ak-aurum);
 }
 
 #main-content .forabg.ak-private-areas li.ak-private-card dd.lastpost {
