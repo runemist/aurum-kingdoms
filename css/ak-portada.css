@@ -33,12 +33,7 @@ body:has(#ak-hero) #ak-hero {
   padding: 0 20px;
   box-sizing: border-box;
   text-align: center;
-  object-fit: cover;
-}
-#ak-hero .ak-hero-head img {
-  max-width: 50%;
-  height: auto;
-  margin: auto;
+  background: var(--ak-bn-img);
 }
 #ak-hero .ak-board {
   width: min(1100px, calc(100% - 44px));
