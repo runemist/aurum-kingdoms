@@ -1,5 +1,5 @@
 /* AURUM · Mensajes y respuesta rápida · sustituye el ak-mensajes.css anterior.
-   Basado en viewtopic_body de phpBB3. No requiere JavaScript. */
+   Requiere la plantilla viewtopic_body.tpl incluida. No requiere JavaScript propio. */
 #main-content {
   --ak-post-bg:#101a1e;
   --ak-post-panel:#172429;
@@ -11,12 +11,12 @@
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) {width:100%;margin:24px 0 32px;padding:0;border:1px solid var(--ak-post-line);background:var(--ak-post-bg);box-shadow:0 12px 28px rgba(0,0,0,.16)}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) * {box-sizing:border-box}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:grid;grid-template-columns:minmax(185px,225px) minmax(0,1fr);gap:0 22px;align-items:start;min-height:0;margin:0;padding:18px;background:transparent;border:0;box-shadow:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:grid;grid-template-columns:minmax(185px,225px) minmax(0,1fr);gap:0 22px;align-items:start;min-height:0;margin:0;padding:0 18px 18px;background:transparent;border:0;box-shadow:none}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .corners-top,#main-content .post[id^="p"]:not([id^="ptrafic"]) .corners-bottom {display:none}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > .clear {display:none}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {position:static;grid-column:1;grid-row:1;float:none;width:auto;min-width:0;min-height:0;height:auto;margin:0;padding:0;color:var(--ak-post-ink);text-align:center;background:var(--ak-post-panel-deep);border:1px solid var(--ak-post-line)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {position:static;grid-column:1;grid-row:2;float:none;width:auto;min-width:0;min-height:0;height:auto;margin:0;padding:0;color:var(--ak-post-ink);text-align:center;background:var(--ak-post-panel-deep);border:1px solid var(--ak-post-line)}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dl,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd {float:none;width:auto;height:auto;margin:0;padding:0}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {padding:10px 10px 0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {padding:10px 0 0}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > img {display:block;max-width:100%}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {display:block;width:100%;max-width:100%;height:auto;max-height:350px;margin:0 auto 12px;object-fit:cover;object-position:center 24%;border:1px solid var(--ak-post-line);border-radius:48% 48% 3px 3px / 18% 18% 3px 3px}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt strong {display:block;margin:0;padding:7px 4px 10px;color:var(--ak-post-gold);font:400 clamp(15px,1.6vw,20px)/1.2 Georgia,serif;letter-spacing:.07em;text-transform:uppercase;overflow-wrap:anywhere}
@@ -29,24 +29,18 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child {display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px;margin-top:12px;padding:13px 10px;border-top:1px solid var(--ak-post-line);text-align:center}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child a {display:inline-flex;align-items:center;justify-content:center;min-width:24px;min-height:24px;padding:3px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel)}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child img {max-width:17px;max-height:17px}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody {position:static;grid-column:2;grid-row:1;float:none;display:flex;flex-direction:column;min-width:0;width:auto;height:auto;margin:0;padding:0;background:transparent!important;border:0}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons {position:static;order:0;align-self:flex-end;display:flex;flex-wrap:wrap;gap:6px;max-width:100%;min-height:30px;margin:0 0 9px;padding:0;list-style:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody {position:static;grid-column:2;grid-row:2;float:none;display:flex;flex-direction:column;min-width:0;width:auto;height:auto;margin:0;padding:0;background:transparent!important;border:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons {position:static;order:0;align-self:flex-end;display:flex;flex-wrap:wrap;gap:6px;max-width:100%;min-height:24px;margin:7px 0 5px;padding:0;list-style:none}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons li {float:none;margin:0;padding:0}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons a {display:inline-flex;align-items:center;justify-content:center;min-width:29px;min-height:27px;padding:4px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons a {display:inline-flex;align-items:center;justify-content:center;min-width:29px;min-height:27px;padding:4px;border:1px solid var(--ak-post-line);background:transparent}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons a:hover {background:rgba(199,170,120,.13)}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .profile-icons img {display:block;width:auto;max-width:17px;height:auto;max-height:17px;opacity:.84;object-fit:contain}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title {position:static;order:1;width:100%;height:auto;min-height:0;margin:0;padding:12px 18px 8px;border:1px solid var(--ak-post-line);border-bottom:0;background:var(--ak-post-panel);color:var(--ak-post-gold);font:400 clamp(17px,2vw,24px)/1.25 Georgia,serif;letter-spacing:.08em;text-align:left;text-transform:uppercase;overflow-wrap:anywhere}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title a * {color:inherit!important;text-decoration:none}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody h2.topic-title img {max-width:17px;max-height:17px;vertical-align:middle}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author {position:static;order:2;width:100%;height:auto;margin:0;padding:0 18px 13px;border:1px solid var(--ak-post-line);border-top:0;background:var(--ak-post-panel);color:var(--ak-post-muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.04em;text-align:left;text-transform:none}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author img {max-width:14px;max-height:14px;vertical-align:middle}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody p.author a {color:var(--ak-post-gold);text-decoration:none}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .clearfix:empty {display:none}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {order:4;min-height:340px;margin:14px 0 0;padding:clamp(20px,3vw,36px);border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep);color:var(--ak-post-ink);font:14px/1.8 Georgia,serif;text-align:left;overflow-wrap:anywhere;overflow:visible}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {order:4;min-height:280px;margin:12px 0 0;padding:12px 0 20px;border:0;background:transparent;color:var(--ak-post-ink);font:14px/1.8 Georgia,serif;text-align:left;overflow-wrap:anywhere;overflow:visible}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content > div {color:inherit}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content img {max-width:100%;height:auto}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content a {color:var(--ak-post-gold)}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content blockquote,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content .codebox {max-width:100%;margin:16px 0;padding:14px 18px;border:1px solid var(--ak-post-line);border-left:3px solid var(--ak-post-gold);background:var(--ak-post-panel);color:var(--ak-post-ink);overflow:auto}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content blockquote,#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content .codebox {max-width:100%;margin:16px 0;padding:14px 18px;border:0;border-left:2px solid var(--ak-post-gold);background:rgba(199,170,120,.06);color:var(--ak-post-ink);overflow:auto}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .signature_div {order:6;max-width:100%;margin:16px 0 0;padding:18px 5px 0;border-top:1px solid var(--ak-post-line);overflow-wrap:anywhere}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .signature_div img {max-width:100%;height:auto}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .vote {order:3;align-self:flex-end;margin:8px 0 0}
@@ -80,19 +74,41 @@
 #main-content .jumpbox,#main-content .quickmod {display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;color:var(--ak-post-muted)}
 #main-content .jumpbox select,#main-content .quickmod select {max-width:100%;min-height:34px;border:1px solid var(--ak-post-line);background:var(--ak-post-panel-deep);color:var(--ak-post-ink)}
 @media(max-width:850px) {
-  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {grid-template-columns:minmax(150px,190px) minmax(0,1fr);gap:0 15px;padding:14px}
-  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {padding:19px;min-height:260px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {grid-template-columns:minmax(150px,190px) minmax(0,1fr);gap:0 15px;padding:0 14px 14px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {padding:19px;min-height:230px}
 }
 @media(max-width:620px) {
-  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:flex;flex-direction:column;gap:0;padding:12px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {display:flex;flex-direction:column;gap:0;padding:0 12px 12px}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {order:0;width:100%;margin:0 0 14px}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {display:flex;align-items:center;gap:14px;padding:10px;text-align:left}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > a {flex:0 0 80px}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {width:80px;height:100px;max-height:none;margin:0}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt strong {padding:0}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody {order:1;width:100%}
-  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {min-height:200px}
+  #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {min-height:180px}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div {order:2;width:100%}
   #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right {order:3;width:100%}
   #main-content #quick_reply {padding:12px}
 }
+
+/* El encabezado ocupa el ancho completo; un solo marco rodea cada mensaje. */
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {grid-column:1/-1;grid-row:1;margin:0 -18px 16px;padding:15px 20px 13px;border-bottom:1px solid var(--ak-post-line);background:rgba(199,170,120,.045)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2.topic-title {margin:0;padding:0;border:0;background:none;color:var(--ak-post-gold);font:400 clamp(17px,2vw,24px)/1.3 Georgia,serif;letter-spacing:.07em;text-transform:uppercase}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 a * {color:inherit!important;text-decoration:none}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 img {max-width:18px;max-height:18px;vertical-align:middle}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author {margin:5px 0 0;padding:0;border:0;background:none;color:var(--ak-post-muted);font:11px/1.5 Arial,sans-serif}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author img {max-width:13px;max-height:13px;vertical-align:middle}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author a {color:var(--ak-post-gold)}
+/* Código, citas y spoilers: encabezado y contenido con jerarquía clara. */
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox {max-width:100%;margin:16px 0;padding:0;border:1px solid rgba(199,170,120,.36);border-left:2px solid var(--ak-post-gold);background:#10191d;overflow:hidden}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dt {margin:0;padding:8px 13px;border-bottom:1px solid rgba(199,170,120,.23);color:var(--ak-post-gold);font:600 11px/1.4 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dd {margin:0;padding:12px 14px;color:var(--ak-post-ink)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox code,#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox pre {display:block;max-width:100%;margin:0;white-space:pre;overflow-x:auto;color:#d8c9ab;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dd {background:rgba(0,0,0,.12)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dt {cursor:pointer}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler input {cursor:pointer;border:1px solid var(--ak-post-line);background:var(--ak-post-panel);color:var(--ak-post-gold)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {border:0;border-left:2px solid var(--ak-post-gold);background:rgba(199,170,120,.06)}
+/* La barra nativa, si existe, queda visible. CSS no puede crear botones de edición. */
+#main-content .sceditor-container .sceditor-toolbar,#main-content #quick_reply .sceditor-toolbar {display:flex!important;visibility:visible!important;opacity:1!important;height:auto!important;min-height:36px;overflow:visible!important}
+@media(max-width:850px) {#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {margin:0 -14px 14px}}
+@media(max-width:620px) {#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {order:-1;width:calc(100% + 24px);margin:0 -12px 14px}#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {border-bottom:1px solid var(--ak-post-line)}}
