@@ -127,3 +127,23 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content a,#main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button:hover {color:var(--ak-post-accent)}
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button {border-color:var(--ak-post-accent)}
 @media(max-width:620px) {#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {grid-template-columns:1fr}#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .profile-icons {grid-column:1;grid-row:3;justify-content:flex-start;max-width:none;margin-top:10px}}
+
+/* Ficha lateral sin marco; el avatar y el contenido delimitan las áreas. */
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {border:0;background:transparent;box-shadow:none;overflow:visible}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt {padding:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {box-sizing:border-box;border:1px solid var(--ak-post-accent)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:first-of-type {box-sizing:border-box;width:100%;padding:9px 0 12px;border:0;text-align:center;overflow:hidden}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:first-of-type img {display:block;box-sizing:border-box;width:auto;max-width:100%;height:auto;margin:4px auto;object-fit:contain}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:first-of-type * {max-width:100%;box-sizing:border-box}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:last-child {margin-top:4px;padding:12px 0;border-top:1px solid var(--ak-post-line)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {box-sizing:border-box;min-height:400px;padding:22px 25px;border:1px solid var(--ak-post-accent);background:rgba(0,0,0,.09)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards {grid-column:2;grid-row:3;min-width:0;margin-top:15px;padding:12px 0;border-top:1px solid var(--ak-post-line);color:var(--ak-post-ink)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards[style*="display: none"],#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards[style*="display:none"] {display:none!important}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards h3 {margin:0 0 9px;color:var(--ak-post-accent);font:11px/1.5 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards dl,#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards dd {margin:0;padding:0}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards .dd_award {display:flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:100%;min-height:24px}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards img {max-width:100%;height:auto;max-height:80px;object-fit:contain}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div {grid-column:2;grid-row:4;margin:0;padding:12px 0;border-top:1px solid var(--ak-post-line)}
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right {grid-row:5}
+@media(max-width:850px) {#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {padding:18px;min-height:300px}}
+@media(max-width:620px) {#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {border:0}#main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {min-height:200px}#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards {order:2;width:100%}#main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div {order:3}#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right {order:4}}
