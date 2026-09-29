@@ -29,13 +29,16 @@ body:has(#ak-hero) #ak-hero {
 }
 #ak-hero .ak-hero-head {
   width: 100%;
-  margin: 0 auto 55px;
+  margin: auto;
   padding: 0 20px;
   box-sizing: border-box;
   text-align: center;
+  object-fit: cover;
 }
-#ak-hero .ak-hero-head h1 {
-  text-align: center;
+#ak-hero .ak-hero-head img {
+  max-width: 50%;
+  height: auto;
+  margin: auto;
 }
 #ak-hero .ak-board {
   width: min(1100px, calc(100% - 44px));
