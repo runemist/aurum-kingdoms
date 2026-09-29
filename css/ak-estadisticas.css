@@ -312,3 +312,175 @@
     gap: 20px 8px;
   }
 }
+/* Distribución: conservar las tres columnas */
+#main-content .ak-stats-layout {
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(0, .7fr)
+    minmax(0, .75fr);
+}
+
+#main-content .ak-stats-feature {
+  grid-column: auto;
+  min-height: 370px;
+}
+
+/* Usuarios: ocultar las frases y las comas */
+#main-content .ak-stats-people-body {
+  font-size: 0;
+  line-height: 0;
+}
+
+#main-content .ak-stats-people-body br,
+#main-content .ak-stats-online-total {
+  display: none;
+}
+
+#main-content .ak-stats-people-body a {
+  display: inline-block;
+  margin: 0 14px 8px 0;
+  font: 600 12px/1.8 Georgia, serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Título del segundo cuadro */
+#main-content .ak-stats-recent h3 {
+  font-size: 0;
+  letter-spacing: 0;
+}
+
+#main-content .ak-stats-recent h3::after {
+  content: "Últimas 24 horas";
+  font: 400 12px/1.3 Georgia, serif;
+  letter-spacing: .21em;
+}
+
+/* Dos tarjetas centrales */
+#main-content .ak-stats-metrics {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#main-content .ak-stats-newest,
+#main-content .ak-stats-metric > .ak-stats-icon,
+#main-content .ak-stats-metric h3 {
+  display: none;
+}
+
+#main-content .ak-stats-metric {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+#main-content .ak-stats-metric > div {
+  padding: 20px 12px;
+}
+
+#main-content .ak-stats-metric p {
+  font-size: 0;
+  line-height: 0;
+}
+
+#main-content .ak-stats-metric p strong {
+  display: block;
+  margin-bottom: 12px;
+  font: 400 clamp(30px, 4vw, 54px)/1 Georgia, serif;
+}
+
+#main-content .ak-stats-metric p::after {
+  display: block;
+  font: 11px/1.5 Arial, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+#main-content .ak-stats-metric:first-child p::after {
+  content: "Mensajes publicados";
+}
+
+#main-content .ak-stats-metric:nth-child(2) p::after {
+  content: "Miembros registrados";
+}
+
+/* Último miembro: mostrar sólo nombre y etiqueta */
+#main-content .ak-stats-feature-caption > strong,
+#main-content .ak-stats-feature-caption > strong > strong {
+  font-size: 0;
+  line-height: 0;
+}
+
+#main-content .ak-stats-feature-caption a,
+#main-content .ak-stats-feature-caption a span,
+#main-content .ak-stats-feature-caption a strong {
+  font: 400 clamp(20px, 2.3vw, 32px)/1.2 Georgia, serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+#main-content .ak-stats-feature-caption {
+  left: 20px;
+  right: 20px;
+}
+
+/* Grupos: sólo estrellas, sin Administradores */
+#main-content .ak-stats-groups {
+  gap: 20px;
+}
+
+#main-content .ak-stats-groups b:has(a[href^="/g1-"]) {
+  display: none;
+}
+
+#main-content .ak-stats-groups a {
+  min-width: 36px;
+  gap: 0;
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: 0;
+}
+
+#main-content .ak-stats-groups a::before {
+  content: "✧";
+  color: currentColor;
+  font: 32px/1 Georgia, serif;
+}
+
+/* Ventanas estrechas: reducir espacios */
+@media (max-width: 1050px) {
+  #main-content .ak-stats-layout {
+    gap: 12px;
+  }
+
+  #main-content .ak-stats-people {
+    padding: 18px 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  #main-content .ak-stats {
+    padding: 22px 10px;
+  }
+
+  #main-content .ak-stats-layout {
+    gap: 8px;
+  }
+
+  #main-content .ak-stats-people {
+    padding: 14px 10px;
+  }
+
+  #main-content .ak-stats-people h3 {
+    gap: 6px;
+    letter-spacing: .06em;
+  }
+
+  #main-content .ak-stats-recent h3::after {
+    letter-spacing: .06em;
+  }
+
+  #main-content .ak-stats-feature-caption {
+    left: 14px;
+    right: 14px;
+  }
+}
