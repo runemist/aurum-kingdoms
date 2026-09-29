@@ -1,0 +1,147 @@
+/* Aurum · SCEditor de Foroactivo. Cargar DESPUÉS de ak-mensajes.css. */
+#main-content {
+  --ak-editor-ink: var(--ak-text,#e6ddce);
+  --ak-editor-gold: var(--ak-gold,#c7aa78);
+  --ak-editor-line: var(--ak-line,rgba(190,162,115,.45));
+  --ak-editor-panel: #172429;
+  --ak-editor-deep: #0c1519;
+}
+/* La respuesta rápida contiene sólo el editor y sus botones. */
+#main-content #quick_reply,
+#main-content form#quick_reply,
+#main-content .quickreply {
+  box-sizing:border-box;
+  width:min(100%,980px);
+  max-width:980px;
+  margin:34px auto;
+  padding:20px;
+}
+/* En el formulario completo no encerramos la columna de opciones en este marco. */
+#main-content #textarea_content {
+  box-sizing:border-box;
+  width:min(100%,880px)!important;
+  max-width:880px!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#main-content .sceditor-container {
+  box-sizing:border-box;
+  display:flex!important;
+  flex-direction:column;
+  width:min(100%,880px)!important;
+  max-width:880px!important;
+  height:420px!important;
+  max-height:420px!important;
+  margin:0!important;
+  border:1px solid var(--ak-editor-line)!important;
+  background:var(--ak-editor-deep)!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+#main-content #quick_reply .sceditor-container,
+#main-content .quickreply .sceditor-container {
+  height:350px!important;
+  max-height:350px!important;
+}
+#main-content .sceditor-container .sceditor-toolbar {
+  box-sizing:border-box;
+  display:flex!important;
+  flex:0 0 auto;
+  flex-wrap:wrap!important;
+  align-content:flex-start;
+  gap:3px 5px;
+  width:100%;
+  max-height:130px;
+  margin:0!important;
+  padding:9px 11px!important;
+  border:0!important;
+  border-bottom:1px solid var(--ak-editor-line)!important;
+  background:var(--ak-editor-panel)!important;
+  overflow-y:auto!important;
+  scrollbar-width:thin;
+}
+#main-content .sceditor-container .sceditor-group {
+  display:inline-flex;
+  align-items:center;
+  flex-wrap:nowrap;
+  gap:2px;
+  margin:0!important;
+  padding:2px!important;
+  border:1px solid rgba(199,170,120,.23)!important;
+  border-radius:3px;
+  background:rgba(0,0,0,.13)!important;
+}
+#main-content .sceditor-container .sceditor-button {
+  box-sizing:border-box;
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  width:29px!important;
+  height:29px!important;
+  min-width:29px;
+  margin:0!important;
+  padding:4px!important;
+  border:1px solid transparent!important;
+  border-radius:3px;
+  color:var(--ak-editor-ink)!important;
+  opacity:1!important;
+  cursor:pointer;
+}
+#main-content .sceditor-container .sceditor-button:hover,
+#main-content .sceditor-container .sceditor-button.active {
+  border-color:var(--ak-editor-line)!important;
+  background:rgba(199,170,120,.17)!important;
+}
+#main-content .sceditor-container .sceditor-button.disabled {opacity:.4!important;cursor:default}
+/* Los mandos más usados llevan símbolos claros; los demás conservan el icono nativo. */
+#main-content .sceditor-container .sceditor-button-bold div,
+#main-content .sceditor-container .sceditor-button-italic div,
+#main-content .sceditor-container .sceditor-button-underline div,
+#main-content .sceditor-container .sceditor-button-strike div,
+#main-content .sceditor-container .sceditor-button-code div,
+#main-content .sceditor-container .sceditor-button-quote div,
+#main-content .sceditor-container .sceditor-button-link div,
+#main-content .sceditor-container .sceditor-button-unlink div {
+  width:20px!important;
+  height:20px!important;
+  background:none!important;
+  font:700 16px/20px Arial,sans-serif;
+  text-align:center;
+  color:var(--ak-editor-gold)!important;
+}
+#main-content .sceditor-button-bold div::before {content:'B'}
+#main-content .sceditor-button-italic div::before {content:'I';font-style:italic}
+#main-content .sceditor-button-underline div::before {content:'U';text-decoration:underline}
+#main-content .sceditor-button-strike div::before {content:'S';text-decoration:line-through}
+#main-content .sceditor-button-code div::before {content:'</>';font:700 11px/20px ui-monospace,monospace}
+#main-content .sceditor-button-quote div::before {content:'❞'}
+#main-content .sceditor-button-link div::before {content:'↗'}
+#main-content .sceditor-button-unlink div::before {content:'×'}
+/* SCEditor puede usar iframe (visual) o textarea (BBCode). */
+#main-content .sceditor-container .sceditor-editor,
+#main-content .sceditor-container > iframe,
+#main-content .sceditor-container > textarea {
+  box-sizing:border-box;
+  flex:1 1 auto;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  width:100%!important;
+  background:var(--ak-editor-deep)!important;
+}
+#main-content .sceditor-container iframe,
+#main-content .sceditor-container textarea {
+  box-sizing:border-box;
+  min-height:0!important;
+  max-height:100%!important;
+  width:100%!important;
+  background:var(--ak-editor-deep)!important;
+}
+#main-content .sceditor-container textarea {padding:17px!important;color:var(--ak-editor-ink)!important;resize:none!important}
+@media(max-width:650px) {
+  #main-content #quick_reply,#main-content .quickreply {padding:12px}
+  #main-content .sceditor-container {height:370px!important;max-height:370px!important}
+  #main-content .sceditor-container .sceditor-toolbar {max-height:145px;padding:7px!important}
+  #main-content .sceditor-container .sceditor-button {width:27px!important;min-width:27px;height:27px!important}
+}
