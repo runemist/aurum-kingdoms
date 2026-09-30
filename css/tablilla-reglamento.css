@@ -1,47 +1,154 @@
-/* Cambia esta URL por la del paisaje que subas a tu alojamiento. */
-.ak-reglamento {
-  --ak-reg-fondo: url("fondo-reglamento.png");
-  --ak-reg-oro: #b69a63;
-  --ak-reg-texto: #e5dfd5;
+ak-reglamento {
+  --oro: #b69a63;
+  --texto: #e5dfd5;
+  --fondo: #101923;
+  --imagen: url("URL-DE-LA-IMAGEN");
+
   display: block;
   box-sizing: border-box;
   width: min(100%, 760px);
   margin: 30px auto;
-  padding: 48px clamp(22px, 6%, 56px) 0;
-  background: #101923;
-  color: var(--ak-reg-texto);
+  padding: 45px clamp(22px, 6%, 56px);
+  background: var(--fondo);
+  color: var(--texto);
   font: 16px/1.8 Georgia, "Times New Roman", serif;
   text-align: left;
-  counter-reset: ak-categoria;
+
+  counter-reset: categoria punto;
 }
-.ak-reglamento *, .ak-reglamento *::before, .ak-reglamento *::after { box-sizing: border-box; }
-.ak-reg-cabecera, .ak-reg-intro, .ak-reg-aviso, .ak-reg-categoria,
-.ak-reg-titulo, .ak-reg-punto, .ak-reg-texto, .ak-reg-pie,
-.ak-reg-firma, .ak-reg-subtitulo, .ak-reg-etiqueta { display: block; }
-.ak-reg-cabecera { text-align: center; margin-bottom: 28px; }
-.ak-reg-emblema { display: block; color: var(--ak-reg-oro); font-size: 36px; line-height: 1; margin-bottom: 22px; }
-.ak-reg-etiqueta { color: var(--ak-reg-oro); font: 11px/1.6 Arial, sans-serif; letter-spacing: .35em; text-transform: uppercase; }
-.ak-reg-nombre { display: block; margin: 20px 0 12px; color: #f2e9db; font-size: clamp(30px, 5vw, 48px); line-height: 1.2; font-weight: normal; }
-.ak-reg-subtitulo { font-size: 11px; letter-spacing: .4em; text-transform: uppercase; }
-.ak-reg-intro { text-align: center; margin: 24px 0 30px; }
-.ak-reg-aviso { border-left: 3px solid var(--ak-reg-oro); padding: 8px 0 8px 20px; margin: 0 0 34px; }
-.ak-reg-aviso-titulo { display: block; color: var(--ak-reg-oro); font: 12px/1.7 Arial, sans-serif; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 7px; }
-.ak-reg-categoria { counter-increment: ak-categoria; counter-reset: ak-punto; border-top: 1px solid var(--ak-reg-oro); padding-top: 24px; margin-top: 30px; }
-.ak-reg-titulo { display: flex; align-items: baseline; gap: 18px; color: #f2e9db; font-size: clamp(24px, 4vw, 32px); line-height: 1.3; margin-bottom: 22px; }
-.ak-reg-titulo::before { content: counter(ak-categoria) "."; flex: 0 0 48px; color: var(--ak-reg-oro); font-size: 46px; line-height: 1; }
-.ak-reg-punto { counter-increment: ak-punto; display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 18px; margin: 18px 0; }
-.ak-reg-punto::before { content: counter(ak-categoria) "." counter(ak-punto) "."; color: var(--ak-reg-oro); font: 15px/1.8 Georgia, serif; padding-top: 2px; }
-.ak-reg-punto-nombre { display: block; color: #eee4d5; font-size: 17px; font-weight: bold; margin-bottom: 4px; }
-.ak-reg-texto { overflow-wrap: anywhere; }
-.ak-reg-texto + .ak-reg-texto { margin-top: 12px; }
-.ak-reglamento a { color: var(--ak-reg-oro); text-decoration: none; }
-.ak-reglamento a:hover { color: #e3c992; }
-.ak-reg-pie { position: relative; isolation: isolate; margin: 28px calc(-1 * clamp(22px, 6%, 56px)) 0; min-height: 230px; padding: 160px 20px 26px; text-align: center; background-image: linear-gradient(to bottom, #101923 0%, transparent 40%), var(--ak-reg-fondo); background-position: center top, center bottom; background-size: 100% 100%, cover; background-repeat: no-repeat; }
-.ak-reg-firma { color: #d5bd90; font-size: 11px; letter-spacing: .35em; text-transform: uppercase; }
-.ak-reg-lema { display: block; color: #e5dfd5; font-size: 13px; font-style: italic; margin-top: 6px; }
+
+ak-reglamento *,
+ak-reglamento *::before,
+ak-reglamento *::after {
+  box-sizing: border-box;
+}
+
+/* Cabecera opcional */
+ak-reglamento ak-titulo {
+  display: block;
+  margin-bottom: 25px;
+  color: #f2e9db;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+ak-reglamento ak-intro {
+  display: block;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+ak-reglamento ak-aviso {
+  display: block;
+  margin: 25px 0;
+  padding: 8px 0 8px 20px;
+  border-left: 3px solid var(--oro);
+}
+
+/* Categorías: 1., 2., 3. */
+ak-reglamento ak-seccion {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-top: 32px;
+  margin-bottom: 22px;
+  padding-top: 24px;
+  border-top: 1px solid var(--oro);
+  color: #f2e9db;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.3;
+
+  counter-increment: categoria;
+  counter-reset: punto;
+}
+
+ak-reglamento ak-seccion::before {
+  content: counter(categoria) ".";
+  flex: 0 0 48px;
+  color: var(--oro);
+  font-size: 46px;
+  line-height: 1;
+}
+
+/* Normas: 1.1., 1.2., 2.1. */
+ak-reglamento ak-punto {
+  display: block;
+  position: relative;
+  margin: 18px 0;
+  padding-left: 66px;
+  overflow-wrap: anywhere;
+
+  counter-increment: punto;
+}
+
+ak-reglamento ak-punto::before {
+  content: counter(categoria) "." counter(punto) ".";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 48px;
+  color: var(--oro);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+ak-reglamento strong,
+ak-reglamento b {
+  color: #eee4d5;
+}
+
+ak-reglamento a {
+  color: var(--oro);
+  text-decoration: none;
+}
+
+ak-reglamento a:hover {
+  color: #e3c992;
+}
+
+/* Paisaje inferior automático */
+ak-reglamento::after {
+  content: "";
+  display: block;
+  height: 230px;
+  margin:
+    30px calc(-1 * clamp(22px, 6%, 56px))
+    -45px;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--fondo),
+      transparent 45%
+    ),
+    var(--imagen);
+
+  background-position: center top, center bottom;
+  background-size: 100% 100%, cover;
+  background-repeat: no-repeat;
+}
+
 @media (max-width: 480px) {
-  .ak-reglamento { font-size: 15px; padding-top: 32px; }
-  .ak-reg-titulo { gap: 12px; }
-  .ak-reg-titulo::before { flex-basis: 36px; font-size: 36px; }
-  .ak-reg-punto { grid-template-columns: 36px minmax(0, 1fr); column-gap: 12px; }
+  ak-reglamento {
+    font-size: 15px;
+  }
+
+  ak-reglamento ak-seccion {
+    gap: 12px;
+  }
+
+  ak-reglamento ak-seccion::before {
+    flex-basis: 36px;
+    font-size: 36px;
+  }
+
+  ak-reglamento ak-punto {
+    padding-left: 48px;
+  }
+
+  ak-reglamento ak-punto::before {
+    width: 36px;
+    font-size: 14px;
+  }
 }
