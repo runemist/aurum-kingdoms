@@ -185,7 +185,7 @@
 .aktab-oficial .akbtm > span {
     display: block;
     color: var(--ak-gold);
-    font-style: none;
+    font-style: none!important;
     font-size: 18px;
     letter-spacing: 4px;
     color: var(--ak-gold);
