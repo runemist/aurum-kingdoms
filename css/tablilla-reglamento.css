@@ -59,7 +59,7 @@
 
 .aktab-oficial .aktit > span {
     display: block;
-    color: var(--aktab-oro);
+    color: var(--ak-gold);
     font-family: Arial, sans-serif;
     font-size: 10px;
     font-weight: 400;
@@ -90,8 +90,8 @@
     display: block;
     margin: 0 0 35px;
     padding: 22px 15px;
-    border-top: 1px solid #bda47740;
-    border-bottom: 1px solid #bda47740;
+    border-top: 1px solid var(--ak-gold);
+    border-bottom: 1px solid var(--ak-gold);
     color: var(--aktab-suave);
     font-size: 13px;
     line-height: 1.8;
@@ -100,7 +100,7 @@
 
 /* CATEGORÍAS: NÚMERO A LA IZQUIERDA, TEXTO A LA DERECHA */
 .aktab-oficial .akcateg {
-    margin: 0 0 35px;
+    margin: 0 0 10px;
     color: var(--aktab-texto);
     font-size: 14px;
     line-height: 1.85;
@@ -126,8 +126,8 @@
 }
 
 /* Numeración principal */
-.aktab-oficial .akcateg > .akanum {
-    display: inline-block;
+.aktab-oficial .akcateg .akctit > .akanum {
+    padding-right: 15px;
     color: var(--ak-gold);
     font-size: 42px;
     font-weight: 400;
@@ -137,10 +137,10 @@
 
 /* Numeración secundaria */
 .aktab-oficial .akcateg > .aknum2 {
+    padding-right: 10px;
     color: var(--ak-gold);
-    font-family: Arial, sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: bold;
     line-height: 1.8;
     letter-spacing: 1px;
     text-align: right;
