@@ -8,7 +8,7 @@
     margin: 30px auto;
     background-color: #101923;
     background-position: center bottom;
-    background-size: 100% auto;
+    background-size: auto 30%;
     background-repeat: no-repeat;
     color: var(--aktab-texto);
     font-family: Georgia, "Times New Roman", serif;
