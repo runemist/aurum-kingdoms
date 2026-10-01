@@ -79,12 +79,6 @@
     overflow-wrap: break-word;
 }
 
-.aktab-oficial .aktit > span:last-child {
-    color: var(--aktab-suave);
-    font-size: 9px;
-    letter-spacing: 3px;
-}
-
 /* INTRODUCCIÓN */
 .aktab-oficial .akinfo > disc {
     display: block;
@@ -168,9 +162,10 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-top: 45px;
+    margin-top: 50px;
     padding: 35px 0 10px;
     text-align: center;
+    font-style: italic;
 }
 
 .aktab-oficial .akbtm > img {
@@ -189,18 +184,14 @@
 
 .aktab-oficial .akbtm > span {
     display: block;
-    color: var(--aktab-oro);
+    color: var(--ak-gold);
+    font-style: none;
     font-size: 18px;
-    line-height: 1.4;
-    letter-spacing: 3px;
-}
-
-.aktab-oficial .akbtm > p {
-    margin: 0;
-    padding: 0;
-    color: var(--aktab-texto);
-    font-size: 12px;
-    font-style: italic;
-    line-height: 1.6;
-    letter-spacing: 1px;
+    letter-spacing: 4px;
+    color: var(--ak-gold);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
