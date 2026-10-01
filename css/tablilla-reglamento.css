@@ -52,11 +52,6 @@
     line-height: 1;
 }
 
-/* Oculta el espacio del icono mientras esté vacío */
-.aktab-oficial .aktit > i:empty {
-    display: none;
-}
-
 .aktab-oficial .aktit > span {
     display: block;
     color: var(--ak-gold);
@@ -174,12 +169,6 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 8px;
-}
-
-/* No muestra la imagen hasta que tenga una URL */
-.aktab-oficial .akbtm > img[src=""],
-.aktab-oficial .akbtm > img:not([src]) {
-    display: none;
 }
 
 .aktab-oficial .akbtm > span {
