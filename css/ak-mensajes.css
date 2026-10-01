@@ -410,3 +410,30 @@
   #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right { grid-column: 1; grid-row: 6; }
   #main-content #quick_reply { padding: 12px; }
 }
+/* Medallas e ítems: misma altura que la imagen inferior */
+#main-content .post[id^="p"] .ak-post-awards {
+  box-sizing: border-box;
+  height: 180px;
+  min-height: 180px;
+  max-height: 180px;
+  padding: 16px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ak-post-papel, #172127);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ak-aurum) transparent;
+}
+
+#main-content .post[id^="p"] .ak-post-awards h3 {
+  display: none;
+}
+
+#main-content .post[id^="p"] .ak-post-awards .dd_award {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: 12px;
+}
