@@ -185,10 +185,9 @@
 .aktab-oficial .akbtm > span {
     display: block;
     color: var(--ak-gold);
-    font-style: none!important;
+    font-style: normal;
     font-size: 18px;
     letter-spacing: 4px;
-    color: var(--ak-gold);
     font-family: Arial, sans-serif;
     font-weight: bold;
     line-height: 1.5;
