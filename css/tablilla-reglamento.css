@@ -1,6 +1,5 @@
 /* TABLILLA OFICIAL */
 .aktab-oficial {
-    --aktab-oro: #bda477;
     --aktab-texto: #f2e9db;
     --aktab-suave: #b6bec5;
 
@@ -48,7 +47,7 @@
 
 .aktab-oficial .aktit > i {
     display: block;
-    color: var(--aktab-oro);
+    color: var(--ak-aurum);
     font-size: 32px;
     line-height: 1;
 }
@@ -101,37 +100,23 @@
 
 /* CATEGORÍAS: NÚMERO A LA IZQUIERDA, TEXTO A LA DERECHA */
 .aktab-oficial .akcateg {
-    display: grid;
-    grid-template-columns: 58px minmax(0, 1fr);
-    column-gap: 16px;
-    row-gap: 18px;
-    align-items: start;
     margin: 0 0 35px;
+    color: var(--aktab-texto);
+    font-size: 14px;
+    line-height: 1.85;
+    text-align: left;
+    overflow-wrap: break-word;
 }
 
 .aktab-oficial .akcateg:last-child {
     margin-bottom: 0;
 }
 
-/* Numeración principal */
-.aktab-oficial .akcateg > .aknum {
-    grid-column: 1;
-    display: block;
-    color: var(--aktab-oro);
-    font-size: 42px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -2px;
-}
-
 /* Título de categoría */
-.aktab-oficial .akcateg > tit2 {
-    grid-column: 2;
-    display: block;
-    align-self: center;
+.aktab-oficial .akcateg .akctit {
     min-width: 0;
     padding: 0 0 10px;
-    border-bottom: 1px solid #bda47730;
+    border-bottom: 1px solid var(--ak-gold);
     color: var(--aktab-texto);
     font-size: 21px;
     font-weight: 400;
@@ -140,40 +125,34 @@
     overflow-wrap: break-word;
 }
 
+/* Numeración principal */
+.aktab-oficial .akcateg > .akanum {
+    display: inline-block;
+    color: var(--ak-gold);
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
 /* Numeración secundaria */
 .aktab-oficial .akcateg > .aknum2 {
-    grid-column: 1;
-    display: block;
-    padding-top: 3px;
-    color: var(--aktab-oro);
+    color: var(--ak-gold);
     font-family: Arial, sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1.8;
     letter-spacing: 1px;
     text-align: right;
 }
 
-/* Texto de cada norma */
-.aktab-oficial .akcateg > p {
-    grid-column: 2;
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    color: var(--aktab-texto);
-    font-size: 14px;
-    line-height: 1.85;
-    text-align: left;
-    overflow-wrap: break-word;
-}
-
 .aktab-oficial .akinfo b,
 .aktab-oficial .akinfo strong {
-    color: var(--aktab-oro);
+    color: var(--ak-gold);
 }
 
 .aktab-oficial .akinfo a {
-    color: var(--aktab-oro);
+    color: var(--ak-gold);
     text-decoration: underline;
     text-decoration-color: #bda47760;
     text-underline-offset: 3px;
@@ -224,28 +203,4 @@
     font-style: italic;
     line-height: 1.6;
     letter-spacing: 1px;
-}
-
-/* ADAPTACIÓN PARA MÓVILES */
-@media (max-width: 600px) {
-    .aktab-oficial .akinterno {
-        padding: 30px 20px;
-    }
-
-    .aktab-oficial .akcateg {
-        grid-template-columns: 44px minmax(0, 1fr);
-        column-gap: 12px;
-    }
-
-    .aktab-oficial .akcateg > .aknum {
-        font-size: 34px;
-    }
-
-    .aktab-oficial .akcateg > tit2 {
-        font-size: 18px;
-    }
-
-    .aktab-oficial .aktit > span {
-        letter-spacing: 2px;
-    }
 }
