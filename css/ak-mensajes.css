@@ -48,6 +48,7 @@
   border-radius: 10px;
   background-color: var(--ak-post-tinte, #101a1e);
   background-image: var(--ak-post-textura);
+   background-size: 45%;
   pointer-events: none;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .corners-top,
@@ -61,6 +62,7 @@
   border-radius: 8px;
   background-color: color-mix(in srgb, var(--ak-heading-accent) 13%, var(--ak-post-base));
   background-image: var(--ak-post-textura);
+   backgrpund-size: 45%;
   color: var(--ak-heading-accent);
   text-align: center;
 }
