@@ -9,7 +9,6 @@
   --ak-oficial: #c7aa78;
   --ak-post-base: #0c1419;
   --ak-post-papel: #172127;
-  --ak-post-textura: repeating-linear-gradient(45deg, transparent 0 11px, rgba(255,255,255,.018) 11px 12px, transparent 12px 24px);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) {
   --ak-post-tinte: color-mix(in srgb, var(--ak-aurum, #c7aa78) 13%, var(--ak-post-base));
