@@ -62,7 +62,7 @@
   border-radius: 8px;
   background-color: color-mix(in srgb, var(--ak-heading-accent) 13%, var(--ak-post-base));
   background-image: var(--ak-post-textura);
-   backgrpund-size: 45%;
+   background-size: 45%;
   color: var(--ak-heading-accent);
   text-align: center;
 }
