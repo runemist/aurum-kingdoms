@@ -1,35 +1,4 @@
-/* AURUM · Mensajes · reemplazo completo del archivo anterior.
-   Conserva la plantilla actual con .ak-post-heading y .ak-post-awards.
-   Las pestañas y campos adicionales requieren su plantilla/JS existentes.
-   --ak-aurum: acento por grupo heredado del foro.
-}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) {
-  --ak-post-tinte: color-mix(in srgb, var(--ak-aurum, #c7aa78) 13%, var(--ak-post-base));
-  box-sizing: border-box;
-  width: 100%;
-  margin: 26px 0 38px;
-  padding: 0;
-  border: 0 !important;
-  border-radius: 0;
-  background: transparent !important;
-  background-image: none !important;
-  box-shadow: none;
-}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) * { box-sizing: border-box; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  grid-template-columns: 250px minmax(0, 1fr);
-  gap: 0 28px;
-  align-items: start;
-  margin: 0;
-  padding: 0 24px 24px;
-  border: 0;
-  background: transparent !important;
-  box-shadow: none;
-}
-/* Una caja común debajo de la cabecera, sin añadir HTML. */
+/* AURUM · Mensajes*/
 #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner::before {
   content: "";
   position: relative;
