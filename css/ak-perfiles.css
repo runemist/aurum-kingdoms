@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  color: #b9b4a8;
+  color: var(--ak-profile-muted);
 }
 
 .perfilreal * {
@@ -18,7 +18,7 @@
 
 .perfil-card {
   width: 100%;
-  background: rgba(18, 17, 16, 0.92);
+  background: var(--ak-profile-bg);
   border: 1px solid var(--ak-aurum);
   padding: 25px;
   position: relative;
@@ -110,7 +110,7 @@
   width: 150px;
   padding: 10px;
   background: var(--ak-aurum);
-  color: #151515;
+  color: var(--ak-profile-dark);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -126,7 +126,7 @@
 }
 
 .pslabel span {
-  color: #151515 !important;
+  color: var(--ak-profile-dark) !important;
 }
 /* COLUMNA DERECHA */
 
@@ -142,7 +142,7 @@
 }
 
 .perfil-avatar img {
-  width: 250px;
+  width: var(--ak-avatar-width);
   display: block;
   margin: auto;
   border: 1px solid var(--ak-aurum);
@@ -154,7 +154,7 @@
   margin-top: 15px;
   padding: 10px;
   text-align: center;
-  background: rgba(28, 27, 25, 0.85);
+  background: var(--ak-profile-field-bg);
 }
 
 /* FOOTER */
@@ -177,7 +177,7 @@
   text-align: center;
   padding: 10px;
   background: var(--ak-aurum);
-  color: #151515 !important;
+  color: var(--ak-profile-dark) !important;
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 1px;
@@ -185,13 +185,13 @@
 }
 
 .perfil-links a:hover {
-  background: #151515;
+  background: var(--ak-profile-dark);
   color: var(--ak-aurum) !important;
 }
 
 .perfil-ultima-visita {
   padding: 10px;
-  background: rgba(28, 27, 25, 0.85);
+  background: var(--ak-profile-field-bg);
   border: 1px solid var(--ak-aurum);
   font-size: 11px;
 }
@@ -206,7 +206,7 @@
 
 .perfil-rpg {
   margin-top: 25px;
-  background: rgba(18, 17, 16, 0.92);
+  background: var(--ak-profile-bg);
   border: 1px solid var(--ak-aurum);
   padding: 25px;
   position: relative;
@@ -252,7 +252,7 @@
 .perfil-rpg-detalle dt {
   padding: 10px;
   background: var(--ak-aurum);
-  color: #151515;
+  color: var(--ak-profile-dark);
   text-align: center;
   text-transform: uppercase;
 }
@@ -260,7 +260,7 @@
 .perfil-rpg-detalle dd {
   margin: 0;
   padding: 10px;
-  background: rgba(28, 27, 25, 0.85);
+  background: var(--ak-profile-field-bg);
 }
 
 .perfil-contacto-item:has(#i_icon_email) {
@@ -314,47 +314,47 @@
 /* ADMINISTRACIÓN */
 
 .akadmin {
-  background-image: url("https://2img.net/i.imgur.com/QiAPIjv.png");
+  background-image: var(--ak-badge-admin);
 }
 
 /* LUX */
 
 .aklux {
-  background-image: url("https://2img.net/i.imgur.com/GlsNpMa.png");
+  background-image: var(--ak-badge-lux);
 }
 
 /* UMBRA */
 
 .akumbra {
-  background-image: url("https://2img.net/i.imgur.com/azMEJgE.png");
+  background-image: var(--ak-badge-umbra);
 }
 
 /* TUONO */
 
 .aktuono {
-  background-image: url("https://2img.net/i.imgur.com/ywjkvgJ.png");
+  background-image: var(--ak-badge-tuono);
 }
 
 /* IGNIS */
 
 .akignis {
-  background-image: url("https://2img.net/i.imgur.com/5oveyaI.png");
+  background-image: var(--ak-badge-ignis);
 }
 
 /* TERAM */
 
 .akteram {
-  background-image: url("https://2img.net/i.imgur.com/ECvwLyW.png");
+  background-image: var(--ak-badge-teram);
 }
 
 /* AERIS */
 
 .akaeris {
-  background-image: url("https://2img.net/i.imgur.com/PnlJcUW.png");
+  background-image: var(--ak-badge-aeris);
 }
 
 /* CASCATA */
 
 .akcascata {
-  background-image: url("https://2img.net/i.imgur.com/ZxHAfBQ.png");
+  background-image: var(--ak-badge-cascata);
 }
