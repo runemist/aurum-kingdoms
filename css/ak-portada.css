@@ -41,7 +41,7 @@ body:has(#ak-hero) #ak-hero {
   margin: auto auto 0;
 }
 #ak-hero .ak-tabs label {
-  border-right: 1px solid rgba(199, 170, 120, 0.2);
+  border-right: 1px solid var(--ak-gold-alpha-20);
   letter-spacing: 0.12em;
 }
 #ak-hero .ak-tabs label:last-child {
@@ -77,28 +77,25 @@ body:has(#ak-hero) #ak-hero {
 .ak-welcome strong {
   color: var(--ak-gold);
   font:
-    23px Georgia,
-    serif;
+    23px var(--ak-font-serif);
 }
 .ak-welcome p {
   color: var(--ak-muted);
   font:
-    14px/1.65 Georgia,
-    serif;
+    14px/1.65 var(--ak-font-serif);
 }
 .ak-last-list {
   min-width: 0;
   min-height: 0;
   overflow-y: auto;
   padding-right: 8px;
-  scrollbar-color: var(--ak-aurum) #10171c;
+  scrollbar-color: var(--ak-aurum) var(--ak-panel-deep);
 }
 .ak-topic {
   padding: 8px 0;
-  border-bottom: 1px solid rgba(199, 170, 120, 0.16);
+  border-bottom: 1px solid var(--ak-gold-alpha-16);
   font:
-    13px/1.45 Georgia,
-    serif;
+    13px/1.45 var(--ak-font-serif);
 }
 .ak-topic > a {
   display: block;
