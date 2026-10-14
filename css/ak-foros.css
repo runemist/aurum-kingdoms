@@ -54,7 +54,7 @@
 #main-content .forabg .topiclist .header h2 {
   margin: 0;
   color: var(--ak-text);
-  font: 400 18px Georgia, serif;
+  font: 400 18px var(--ak-font-serif);
   letter-spacing: .22em;
   text-align: center;
   text-transform: uppercase;
@@ -65,7 +65,7 @@
   content: '◆';
   flex: 1;
   color: var(--ak-aurum);
-  font: 10px Georgia, serif;
+  font: 10px var(--ak-font-serif);
 }
 
 #main-content .forabg .topiclist .header .table-title::before {
@@ -142,7 +142,7 @@
 
 #main-content .forabg li.row a.forumtitle {
   color: var(--ak-text);
-  font: 400 clamp(18px, 2vw, 24px)/1.25 Georgia, serif;
+  font: 400 clamp(18px, 2vw, 24px)/1.25 var(--ak-font-serif);
   letter-spacing: .07em;
   text-transform: uppercase;
   text-decoration: none;
@@ -169,7 +169,7 @@
   border-top: 1px solid var(--ak-aurum);
   background: none;
   color: var(--ak-muted);
-  font: 11px/1.4 Arial, sans-serif;
+  font: 11px/1.4 var(--ak-font-sans);
 }
 
 #main-content .forabg li.row dd.lastpost a {
@@ -193,7 +193,7 @@
   border: 0;
   border-bottom: 3px solid var(--ak-aurum);
   border-radius: 0;
-  background-color: #26333a !important;
+  background-color: var(--ak-forum-image-fallback) !important;
   background-size: cover !important;
   background-position: center !important;
   filter: none;
@@ -206,7 +206,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(0deg, rgba(10,17,21,.55), transparent 60%);
+  background: linear-gradient(0deg, var(--ak-forum-overlay-bottom), transparent 60%);
 }
 
 #main-content .forabg li.row .ForDesc .ak-forum-media,
@@ -242,7 +242,7 @@
   margin: 0;
   padding: 18px;
   overflow: auto;
-  background: rgba(10,17,21,.92);
+  background: var(--ak-forum-description-bg-old);
   color: var(--ak-text);
   text-align: center;
   opacity: 0;
@@ -263,7 +263,7 @@
 #main-content .forabg li.row .FDescText,
 #main-content .forabg li.row .ak-forum-reveal p {
   color: var(--ak-text);
-  font: 14px/1.55 Georgia, serif;
+  font: 14px/1.55 var(--ak-font-serif);
 }
 
 #main-content .forabg li.row .FDescLinks,
@@ -281,16 +281,16 @@
   justify-content: center;
   padding: 6px 9px;
   border: 1px solid var(--ak-aurum);
-  background: rgba(199,170,120,.08);
+  background: var(--ak-gold-alpha-08);
   color: var(--ak-gold);
-  font: 10px/1.25 Arial, sans-serif;
+  font: 10px/1.25 var(--ak-font-sans);
   text-decoration: none;
   text-transform: uppercase;
 }
 
 #main-content .forabg li.row .FDescLinks a:hover,
 #main-content .forabg li.row .ak-forum-reveal a:hover {
-  background: rgba(199,170,120,.2);
+  background: var(--ak-gold-alpha-20);
   color: var(--ak-text);
 }
 
@@ -314,7 +314,7 @@
   border: 0;
   border-bottom: 3px solid var(--ak-aurum);
   border-radius: 0;
-  background-color: #26333a;
+  background-color: var(--ak-forum-image-fallback);
   background-size: cover !important;
   background-position: center !important;
 }
@@ -324,7 +324,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #26333a;
+  background: var(--ak-forum-image-fallback);
 }
 
 #main-content .forabg li.row .ak-forum-overlay,
@@ -343,7 +343,7 @@
   margin: 0;
   padding: 18px;
   overflow: auto;
-  background: rgba(10,17,21,.94);
+  background: var(--ak-forum-description-bg);
   color: var(--ak-text);
   text-align: center;
   opacity: 0;
@@ -364,7 +364,7 @@
 #main-content .forabg li.row .ak-forum-description,
 #main-content .forabg li.row .ak-forum-reveal p {
   color: var(--ak-text);
-  font: 14px/1.55 Georgia, serif;
+  font: 14px/1.55 var(--ak-font-serif);
 }
 
 #main-content .forabg li.row .ak-forum-links,
@@ -382,16 +382,16 @@
   justify-content: center;
   padding: 6px 9px;
   border: 1px solid var(--ak-aurum);
-  background: rgba(199,170,120,.08);
+  background: var(--ak-gold-alpha-08);
   color: var(--ak-gold);
-  font: 10px/1.25 Arial, sans-serif;
+  font: 10px/1.25 var(--ak-font-sans);
   text-decoration: none;
   text-transform: uppercase;
 }
 
 #main-content .forabg li.row .ak-forum-links a:hover,
 #main-content .forabg li.row .ak-forum-reveal a:hover {
-  background: rgba(199,170,120,.2);
+  background: var(--ak-gold-alpha-20);
   color: var(--ak-text);
 }
 
@@ -407,7 +407,7 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-  background-color: #26333a !important;
+  background-color: var(--ak-forum-image-fallback) !important;
 }
 
 /* Área privada sin JS: presentación de respaldo */
@@ -504,7 +504,7 @@ li.row :is(h2, h3).hierarchy {
   max-width: calc(100% - 36px);
   margin: 0;
   padding: 10px 17px;
-  background: rgba(9,15,19,.82);
+  background: var(--ak-private-description-bg-old);
   border-left: 10px solid var(--ak-aurum);
 }
 
@@ -526,7 +526,7 @@ li.row dd.lastpost {
   overflow: hidden;
   border-top: 3px solid var(--ak-aurum);
   white-space: nowrap;
-  font: 11px/43px Arial, sans-serif;
+  font: 11px/43px var(--ak-font-sans);
 }
 
 #main-content
@@ -610,7 +610,7 @@ li.row .aurum_forum {
   position: absolute;
   inset: 0 0 auto;
   height: 232px;
-  background: #26333a;
+  background: var(--ak-forum-image-fallback);
 }
 
 #main-content
@@ -688,7 +688,7 @@ li.row .aurum_links a {
   bottom: 14px;
   max-width: calc(100% - 40px);
   padding: 12px 20px;
-  background: rgba(9,15,19,.8);
+  background: var(--ak-private-description-bg);
   border-left: 15px solid var(--ak-aurum);
 }
 
