@@ -1,5 +1,5 @@
 /* Aurum · SCEditor de Foroactivo. Cargar DESPUÉS de ak-mensajes.css. */
-/* Las variables del editor están centralizadas en ak-base.css. */
+/* Las variables del editor están centralizadas en ak-base.css. */ 
 /* La respuesta rápida contiene sólo el editor y sus botones. */
 #main-content #quick_reply,
 #main-content form#quick_reply,
