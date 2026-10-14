@@ -2,13 +2,6 @@
    Conserva la plantilla actual con .ak-post-heading y .ak-post-awards.
    Las pestañas y campos adicionales requieren su plantilla/JS existentes.
    --ak-aurum: acento por grupo heredado del foro.
-   --ak-oficial: dorado del título principal, independiente del grupo.
-   --ak-post-textura: opcional, url de una textura repetible.
-   Sin imagen externa obligatoria: incluye una textura geométrica tenue. */
-#main-content {
-  --ak-oficial: #c7aa78;
-  --ak-post-base: #0c1419;
-  --ak-post-papel: #172127;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) {
   --ak-post-tinte: color-mix(in srgb, var(--ak-aurum, #c7aa78) 13%, var(--ak-post-base));
@@ -46,7 +39,7 @@
   align-self: stretch;
   margin: 0 -24px -24px;
   border-radius: 10px;
-  background-color: var(--ak-post-tinte, #101a1e);
+  background-color: var(--ak-post-tinte, var(--ak-post-tinte-fallback));
   background-image: var(--ak-post-textura);
    background-size: 45%;
   pointer-events: none;
@@ -70,14 +63,14 @@
   --ak-heading-accent: var(--ak-oficial);
   margin: 28px 0 24px;
   padding: 30px 24px;
-  font: 400 clamp(24px, 3vw, 38px)/1.3 Georgia, serif;
+  font: 400 clamp(24px, 3vw, 38px)/1.3 var(--ak-font-serif);
   letter-spacing: .09em;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 #main-content > h1.page-title a { color: inherit !important; text-decoration: none; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {
-  --ak-heading-accent: var(--ak-aurum, #c7aa78);
+  --ak-heading-accent: var(--ak-aurum, var(--ak-gold));
   grid-column: 1 / -1;
   grid-row: 1;
   display: grid;
@@ -96,7 +89,7 @@
   border: 0;
   background: none;
   color: var(--ak-heading-accent);
-  font: 400 clamp(22px, 2.8vw, 34px)/1.3 Georgia, serif;
+  font: 400 clamp(22px, 2.8vw, 34px)/1.3 var(--ak-font-serif);
   letter-spacing: .09em;
   text-align: center;
   text-transform: uppercase;
@@ -112,8 +105,8 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--ak-muted, #b4b0a7);
-  font: 12px/1.6 Arial, sans-serif;
+  color: var(--ak-muted, var(--ak-muted-fallback));
+  font: 12px/1.6 var(--ak-font-sans);
   text-align: center;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author a { color: var(--ak-aurum); }
@@ -152,7 +145,7 @@
   grid-column: 1;
   grid-row: 2;
   float: none;
-  width: 250px;
+  width: var(--ak-avatar-width);
   min-width: 0;
   min-height: 0;
   height: auto;
@@ -161,7 +154,7 @@
   border: 0;
   background: transparent;
   box-shadow: none;
-  color: var(--ak-text, #ded9cc);
+  color: var(--ak-text, var(--ak-text-fallback));
   text-align: center;
   overflow: visible;
 }
@@ -171,8 +164,8 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt > a { display: block; max-width: 100%; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dt img {
   display: block;
-  width: 250px;
-  height: 400px;
+  width: var(--ak-avatar-width);
+  height: var(--ak-avatar-height);
   max-width: 100%;
   max-height: none;
   margin: 0 auto 0;
@@ -187,14 +180,14 @@
   margin: 0;
   padding: 16px 4px 12px;
   color: var(--ak-aurum);
-  font: 400 21px/1.35 Georgia, serif;
+  font: 400 21px/1.35 var(--ak-font-serif);
   letter-spacing: .08em;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile a { text-decoration: none; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile a:hover { text-decoration: underline; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd { padding: 5px 8px; color: var(--ak-muted); font: 12px/1.6 Arial, sans-serif; text-align: left; overflow-wrap: anywhere; }
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd { padding: 5px 8px; color: var(--ak-muted); font: 12px/1.6 var(--ak-font-sans); text-align: left; overflow-wrap: anywhere; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd:first-of-type { padding: 8px 0 12px; text-align: center; color: var(--ak-aurum); letter-spacing: .06em; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile dd img { max-width: 100%; height: auto; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile .label { color: var(--ak-aurum); font-weight: 600; }
@@ -219,14 +212,14 @@
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postbody .content {
   order: 4;
-  min-height: 400px;
+  min-height: var(--ak-avatar-height);
   margin: 0;
   padding: 28px 32px;
   border: 0 !important;
   border-radius: 10px;
   background: var(--ak-post-papel) !important;
-  color: var(--ak-text, #ded9cc);
-  font: 15px/1.85 Georgia, serif;
+  color: var(--ak-text, var(--ak-text-fallback));
+  font: 15px/1.85 var(--ak-font-serif);
   text-align: left;
   overflow-wrap: anywhere;
   overflow: visible;
@@ -242,7 +235,7 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards { grid-column: 2; grid-row: 3; min-width: 0; margin: 20px 0 0; padding: 12px 0; border: 0; color: var(--ak-text); }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards[style*="display: none"],
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards[style*="display:none"] { display: none !important; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards h3 { margin: 0 0 12px; color: var(--ak-aurum); font: 400 14px/1.5 Georgia, serif; letter-spacing: .12em; text-transform: uppercase; }
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards h3 { margin: 0 0 12px; color: var(--ak-aurum); font: 400 14px/1.5 var(--ak-font-serif); letter-spacing: .12em; text-transform: uppercase; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards dl,
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards dd { margin: 0; padding: 0; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-awards .dd_award { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; min-height: 24px; }
@@ -250,7 +243,7 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .fa_like_div { grid-column: 2; grid-row: 4; margin: 0; padding: 12px 0; border: 0; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button { padding: 7px 12px; border: 0; border-radius: 4px; background: var(--ak-post-papel); color: var(--ak-text); cursor: pointer; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .rep-button:hover { color: var(--ak-aurum); }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right { grid-column: 2; grid-row: 5; margin: 12px 0 0; color: var(--ak-muted); font: 11px/1.5 Arial, sans-serif; text-align: right; }
+#main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right { grid-column: 2; grid-row: 5; margin: 12px 0 0; color: var(--ak-muted); font: 11px/1.5 var(--ak-font-sans); text-align: right; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > p.right a { color: inherit; }
 /* Navegación conservada sin marco adicional. */
 #main-content .topic-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin: 18px 0; padding: 10px 0; border: 0; background: transparent; }
@@ -266,7 +259,7 @@
   margin: 38px 0 30px;
   padding: 22px;
   border: 1px solid var(--ak-aurum);
-  background: #101a1e;
+  background: var(--ak-post-tinte-fallback);
   color: var(--ak-text);
 }
 #main-content #quick_reply .h3,
@@ -279,8 +272,7 @@
   background: transparent;
   color: var(--ak-aurum);
   font:
-    400 22px/1.25 Georgia,
-    serif;
+    400 22px/1.25 var(--ak-font-serif);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -299,11 +291,10 @@
   margin: 8px 5px 0 0;
   padding: 8px 20px;
   border: 1px solid var(--ak-aurum);
-  background: #172429;
+  background: var(--ak-editor-toolbar);
   color: var(--ak-aurum);
   font:
-    11px Arial,
-    sans-serif;
+    11px var(--ak-font-sans);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
@@ -311,7 +302,7 @@
 #main-content #quick_reply input[type="submit"]:hover,
 #main-content #quick_reply .button1:hover,
 #main-content #quick_reply .button2:hover {
-  background: rgba(199, 170, 120, 0.15);
+  background: var(--ak-gold-alpha-15);
 }
 #main-content .jumpbox,
 #main-content .quickmod {
@@ -327,7 +318,7 @@
   max-width: 100%;
   min-height: 34px;
   border: 1px solid var(--ak-aurum);
-  background: #0c1519;
+  background: var(--ak-editor-bg);
   color: var(--ak-text);
 }
 
@@ -336,19 +327,18 @@
   max-width: 100%;
   margin: 16px 0;
   padding: 0;
-  border: 1px solid rgba(199, 170, 120, 0.36);
+  border: 1px solid var(--ak-gold-alpha-36);
   border-left: 2px solid var(--ak-aurum);
-  background: #10191d;
+  background: var(--ak-quote-bg);
   overflow: hidden;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dt {
   margin: 0;
   padding: 8px 13px;
-  border-bottom: 1px solid rgba(199, 170, 120, 0.23);
+  border-bottom: 1px solid var(--ak-gold-alpha-23);
   color: var(--ak-aurum);
   font:
-    600 11px/1.4 Arial,
-    sans-serif;
+    600 11px/1.4 var(--ak-font-sans);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -364,7 +354,7 @@
   margin: 0;
   white-space: pre;
   overflow-x: auto;
-  color: #d8c9ab;
+  color: var(--ak-quote-title);
   font:
     12px/1.6 ui-monospace,
     SFMono-Regular,
@@ -372,7 +362,7 @@
     monospace;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dd {
-  background: rgba(0, 0, 0, 0.12);
+  background: var(--ak-black-alpha-12);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dt {
   cursor: pointer;
@@ -384,13 +374,13 @@
   input {
   cursor: pointer;
   border: 1px solid var(--ak-aurum);
-  background: #172429;
+  background: var(--ak-editor-toolbar);
   color: var(--ak-aurum);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
   border: 0;
   border-left: 2px solid var(--ak-aurum);
-  background: rgba(199, 170, 120, 0.06);
+  background: var(--ak-gold-alpha-06);
 }
 
 /* Pantallas estrechas: conserva el avatar de 250 × 400. */
@@ -414,13 +404,13 @@
 /* Medallas e ítems: misma altura que la imagen inferior */
 #main-content .post[id^="p"] .ak-post-awards {
   box-sizing: border-box;
-  height: 180px;
+  height: var(--ak-awards-height);
   min-height: 180px;
-  max-height: 180px;
+  max-height: var(--ak-awards-height);
   padding: 16px 20px;
   border: 0;
   border-radius: 10px;
-  background: var(--ak-post-papel, #172127);
+  background: var(--ak-post-papel, var(--ak-post-papel));
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
