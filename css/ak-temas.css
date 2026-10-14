@@ -30,7 +30,7 @@
   box-sizing: border-box;
   border: 3px solid var(--ak-aurum);
   border-radius: 48% 48% 6px 6px / 22% 22% 6px 6px;
-  background: #10171c;
+  background: var(--ak-panel-deep);
 }
 #main-content .forumbg ul.topiclist.topics > li.row::before {
   content: none;
@@ -61,11 +61,10 @@
   place-items: center;
   border-bottom: 1px solid var(--ak-aurum);
   border-radius: 50% 50% 0 0 / 31% 31% 0 0;
-  background: #27343b;
-  color: var(--ak-gold, #c7aa78);
+  background: var(--ak-topic-image-fallback);
+  color: var(--ak-gold, var(--ak-gold));
   font:
-    45px Georgia,
-    serif;
+    45px var(--ak-font-serif);
 }
 #main-content .forumbg ul.topiclist.topics > li.row dd {
   float: none;
@@ -81,8 +80,7 @@
   position: relative;
   margin: 0 0 3px;
   font:
-    11px/1.25 Arial,
-    sans-serif;
+    11px/1.25 var(--ak-font-sans);
 }
 #main-content .forumbg ul.topiclist.topics > li.row .topic-title-container,
 #main-content .forumbg ul.topiclist.topics > li.row .topic-title {
@@ -95,23 +93,21 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: var(--ak-text, #e6ddce);
+  color: var(--ak-text, var(--ak-text));
   font:
-    16px/1.12 Georgia,
-    serif;
+    16px/1.12 var(--ak-font-serif);
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover {
-  color: var(--ak-gold, #c7aa78);
+  color: var(--ak-gold, var(--ak-gold));
 }
 #main-content .forumbg ul.topiclist.topics > li.row .span-tab {
   display: block;
   margin-top: 3px;
-  color: var(--ak-muted, #b7ae9f);
+  color: var(--ak-muted, var(--ak-muted));
   font:
-    10px/1.2 Arial,
-    sans-serif;
+    10px/1.2 var(--ak-font-sans);
 }
 #main-content .forumbg ul.topiclist.topics > li.row dd.dterm br,
 #main-content .forumbg ul.topiclist.topics > li.row dd.dterm .pagination {
@@ -125,10 +121,9 @@
   position: static;
   margin-top: auto;
   padding-right: 13px;
-  color: var(--ak-muted, #b7ae9f);
+  color: var(--ak-muted, var(--ak-muted));
   font:
-    10px/1.2 Arial,
-    sans-serif;
+    10px/1.2 var(--ak-font-sans);
 }
 #main-content .forumbg ul.topiclist.topics > li.row dd.lastpost > div {
   float: none !important;
@@ -261,15 +256,15 @@
 /* Foroactivo puede incluir colores dentro del propio título. */
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle,
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle * {
-  color: var(--ak-text, #e6ddce) !important;
+  color: var(--ak-text, var(--ak-text)) !important;
   background-color: transparent !important;
-  font-family: Georgia, serif !important;
+  font-family: var(--ak-font-serif) !important;
   font-weight: 400 !important;
   text-transform: uppercase;
 }
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover,
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover * {
-  color: var(--ak-gold, #c7aa78) !important;
+  color: var(--ak-gold, var(--ak-gold)) !important;
 }
 #main-content .forumbg ul.topiclist.topics > li.row dd.dterm,
 #main-content .forumbg ul.topiclist.topics > li.row .topic-title-container,
@@ -324,8 +319,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   font:
-    9px/1.2 Arial,
-    sans-serif;
+    9px/1.2 var(--ak-font-sans);
 }
 #main-content .forumbg ul.topiclist.topics > li.row .ak-topic-last-link {
   flex: none;
