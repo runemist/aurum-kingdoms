@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  color: var(--ak-profile-muted);
+  color: #b9b4a8;
 }
 
 .perfilreal * {
@@ -18,7 +18,7 @@
 
 .perfil-card {
   width: 100%;
-  background: var(--ak-profile-bg);
+  background: rgba(18, 17, 16, 0.92);
   border: 1px solid var(--ak-aurum);
   padding: 25px;
   position: relative;
@@ -110,7 +110,7 @@
   width: 150px;
   padding: 10px;
   background: var(--ak-aurum);
-  color: var(--ak-profile-dark);
+  color: #151515;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -126,7 +126,7 @@
 }
 
 .pslabel span {
-  color: var(--ak-profile-dark) !important;
+  color: #151515 !important;
 }
 /* COLUMNA DERECHA */
 
@@ -142,7 +142,7 @@
 }
 
 .perfil-avatar img {
-  width: var(--ak-avatar-width);
+  width: 250px;
   display: block;
   margin: auto;
   border: 1px solid var(--ak-aurum);
@@ -154,7 +154,7 @@
   margin-top: 15px;
   padding: 10px;
   text-align: center;
-  background: var(--ak-profile-field-bg);
+  background: rgba(28, 27, 25, 0.85);
 }
 
 /* FOOTER */
@@ -177,7 +177,7 @@
   text-align: center;
   padding: 10px;
   background: var(--ak-aurum);
-  color: var(--ak-profile-dark) !important;
+  color: #151515 !important;
   text-transform: uppercase;
   font-size: 10px;
   letter-spacing: 1px;
@@ -185,13 +185,13 @@
 }
 
 .perfil-links a:hover {
-  background: var(--ak-profile-dark);
+  background: #151515;
   color: var(--ak-aurum) !important;
 }
 
 .perfil-ultima-visita {
   padding: 10px;
-  background: var(--ak-profile-field-bg);
+  background: rgba(28, 27, 25, 0.85);
   border: 1px solid var(--ak-aurum);
   font-size: 11px;
 }
@@ -206,7 +206,7 @@
 
 .perfil-rpg {
   margin-top: 25px;
-  background: var(--ak-profile-bg);
+  background: rgba(18, 17, 16, 0.92);
   border: 1px solid var(--ak-aurum);
   padding: 25px;
   position: relative;
@@ -252,7 +252,7 @@
 .perfil-rpg-detalle dt {
   padding: 10px;
   background: var(--ak-aurum);
-  color: var(--ak-profile-dark);
+  color: #151515;
   text-align: center;
   text-transform: uppercase;
 }
@@ -260,7 +260,7 @@
 .perfil-rpg-detalle dd {
   margin: 0;
   padding: 10px;
-  background: var(--ak-profile-field-bg);
+  background: rgba(28, 27, 25, 0.85);
 }
 
 .perfil-contacto-item:has(#i_icon_email) {
