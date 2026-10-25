@@ -325,3 +325,4 @@
 #main-content form[action*="/post"] input[type="submit"]:hover {
   background: color-mix(in srgb, var(--ak-aurum) 15%, transparent);
 }
+ 
