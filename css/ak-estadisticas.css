@@ -10,7 +10,6 @@
   padding: 36px 26px 28px;
   color: #ded5c6;
   font-family: var(--ak-font-serif);
-  background: linear-gradient(145deg, rgba(13,28,31,.94), rgba(5,15,18,.98));
 }
 #main-content .ak-stats,
 #main-content .ak-stats * {
