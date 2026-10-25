@@ -61,8 +61,8 @@
   place-items: center;
   border-bottom: 1px solid var(--ak-aurum);
   border-radius: 50% 50% 0 0 / 31% 31% 0 0;
-  background: var(--ak-topic-image-fallback);
-  color: var(--ak-gold, var(--ak-gold));
+  background: #27343b;
+  color: var(--ak-aurum);
   font:
     45px var(--ak-font-serif);
 }
@@ -93,19 +93,19 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: var(--ak-text, var(--ak-text));
+  color: var(--ak-text);
   font:
     16px/1.12 var(--ak-font-serif);
   text-decoration: none;
   overflow-wrap: anywhere;
 }
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover {
-  color: var(--ak-gold, var(--ak-gold));
+  color: var(--ak-aurum);
 }
 #main-content .forumbg ul.topiclist.topics > li.row .span-tab {
   display: block;
   margin-top: 3px;
-  color: var(--ak-muted, var(--ak-muted));
+  color: var(--ak-muted);
   font:
     10px/1.2 var(--ak-font-sans);
 }
@@ -121,7 +121,7 @@
   position: static;
   margin-top: auto;
   padding-right: 13px;
-  color: var(--ak-muted, var(--ak-muted));
+  color: var(--ak-muted);
   font:
     10px/1.2 var(--ak-font-sans);
 }
@@ -256,7 +256,7 @@
 /* Foroactivo puede incluir colores dentro del propio título. */
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle,
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle * {
-  color: var(--ak-text, var(--ak-text)) !important;
+  color: var(--ak-text) !important;
   background-color: transparent !important;
   font-family: var(--ak-font-serif) !important;
   font-weight: 400 !important;
@@ -264,7 +264,7 @@
 }
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover,
 #main-content .forumbg ul.topiclist.topics > li.row a.topictitle:hover * {
-  color: var(--ak-gold, var(--ak-gold)) !important;
+  color: var(--ak-aurum) !important;
 }
 #main-content .forumbg ul.topiclist.topics > li.row dd.dterm,
 #main-content .forumbg ul.topiclist.topics > li.row .topic-title-container,
