@@ -149,7 +149,7 @@
 }
 
 #main-content .forabg li.row a.forumtitle:hover {
-  color: var(--ak-gold);
+  color: var(--ak-aurum);
 }
 
 #main-content .forabg li.row dd.topics,
@@ -193,7 +193,7 @@
   border: 0;
   border-bottom: 3px solid var(--ak-aurum);
   border-radius: 0;
-  background-color: var(--ak-forum-image-fallback) !important;
+  background-color: #26333a !important;
   background-size: cover !important;
   background-position: center !important;
   filter: none;
@@ -206,7 +206,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(0deg, var(--ak-forum-overlay-bottom), transparent 60%);
+  background: linear-gradient(0deg, rgba(10,17,21,.55), transparent 60%);
 }
 
 #main-content .forabg li.row .ForDesc .ak-forum-media,
@@ -242,7 +242,7 @@
   margin: 0;
   padding: 18px;
   overflow: auto;
-  background: var(--ak-forum-description-bg-old);
+  background: rgba(10,17,21,.92);
   color: var(--ak-text);
   text-align: center;
   opacity: 0;
@@ -281,8 +281,8 @@
   justify-content: center;
   padding: 6px 9px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-gold-alpha-08);
-  color: var(--ak-gold);
+  background: color-mix(in srgb, var(--ak-aurum) 8%, transparent);
+  color: var(--ak-aurum);
   font: 10px/1.25 var(--ak-font-sans);
   text-decoration: none;
   text-transform: uppercase;
@@ -290,7 +290,7 @@
 
 #main-content .forabg li.row .FDescLinks a:hover,
 #main-content .forabg li.row .ak-forum-reveal a:hover {
-  background: var(--ak-gold-alpha-20);
+  background: color-mix(in srgb, var(--ak-aurum) 20%, transparent);
   color: var(--ak-text);
 }
 
@@ -314,7 +314,7 @@
   border: 0;
   border-bottom: 3px solid var(--ak-aurum);
   border-radius: 0;
-  background-color: var(--ak-forum-image-fallback);
+  background-color: #26333a;
   background-size: cover !important;
   background-position: center !important;
 }
@@ -324,7 +324,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: var(--ak-forum-image-fallback);
+  background: #26333a;
 }
 
 #main-content .forabg li.row .ak-forum-overlay,
@@ -343,7 +343,7 @@
   margin: 0;
   padding: 18px;
   overflow: auto;
-  background: var(--ak-forum-description-bg);
+  background: rgba(10,17,21,.94);
   color: var(--ak-text);
   text-align: center;
   opacity: 0;
@@ -382,8 +382,8 @@
   justify-content: center;
   padding: 6px 9px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-gold-alpha-08);
-  color: var(--ak-gold);
+  background: color-mix(in srgb, var(--ak-aurum) 8%, transparent);
+  color: var(--ak-aurum);
   font: 10px/1.25 var(--ak-font-sans);
   text-decoration: none;
   text-transform: uppercase;
@@ -391,7 +391,7 @@
 
 #main-content .forabg li.row .ak-forum-links a:hover,
 #main-content .forabg li.row .ak-forum-reveal a:hover {
-  background: var(--ak-gold-alpha-20);
+  background: color-mix(in srgb, var(--ak-aurum) 20%, transparent);
   color: var(--ak-text);
 }
 
@@ -407,7 +407,7 @@
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-  background-color: var(--ak-forum-image-fallback) !important;
+  background-color: #26333a !important;
 }
 
 /* Área privada sin JS: presentación de respaldo */
@@ -504,7 +504,7 @@ li.row :is(h2, h3).hierarchy {
   max-width: calc(100% - 36px);
   margin: 0;
   padding: 10px 17px;
-  background: var(--ak-private-description-bg-old);
+  background: rgba(9,15,19,.82);
   border-left: 10px solid var(--ak-aurum);
 }
 
@@ -610,7 +610,7 @@ li.row .aurum_forum {
   position: absolute;
   inset: 0 0 auto;
   height: 232px;
-  background: var(--ak-forum-image-fallback);
+  background: #26333a;
 }
 
 #main-content
@@ -647,7 +647,7 @@ li.row .aurum_links {
   :has(.ak-private-cover)
 )
 li.row .aurum_links a {
-  color: var(--ak-gold);
+  color: var(--ak-aurum);
 }
 
 /* Áreas privadas con las clases asignadas por ak-funciones.js */
@@ -688,7 +688,7 @@ li.row .aurum_links a {
   bottom: 14px;
   max-width: calc(100% - 40px);
   padding: 12px 20px;
-  background: var(--ak-private-description-bg);
+  background: rgba(9,15,19,.8);
   border-left: 15px solid var(--ak-aurum);
 }
 
