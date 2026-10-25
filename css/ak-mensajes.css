@@ -1,10 +1,3 @@
-/* AURUM · Mensajes · reemplazo completo del archivo anterior.
-   Conserva la plantilla actual con .ak-post-heading y .ak-post-awards.
-   Las pestañas y campos adicionales requieren su plantilla/JS existentes.
-   --ak-aurum: acento por grupo heredado del foro.
-   El título principal usa --ak-aurum, igual que los demás acentos.
-   --ak-post-textura: opcional, url de una textura repetible.
-   Sin imagen externa obligatoria: incluye una textura geométrica tenue. */
 /* Paleta y fondos definidos en ak-base.css. */
 #main-content .post[id^="p"]:not([id^="ptrafic"]) {
 
