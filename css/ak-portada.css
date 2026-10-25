@@ -8,7 +8,7 @@ body:has(#ak-hero) #ak-hero {
   min-height: 680px;
   margin-left: calc(50% - 50vw);
   padding: 50px 0 28px;
-  background: var(--ak-bg-portada);
+  background: url(https://2img.net/i.imgur.com/yswBoAE.png);
   background-size: cover;
   border-bottom: 1px solid var(--ak-aurum);
 }
@@ -31,7 +31,7 @@ body:has(#ak-hero) #ak-hero {
   width: 100%;
   min-height: 300px;
   margin: 0 auto;
-  background-image: var(--ak-bn-img);
+  background-image: url(https://2img.net/i.imgur.com/RvNhZIS.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -41,7 +41,7 @@ body:has(#ak-hero) #ak-hero {
   margin: auto auto 0;
 }
 #ak-hero .ak-tabs label {
-  border-right: 1px solid var(--ak-gold-alpha-20);
+  border-right: 1px solid color-mix(in srgb, var(--ak-aurum) 20%, transparent);
   letter-spacing: 0.12em;
 }
 #ak-hero .ak-tabs label:last-child {
@@ -49,8 +49,8 @@ body:has(#ak-hero) #ak-hero {
 }
 #ak-hero .ak-tabs label:hover,
 #ak-hero .ak-tabs label:focus-visible {
-  color: var(--ak-gold);
-  outline: 2px solid var(--ak-gold);
+  color: var(--ak-aurum);
+  outline: 2px solid var(--ak-aurum);
   outline-offset: -2px;
 }
 #ak-hero .ak-board .ak-panel {
@@ -75,7 +75,7 @@ body:has(#ak-hero) #ak-hero {
   border-right: 1px solid var(--ak-aurum);
 }
 .ak-welcome strong {
-  color: var(--ak-gold);
+  color: var(--ak-aurum);
   font:
     23px var(--ak-font-serif);
 }
@@ -93,7 +93,7 @@ body:has(#ak-hero) #ak-hero {
 }
 .ak-topic {
   padding: 8px 0;
-  border-bottom: 1px solid var(--ak-gold-alpha-16);
+  border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 16%, transparent);
   font:
     13px/1.45 var(--ak-font-serif);
 }
@@ -109,7 +109,7 @@ body:has(#ak-hero) #ak-hero {
 }
 .ak-search-more {
   align-self: center;
-  color: var(--ak-gold);
+  color: var(--ak-aurum);
 }
 #ak-latest-list .ak-topic-info {
   display: flex;
