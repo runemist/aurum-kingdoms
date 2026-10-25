@@ -261,11 +261,46 @@
   letter-spacing: 0;
   text-align: center;
 }
+/* Logos de los grupos */
 #main-content .ak-stats-groups a::before {
-  content: "✧";
+  content: "";
   display: block;
-  color: currentColor;
-  font: 32px/1 var(--ak-font-serif);
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#main-content .ak-stats-groups a[href^="/g3-"]::before {
+  background-image: var(--ak-logo-aeris);
+}
+
+#main-content .ak-stats-groups a[href^="/g4-"]::before {
+  background-image: var(--ak-logo-cascata);
+}
+
+#main-content .ak-stats-groups a[href^="/g5-"]::before {
+  background-image: var(--ak-logo-ignis);
+}
+
+#main-content .ak-stats-groups a[href^="/g6-"]::before {
+  background-image: var(--ak-logo-lux);
+}
+
+#main-content .ak-stats-groups a[href^="/g7-"]::before {
+  background-image: var(--ak-logo-teram);
+}
+
+#main-content .ak-stats-groups a[href^="/g8-"]::before {
+  background-image: var(--ak-logo-tuono);
+}
+
+#main-content .ak-stats-groups a[href^="/g9-"]::before {
+  background-image: var(--ak-logo-umbra);
+}
+#main-content .ak-stats-groups a[href^="/g16-"]::before {
+  background-image: var(--ak-logo-humanos);
 }
 #main-content .ak-stats-groups a:hover {
   filter: brightness(1.4);
