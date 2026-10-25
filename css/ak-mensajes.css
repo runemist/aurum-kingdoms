@@ -2,12 +2,12 @@
    Conserva la plantilla actual con .ak-post-heading y .ak-post-awards.
    Las pestañas y campos adicionales requieren su plantilla/JS existentes.
    --ak-aurum: acento por grupo heredado del foro.
-   --ak-oficial: dorado del título principal, independiente del grupo.
+   El título principal usa --ak-aurum, igual que los demás acentos.
    --ak-post-textura: opcional, url de una textura repetible.
    Sin imagen externa obligatoria: incluye una textura geométrica tenue. */
 /* Paleta y fondos definidos en ak-base.css. */
 #main-content .post[id^="p"]:not([id^="ptrafic"]) {
-  --ak-post-tinte: color-mix(in srgb, var(--ak-aurum, var(--ak-gold)) 13%, var(--ak-post-base));
+
   box-sizing: border-box;
   width: 100%;
   margin: 26px 0 38px;
@@ -42,7 +42,7 @@
   align-self: stretch;
   margin: 0 -24px -24px;
   border-radius: 10px;
-  background-color: var(--ak-post-tinte, var(--ak-post-tinte-fallback));
+  background-color: color-mix(in srgb, var(--ak-aurum) 13%, var(--ak-post-base));
   background-image: var(--ak-post-textura);
   background-size: 45%;
   pointer-events: none;
@@ -63,7 +63,7 @@
   text-align: center;
 }
 #main-content > h1.page-title {
-  --ak-heading-accent: var(--ak-oficial);
+  --ak-heading-accent: var(--ak-aurum);
   margin: 28px 0 24px;
   padding: 30px 24px;
   font: 400 clamp(24px, 3vw, 38px)/1.3 var(--ak-font-serif);
@@ -73,7 +73,7 @@
 }
 #main-content > h1.page-title a { color: inherit !important; text-decoration: none; }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {
-  --ak-heading-accent: var(--ak-aurum, var(--ak-gold));
+  --ak-heading-accent: var(--ak-aurum);
   grid-column: 1 / -1;
   grid-row: 1;
   display: grid;
@@ -108,7 +108,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--ak-muted, var(--ak-muted-fallback));
+  color: var(--ak-muted, #b4b0a7);
   font: 12px/1.6 var(--ak-font-sans);
   text-align: center;
 }
@@ -157,7 +157,7 @@
   border: 0;
   background: transparent;
   box-shadow: none;
-  color: var(--ak-text, var(--ak-text-fallback));
+  color: var(--ak-text, #ded9cc);
   text-align: center;
   overflow: visible;
 }
@@ -221,7 +221,7 @@
   border: 0 !important;
   border-radius: 10px;
   background: var(--ak-post-papel) !important;
-  color: var(--ak-text, var(--ak-text-fallback));
+  color: var(--ak-text, #ded9cc);
   font: 15px/1.85 var(--ak-font-serif);
   text-align: left;
   overflow-wrap: anywhere;
@@ -280,7 +280,7 @@
   margin: 38px 0 30px;
   padding: 22px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-post-tinte-fallback);
+  background: #101a1e;
   color: var(--ak-text);
 }
 #main-content #quick_reply .h3,
@@ -312,7 +312,7 @@
   margin: 8px 5px 0 0;
   padding: 8px 20px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-toolbar);
+  background: #172429;
   color: var(--ak-aurum);
   font:
     11px var(--ak-font-sans);
@@ -323,7 +323,7 @@
 #main-content #quick_reply input[type="submit"]:hover,
 #main-content #quick_reply .button1:hover,
 #main-content #quick_reply .button2:hover {
-  background: var(--ak-gold-alpha-15);
+  background: color-mix(in srgb, var(--ak-aurum) 15%, transparent);
 }
 #main-content .jumpbox,
 #main-content .quickmod {
@@ -339,7 +339,7 @@
   max-width: 100%;
   min-height: 34px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-bg);
+  background: #0c1519;
   color: var(--ak-text);
 }
 
@@ -348,15 +348,15 @@
   max-width: 100%;
   margin: 16px 0;
   padding: 0;
-  border: 1px solid var(--ak-gold-alpha-36);
+  border: 1px solid color-mix(in srgb, var(--ak-aurum) 36%, transparent);
   border-left: 2px solid var(--ak-aurum);
-  background: var(--ak-quote-bg);
+  background: #10191d;
   overflow: hidden;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dt {
   margin: 0;
   padding: 8px 13px;
-  border-bottom: 1px solid var(--ak-gold-alpha-23);
+  border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 23%, transparent);
   color: var(--ak-aurum);
   font:
     600 11px/1.4 var(--ak-font-sans);
@@ -375,7 +375,7 @@
   margin: 0;
   white-space: pre;
   overflow-x: auto;
-  color: var(--ak-quote-title);
+  color: #d8c9ab;
   font:
     12px/1.6 ui-monospace,
     SFMono-Regular,
@@ -383,7 +383,7 @@
     monospace;
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dd {
-  background: var(--ak-black-alpha-12);
+  background: rgba(0, 0, 0, 0.12);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dt {
   cursor: pointer;
@@ -395,13 +395,13 @@
   input {
   cursor: pointer;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-toolbar);
+  background: #172429;
   color: var(--ak-aurum);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
   border: 0;
   border-left: 2px solid var(--ak-aurum);
-  background: var(--ak-gold-alpha-06);
+  background: color-mix(in srgb, var(--ak-aurum) 6%, transparent);
 }
 
 /* Pantallas estrechas: conserva el avatar de 250 × 400. */
