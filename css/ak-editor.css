@@ -29,7 +29,7 @@
   max-height: 420px !important;
   margin: 0 !important;
   border: 1px solid var(--ak-aurum) !important;
-  background: var(--ak-editor-bg) !important;
+  background: #0c1519 !important;
   box-shadow: none !important;
   overflow: hidden !important;
 }
@@ -51,7 +51,7 @@
   padding: 9px 11px !important;
   border: 0 !important;
   border-bottom: 1px solid var(--ak-aurum) !important;
-  background: var(--ak-editor-toolbar) !important;
+  background: #172429 !important;
   overflow-y: auto !important;
   scrollbar-width: thin;
 }
@@ -62,9 +62,9 @@
   gap: 2px;
   margin: 0 !important;
   padding: 2px !important;
-  border: 1px solid var(--ak-gold-alpha-23) !important;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum) 23%, transparent) !important;
   border-radius: 3px;
-  background: var(--ak-black-alpha-13) !important;
+  background: rgba(0, 0, 0, 0.13) !important;
 }
 #main-content .sceditor-container .sceditor-button {
   box-sizing: border-box;
@@ -85,7 +85,7 @@
 #main-content .sceditor-container .sceditor-button:hover,
 #main-content .sceditor-container .sceditor-button.active {
   border-color: var(--ak-aurum) !important;
-  background: var(--ak-gold-alpha-17) !important;
+  background: color-mix(in srgb, var(--ak-aurum) 17%, transparent) !important;
 }
 #main-content .sceditor-container .sceditor-button.disabled {
   opacity: 0.4 !important;
@@ -161,7 +161,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  color: var(--ak-editor-icon);
+  color: #ddc59c;
   font:
     600 15px/1 var(--ak-font-sans);
   text-indent: 0 !important;
@@ -248,7 +248,7 @@
   height: auto !important;
   max-height: none !important;
   width: 100% !important;
-  background: var(--ak-editor-bg) !important;
+  background: #0c1519 !important;
 }
 #main-content .sceditor-container iframe,
 #main-content .sceditor-container textarea {
@@ -256,7 +256,7 @@
   min-height: 0 !important;
   max-height: 100% !important;
   width: 100% !important;
-  background: var(--ak-editor-bg) !important;
+  background: #0c1519 !important;
 }
 #main-content .sceditor-container textarea {
   padding: 17px !important;
@@ -292,7 +292,7 @@
   min-height: 32px;
   padding: 5px 9px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-bg);
+  background: #0c1519;
   color: var(--ak-text);
 }
 #main-content #smiley-box {
@@ -300,7 +300,7 @@
   max-width: 230px;
   padding: 12px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-bg);
+  background: #0c1519;
   color: var(--ak-text);
 }
 #main-content #smiley-box img {
@@ -313,7 +313,7 @@
   padding: 8px 17px;
   margin: 5px;
   border: 1px solid var(--ak-aurum);
-  background: var(--ak-editor-toolbar);
+  background: #172429;
   color: var(--ak-aurum);
   font:
     11px var(--ak-font-sans);
@@ -323,5 +323,5 @@
 }
 #main-content #postingbox input[type="submit"]:hover,
 #main-content form[action*="/post"] input[type="submit"]:hover {
-  background: var(--ak-gold-alpha-15);
+  background: color-mix(in srgb, var(--ak-aurum) 15%, transparent);
 }
