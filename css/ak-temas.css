@@ -205,3 +205,50 @@
   #main-content .forumbg ul.topiclist.topics > li.row.ak-especial,
   #main-content .forumbg ul.topiclist.topics > li.row.ak-primero-normal { grid-column: 1 / -1; }
 }
+
+/* Ajustar el avatar al marco editorial */
+#main-content .forumbg ul.topiclist.topics > li.row
+.ak-topic-media .lastpost-avatar {
+  position: static !important;
+  float: none !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+}
+
+#main-content .forumbg ul.topiclist.topics > li.row
+.ak-topic-media .lastpost-avatar img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+/* Mantener el enlace y el nombre del autor en la misma línea */
+#main-content .forumbg ul.topiclist.topics > li.row
+.ak-topic-last-details :is(
+  .ak-topic-last-link,
+  .ak-topic-last-by,
+  .ak-topic-last-author
+) {
+  display: inline !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fecha debajo */
+#main-content .forumbg ul.topiclist.topics > li.row
+.ak-topic-last-details .ak-topic-last-time {
+  display: block !important;
+  margin-top: 4px !important;
+}
