@@ -346,3 +346,50 @@
   -webkit-mask-image: var(--ak-icon-mensajes);
   mask-image: var(--ak-icon-mensajes);
 }
+
+/* Etiquetas de los iconos de contacto */
+.perfil-editorial .perfil-contactos a[data-perfil-ayuda] {
+  position: relative;
+  overflow: visible;
+}
+
+.perfil-editorial .perfil-contactos a[data-perfil-ayuda]::after {
+  content: attr(data-perfil-ayuda);
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 10px);
+  left: 50%;
+
+  width: max-content;
+  max-width: 190px;
+  padding: 10px 15px;
+
+  background: rgba(8, 15, 19, .85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--ak-aurum);
+
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px #0003;
+
+  font: 700 12px/1.5 var(--ak-font-sans, Arial, sans-serif);
+  letter-spacing: .04em;
+  text-transform: none;
+  text-align: center;
+  text-shadow: none;
+  white-space: normal;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -3px);
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.perfil-editorial .perfil-contactos
+a[data-perfil-ayuda]:is(:hover, :focus-visible)::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
