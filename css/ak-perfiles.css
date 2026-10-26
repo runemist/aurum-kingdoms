@@ -288,8 +288,8 @@
     #field_id5 a, #field_id4 a)::before {
   content: "";
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: var(--ak-aurum);
 
   -webkit-mask-position: center;
@@ -302,14 +302,14 @@
 
 /* Mensaje privado */
 .perfil-editorial .perfil-contactos a:has(#i_icon_pm)::before {
-  -webkit-mask-image: url("https://i.imgur.com/l6u9JhA.png");
-  mask-image: url("https://i.imgur.com/l6u9JhA.png");
+  -webkit-mask-image: url("https://i.imgur.com/QHs8LaF.png");
+  mask-image: url("https://i.imgur.com/QHs8LaF.png");
 }
 
 /* Expediente */
 .perfil-editorial .perfil-contactos #field_id2 a::before {
-  -webkit-mask-image: url("https://i.imgur.com/zXCfXnZ.png");
-  mask-image: url("https://i.imgur.com/zXCfXnZ.png");
+  -webkit-mask-image: url("https://i.imgur.com/RoKoVBo.png");
+  mask-image: url("https://i.imgur.com/RoKoVBo.png");
 }
 
 /* Cronología */
