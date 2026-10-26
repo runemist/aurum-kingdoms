@@ -125,8 +125,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  min-height: 28px;
+  min-width: 40px;
+  min-height: 40px;
   padding: 4px;
   border: 0;
   border-radius: 4px;
@@ -134,7 +134,7 @@
   color: var(--ak-aurum);
 }
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .profile-icons a:hover { background: color-mix(in srgb, var(--ak-aurum) 15%, transparent); }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .profile-icons img { display: block; width: auto; max-width: 17px; height: auto; max-height: 17px; object-fit: contain; }
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .profile-icons img { display: block; width: auto; max-width: 30px; height: auto; max-height: 30px; object-fit: contain; }
 /* Perfil actual: fotografía de 250 × 400, sin deformar la imagen. */
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .postprofile {
   position: static;
