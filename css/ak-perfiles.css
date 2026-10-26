@@ -394,3 +394,22 @@ a[data-perfil-ayuda]:is(:hover, :focus-visible)::after {
   visibility: visible;
   transform: translate(-50%, 0);
 }
+#main-content .perfil-editorial .perfil-grid-datos .perfil-campo {
+  display: block !important;
+}
+
+#main-content .perfil-editorial .perfil-grid-datos .pslabel,
+#main-content .perfil-editorial .perfil-grid-datos .pscont {
+  display: inline !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+#main-content .perfil-editorial .perfil-grid-datos .pscont {
+  margin-left: 5px !important;
+}
+
+#main-content .perfil-editorial .perfil-grid-datos .field_uneditable {
+  display: inline !important;
+}
