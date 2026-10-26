@@ -88,7 +88,7 @@
 /* Avatar, símbolo, banda de nivel: en ese orden. */
 .perfil-editorial .perfil-lateral { width: 250px; min-width: 0; text-align: center; position: relative;}
 .perfil-editorial .perfil-avatar img { display: block; width: 250px; height: 400px; margin: 0; object-fit: cover; border: 1px solid var(--ak-aurum, #c7aa78); }
-.perfil-editorial .perfil-simbolo { position: absolute; right: 60px; top: 0; width: 130px; height: 130px; margin: 335px auto 20px; background: var(--ak-logo, none) center / contain no-repeat; }
+.perfil-editorial .perfil-simbolo { position: absolute; right: 60px; top: 0; width: 130px; height: 130px; margin: 335px auto 20px;}
 .perfil-editorial .perfil-nacion { margin: 8px 0 14px; font-size: 12px; letter-spacing: .1em; }
 .perfil-editorial .perfil-nacion .pslabel { display: none; }
 .perfil-editorial .perfil-nivel { width: 100%; }
@@ -120,16 +120,7 @@
 .perfil-editorial .perfil-rpg-detalle dt { color: var(--ak-aurum, #c7aa78); font-size: 11px; }
 .perfil-editorial .perfil-rpg-imagen img { max-height: 240px; object-fit: contain; }
 .perfil-editorial .perfil-rpg-admin { border: 0; padding: 12px 0; }
-/* Insignias de rango existentes: URLs directas, sin variables auxiliares. */
-.perfil-editorial :is(.akadmin,.aklux,.akumbra,.aktuono,.akignis,.akteram,.akaeris,.akcascata) { display: block; width: 250px; max-width: 100%; height: 42px; margin: 0 auto; overflow: hidden; text-indent: -9999px; white-space: nowrap; background-position: center; background-repeat: no-repeat; background-size: contain; }
-.perfil-editorial .akadmin { background-image: url('https://2img.net/i.imgur.com/QiAPIjv.png'); }
-.perfil-editorial .aklux { background-image: url('https://2img.net/i.imgur.com/GlsNpMa.png'); }
-.perfil-editorial .akumbra { background-image: url('https://2img.net/i.imgur.com/azMEJgE.png'); }
-.perfil-editorial .aktuono { background-image: url('https://2img.net/i.imgur.com/ywjkvgJ.png'); }
-.perfil-editorial .akignis { background-image: url('https://2img.net/i.imgur.com/5oveyaI.png'); }
-.perfil-editorial .akteram { background-image: url('https://2img.net/i.imgur.com/ECvwLyW.png'); }
-.perfil-editorial .akaeris { background-image: url('https://2img.net/i.imgur.com/PnlJcUW.png'); }
-.perfil-editorial .akcascata { background-image: url('https://2img.net/i.imgur.com/ZxHAfBQ.png'); }
+
 @media (max-width: 900px) {
   .perfil-editorial .perfil-body { gap: 24px; padding: 26px 24px 0; }
   .perfil-editorial .perfil-banner { padding: 36px 24px; }
