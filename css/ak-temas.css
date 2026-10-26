@@ -330,3 +330,68 @@
   display: block !important;
   margin-top: 5px !important;
 }
+
+/* =========================================================
+   NOTAS Y ANUNCIOS · DISTRIBUCIÓN VERTICAL
+   ========================================================= */
+
+/* Más espacio para el contenido */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial {
+  min-height: 380px;
+  height: auto;
+}
+
+/* Una sola columna: título, imagen y último mensaje */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial > dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+/* Título y creador */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .dterm {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  text-align: center;
+}
+
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial a.topictitle {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Imagen centrada */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .ak-topic-media {
+  grid-column: 1;
+  grid-row: 2;
+  width: 130px;
+  max-width: 90%;
+  height: 190px;
+  margin: 0 auto;
+}
+
+/* Último mensaje y fecha */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .lastpost {
+  grid-column: 1;
+  grid-row: 3;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  align-self: start;
+}
+
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .ak-topic-last-details {
+  text-align: center;
+}
