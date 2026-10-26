@@ -88,7 +88,7 @@
 /* Avatar, símbolo, banda de nivel: en ese orden. */
 .perfil-editorial .perfil-lateral { width: 250px; min-width: 0; text-align: center; position: relative;}
 .perfil-editorial .perfil-avatar img { display: block; width: 250px; height: 400px; margin: 0; object-fit: cover; border: 1px solid var(--ak-aurum, #c7aa78); }
-.perfil-editorial .perfil-simbolo { position: absolute; right: 60px; top: 300; width: 130px; height: 130px;}
+.perfil-editorial .perfil-simbolo { position: absolute; right: 60px; top: 300px; width: 130px; height: 130px;}
 .perfil-editorial .perfil-nacion { margin: 8px 0 14px; font-size: 12px; letter-spacing: .1em; }
 .perfil-editorial .perfil-nacion .pslabel { display: none; }
 .perfil-editorial .perfil-nivel { width: 100%; }
