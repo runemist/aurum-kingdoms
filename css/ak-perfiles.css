@@ -3,7 +3,7 @@
    El único marco completo corresponde al avatar. */
 #main-content .perfilreal.perfil-editorial {
   width: 100%; max-width: none; margin: 12px auto 36px;
-  color: var(--ak-text, #e6ddce); background: var(--ak-post-base, #0c1419);
+  color: var(--ak-text, #e6ddce); background: var(--ak-post-papel, #0c1419);
   font: 14px/1.75 var(--ak-font-serif, Georgia, serif);
 }
 .perfil-editorial, .perfil-editorial * { box-sizing: border-box; }
