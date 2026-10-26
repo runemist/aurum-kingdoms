@@ -252,3 +252,79 @@
   display: block !important;
   margin-top: 4px !important;
 }
+
+/* =========================================================
+   AJUSTE EDITORIAL · NOTAS Y ANUNCIOS
+   ========================================================= */
+
+/* Imagen más pequeña */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .ak-topic-media {
+  width: 110px;
+  max-width: 100%;
+  height: 170px;
+}
+
+/* Acercar y centrar el contenido verticalmente */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial > dl {
+  grid-template-columns: 110px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-content: center;
+  align-items: start;
+  column-gap: 20px;
+  row-gap: 18px;
+}
+
+/* Título más grande */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial a.topictitle {
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+/* Separación entre el título y «Abierto por» */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .span-tab {
+  margin-top: 9px;
+  font-size: 12px;
+}
+
+/* Colocar los datos del último mensaje bajo el autor */
+#main-content .forumbg ul.topiclist.topics
+> li.row.ak-especial .lastpost {
+  align-self: start;
+  margin: 0;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Ordenar «Último mensaje por: Nombre» */
+#main-content .forumbg ul.topiclist.topics
+> li.row .ak-topic-last-details :is(
+  .ak-topic-last-link,
+  .ak-topic-last-by,
+  .ak-topic-last-author
+) {
+  display: inline !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Evitar que el nombre del usuario flote hacia la izquierda */
+#main-content .forumbg ul.topiclist.topics
+> li.row .ak-topic-last-author :is(a, span, strong) {
+  display: inline !important;
+  float: none !important;
+  width: auto !important;
+}
+
+/* Fecha en una línea aparte */
+#main-content .forumbg ul.topiclist.topics
+> li.row .ak-topic-last-time {
+  display: block !important;
+  margin-top: 5px !important;
+}
