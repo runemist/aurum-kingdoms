@@ -1,359 +1,155 @@
-/* =====================================
-   AURUM — PERFIL BASE
-===================================== */
-
-.perfilreal {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  color: #b9b4a8;
+/* AURUM · Perfil editorial 1. Sustituye ak-perfiles.css completo.
+   Sin variables nuevas. Banner: campo «Banner»; organización: ak-perfiles.js.
+   El único marco completo corresponde al avatar. */
+#main-content .perfilreal.perfil-editorial {
+  width: 100%; max-width: none; margin: 12px auto 36px;
+  color: var(--ak-text, #e6ddce); background: var(--ak-post-base, #0c1419);
+  font: 14px/1.75 var(--ak-font-serif, Georgia, serif);
 }
-
-.perfilreal * {
-  box-sizing: border-box;
+.perfil-editorial, .perfil-editorial * { box-sizing: border-box; }
+.perfil-editorial [hidden] { display: none !important; }
+.perfil-editorial a { color: inherit; text-decoration: none; }
+.perfil-editorial a:hover { color: var(--ak-aurum, #c7aa78); }
+.perfil-editorial a:focus-visible { outline: 2px solid var(--ak-aurum, #c7aa78); outline-offset: 4px; }
+.perfil-editorial img { max-width: 100%; }
+.perfil-editorial dl, .perfil-editorial dd { margin: 0; }
+.perfil-editorial .perfil-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
 }
-
-/* CONTENEDOR */
-
-.perfil-card {
-  width: 100%;
-  background: rgba(18, 17, 16, 0.92);
-  border: 1px solid var(--ak-aurum);
-  padding: 25px;
-  position: relative;
-  min-height: 800px;
+/* El filtro afecta solo a la imagen; el nombre conserva su luminosidad. */
+.perfil-editorial .perfil-banner {
+  position: relative; isolation: isolate; display: flex; align-items: flex-end;
+  min-height: 330px; padding: 52px 40px 42px; overflow: hidden;
+  background: #162329; border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum, #c7aa78) 40%, transparent);
 }
-
-.perfil-card::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid var(--ak-aurum);
-  pointer-events: none;
+.perfil-editorial .perfil-banner-media { position: absolute; inset: 0; z-index: -2; }
+.perfil-editorial .perfil-banner-media .perfil-campo,
+.perfil-editorial .perfil-banner-media .pscont,
+.perfil-editorial .perfil-banner-media .field_uneditable { display: block; width: 100%; height: 100%; }
+.perfil-editorial .perfil-banner-media .pscont { padding: 0; }
+.perfil-editorial .perfil-banner-media img {
+  display: block; width: 100%; height: 100%; max-height: none; object-fit: cover;
+  object-position: center; filter: brightness(.58) saturate(.75);
 }
-
-/* HEADER */
-
-.perfil-header {
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--ak-aurum);
+.perfil-editorial .perfil-banner::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(5,12,16,.8), rgba(5,12,16,.15)), linear-gradient(0deg, #0c1419, transparent 75%);
 }
-
-.perfil-nombre {
-  font-size: 36px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--ak-aurum);
+.perfil-editorial .perfil-banner-titulos { width: 100%; min-width: 0; }
+.perfil-editorial .perfil-nombre {
+  margin: 0; padding: 0; border: 0; background: none; text-transform: uppercase;
+  font: 400 clamp(30px, 4.7vw, 66px)/1.15 var(--ak-font-serif, Georgia, serif);
+  letter-spacing: .075em; overflow-wrap: anywhere; color: var(--ak-aurum, #c7aa78);
+  text-shadow: 0 2px 12px #000;
 }
-
-/* BODY */
-
-.perfil-body {
-  display: grid;
-  grid-template-columns: 1fr 260px;
-  gap: 25px;
+.perfil-editorial .perfil-nombre * { color: inherit !important; }
+.perfil-editorial .perfil-frase { max-width: 700px; margin-top: 14px; font-style: italic; font-size: 16px; color: #e6ddce; }
+.perfil-editorial .perfil-body { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 44px; padding: 32px 40px 0; align-items: start; }
+.perfil-editorial .perfil-info { min-width: 0; }
+.perfil-editorial .perfil-barra { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; padding: 0 0 23px; }
+.perfil-editorial .perfil-contactos { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; background: none; height: auto; }
+.perfil-editorial .perfil-contacto-item dt { display: none; }
+.perfil-editorial .perfil-contacto-item dd { display: flex; align-items: center; }
+.perfil-editorial .perfil-contactos img { display: block; width: auto; height: auto; max-width: 23px; max-height: 23px; object-fit: contain; }
+.perfil-editorial .perfil-contactos a { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 30px; color: var(--ak-aurum, #c7aa78); }
+.perfil-editorial .perfil-enlace { font-size: 23px; }
+.perfil-editorial .perfil-recursos { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-left: auto; }
+.perfil-editorial .perfil-recursos .pscont { font-size: 25px; line-height: 1.25; color: var(--ak-aurum, #c7aa78); }
+.perfil-editorial .perfil-zona { min-width: 0; margin: 0; padding: 24px 0; }
+.perfil-editorial .perfil-generales { border-top: 1px solid color-mix(in srgb, var(--ak-aurum, #c7aa78) 25%, transparent); padding-top: 23px; }
+.perfil-editorial .perfil-grid-generales { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.perfil-editorial .perfil-grid-datos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px 28px; }
+.perfil-editorial .perfil-campo { display: block; min-width: 0; margin: 0; }
+.perfil-editorial .pslabel {
+  display: block; width: auto; padding: 0; background: none; margin-bottom: 5px;
+  font: 10px/1.5 var(--ak-font-sans, Arial, sans-serif); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ak-aurum, #c7aa78);
 }
-
-/* COLUMNA IZQUIERDA */
-
-.perfil-info {
-  min-width: 0;
+.perfil-editorial .pslabel span { color: inherit !important; }
+.perfil-editorial .pscont { display: block; width: auto; padding: 0; font-size: 14px; overflow-wrap: anywhere; }
+.perfil-editorial .perfil-titulo {
+  display: flex; align-items: center; gap: 18px; margin: 0 0 20px; padding: 0; border: 0; background: none;
+  color: var(--ak-aurum, #c7aa78); font: 400 17px/1.4 var(--ak-font-serif, Georgia, serif); letter-spacing: .13em; text-transform: uppercase;
 }
-
-/* CONTACTOS */
-
-.perfil-contactos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
-  height: 50px;
-  background: var(--ak-aurum);
-  padding: 5px;
-  align-items: center;
-  width: fit-content;
-}
-
-.perfil-contacto-item {
-  margin: 0;
-}
-
-.perfil-contactos img {
-  width: 35px;
-}
-
-.perfil-contacto-item dt {
-  display: none;
-}
-
-.perfil-contacto-item dd {
-  margin: 0;
-}
-
-/* CAMPOS */
-
-.perfil-campos {
-  display: flex;
-  flex-direction: row;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.perfil-campo {
-  display: flex;
-}
-
-.pslabel {
-  width: 150px;
-  padding: 10px;
-  background: var(--ak-aurum);
-  color: #151515;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  align-content: center;
-}
-
-.pscont {
-  padding: 10px;
-  font-size: 15px;
-  width: 170px;
-  align-content: center;
-}
-
-.pslabel span {
-  color: #151515 !important;
-}
-/* COLUMNA DERECHA */
-
-.perfil-lateral {
-  width: 260px;
-}
-
-/* AVATAR */
-
-.perfil-avatar dl,
-.perfil-avatar dd {
-  margin: 0;
-}
-
-.perfil-avatar img {
-  width: 250px;
-  display: block;
-  margin: auto;
-  border: 1px solid var(--ak-aurum);
-}
-
-/* RANGO */
-
-.perfil-rango {
-  margin-top: 15px;
-  padding: 10px;
-  text-align: center;
-  background: rgba(28, 27, 25, 0.85);
-}
-
-/* FOOTER */
-
-.perfil-extra {
-  width: 260px;
-  position: absolute;
-  right: 25px;
-  top: 600px;
-}
-
-.perfil-links {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-
-.perfil-links a {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  background: var(--ak-aurum);
-  color: #151515 !important;
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 1px;
-  transition: 0.3s;
-}
-
-.perfil-links a:hover {
-  background: #151515;
-  color: var(--ak-aurum) !important;
-}
-
-.perfil-ultima-visita {
-  padding: 10px;
-  background: rgba(28, 27, 25, 0.85);
-  border: 1px solid var(--ak-aurum);
-  font-size: 11px;
-}
-
-.perfil-ultima-visita dl {
-  margin: 0;
-}
-
-/* =====================================
-   RPG
-===================================== */
-
-.perfil-rpg {
-  margin-top: 25px;
-  background: rgba(18, 17, 16, 0.92);
-  border: 1px solid var(--ak-aurum);
-  padding: 25px;
-  position: relative;
-}
-
-.perfil-rpg::before {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid var(--ak-aurum);
-  pointer-events: none;
-}
-
-.perfil-rpg-header {
-  margin-bottom: 20px;
-}
-
-.perfil-rpg-titulo {
-  font-size: 28px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--ak-aurum);
-}
-
-.perfil-rpg-imagen {
-  margin-bottom: 20px;
-}
-
-.perfil-rpg-imagen img {
-  width: 100%;
-}
-
-.perfil-rpg-campos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.perfil-rpg-detalle {
-  margin: 0 0 10px;
-}
-
-.perfil-rpg-detalle dt {
-  padding: 10px;
-  background: var(--ak-aurum);
-  color: #151515;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.perfil-rpg-detalle dd {
-  margin: 0;
-  padding: 10px;
-  background: rgba(28, 27, 25, 0.85);
-}
-
-.perfil-contacto-item:has(#i_icon_email) {
-  display: none;
-}
-
-/* RESPONSIVE */
-
+.perfil-editorial .perfil-titulo::after { content: ''; flex: 1; height: 1px; background: color-mix(in srgb, var(--ak-aurum, #c7aa78) 25%, transparent); }
+.perfil-editorial .perfil-narrativa .pscont { font-size: 14px; line-height: 1.9; }
+.perfil-editorial [data-perfil-slot="historia"] .pslabel,
+.perfil-editorial [data-perfil-slot="curiosidades"] .pslabel,
+.perfil-editorial [data-perfil-slot="frase"] .pslabel,
+.perfil-editorial [data-perfil-slot="banner"] .pslabel,
+.perfil-editorial [data-perfil-slot="pareja"] .pslabel,
+.perfil-editorial [data-perfil-slot="imagenPareja"] .pslabel,
+.perfil-editorial [data-perfil-slot="nivel"] .pslabel,
+.perfil-editorial [data-perfil-slot="regalos"] .pslabel,
+.perfil-editorial [data-perfil-slot="medallas"] .pslabel,
+.perfil-editorial [data-perfil-slot="inventario"] .pslabel { display: none; }
+/* Avatar, símbolo, banda de nivel: en ese orden. */
+.perfil-editorial .perfil-lateral { width: 250px; min-width: 0; text-align: center; }
+.perfil-editorial .perfil-avatar img { display: block; width: 250px; height: 400px; margin: 0; object-fit: cover; border: 1px solid var(--ak-aurum, #c7aa78); }
+.perfil-editorial .perfil-simbolo { width: 130px; height: 130px; margin: 22px auto 8px; background: var(--ak-logo, none) center / contain no-repeat; }
+.perfil-editorial .perfil-nacion { margin: 8px 0 14px; font-size: 12px; letter-spacing: .1em; }
+.perfil-editorial .perfil-nacion .pslabel { display: none; }
+.perfil-editorial .perfil-nivel { width: 100%; }
+.perfil-editorial .perfil-nivel img { display: block; width: 100%; height: 42px; object-fit: cover; margin: 0; border: 0; }
+.perfil-editorial .perfil-rango { margin-top: 14px; font-size: 12px; color: var(--ak-muted, #b7ae9f); }
+.perfil-editorial .perfil-rango img { max-width: 100%; height: auto; }
+.perfil-editorial > .perfil-zona, .perfil-editorial > .perfil-colecciones { margin-left: 40px; margin-right: 40px; }
+.perfil-editorial .perfil-pareja-body { display: flex; gap: 28px; align-items: center; }
+.perfil-editorial .perfil-pareja-imagen { flex: 0 0 240px; }
+.perfil-editorial .perfil-pareja-imagen img { display: block; width: 100%; height: 130px; object-fit: cover; border: 0; }
+.perfil-editorial .perfil-pareja-texto { flex: 1; min-width: 0; }
+.perfil-editorial .perfil-pareja-texto img { max-height: 160px; object-fit: contain; }
+.perfil-editorial .perfil-colecciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+.perfil-editorial .perfil-coleccion { max-height: 220px; overflow: auto; scrollbar-width: thin; scrollbar-color: var(--ak-aurum, #c7aa78) transparent; }
+.perfil-editorial .perfil-coleccion img { display: inline-block; width: 48px; height: 48px; margin: 3px 7px 7px 0; object-fit: contain; vertical-align: middle; border: 0; }
+.perfil-editorial .perfil-ultima-visita { display: flex; gap: 12px 30px; flex-wrap: wrap; margin: 22px 40px 0; padding: 18px 0 24px; border-top: 1px solid color-mix(in srgb, var(--ak-aurum, #c7aa78) 20%, transparent); color: var(--ak-muted, #b7ae9f); font-size: 11px; }
+.perfil-editorial .perfil-ultima-visita dl { display: flex; gap: 6px; flex-wrap: wrap; }
+.perfil-editorial .perfil-origen { display: grid; gap: 18px; }
+.perfil-editorial .ajax-profil_parent { position: relative; }
+.perfil-editorial .ajax-profil_edit, .perfil-editorial .ajax-profil_valid { cursor: pointer; }
+.perfil-editorial .perfil-banner-media .ajax-profil_edit { position: absolute; top: 14px; right: 14px; z-index: 3; }
+.perfil-editorial .perfil-banner-media .field_editable:not(.invisible) { position: absolute; top: 12px; left: 12px; z-index: 4; }
+.perfil-editorial .perfil-banner-titulos { pointer-events: none; }
+.perfil-editorial .perfil-banner-titulos a, .perfil-editorial .perfil-banner-titulos input, .perfil-editorial .perfil-banner-titulos textarea, .perfil-editorial .perfil-banner-titulos .pscont { pointer-events: auto; }
+/***** Hoja RPG nativa: sin marcos ni pérdida de controles. *****/
+.perfil-editorial .perfil-rpg { margin: 0 40px; padding: 22px 0; }
+.perfil-editorial .perfil-rpg-titulo { color: var(--ak-aurum, #c7aa78); font-size: 19px; margin-bottom: 20px; }
+.perfil-editorial .perfil-rpg-campos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+.perfil-editorial .perfil-rpg-detalle dt { color: var(--ak-aurum, #c7aa78); font-size: 11px; }
+.perfil-editorial .perfil-rpg-imagen img { max-height: 240px; object-fit: contain; }
+.perfil-editorial .perfil-rpg-admin { border: 0; padding: 12px 0; }
+/* Insignias de rango existentes: URLs directas, sin variables auxiliares. */
+.perfil-editorial :is(.akadmin,.aklux,.akumbra,.aktuono,.akignis,.akteram,.akaeris,.akcascata) { display: block; width: 250px; max-width: 100%; height: 42px; margin: 0 auto; overflow: hidden; text-indent: -9999px; white-space: nowrap; background-position: center; background-repeat: no-repeat; background-size: contain; }
+.perfil-editorial .akadmin { background-image: url('https://2img.net/i.imgur.com/QiAPIjv.png'); }
+.perfil-editorial .aklux { background-image: url('https://2img.net/i.imgur.com/GlsNpMa.png'); }
+.perfil-editorial .akumbra { background-image: url('https://2img.net/i.imgur.com/azMEJgE.png'); }
+.perfil-editorial .aktuono { background-image: url('https://2img.net/i.imgur.com/ywjkvgJ.png'); }
+.perfil-editorial .akignis { background-image: url('https://2img.net/i.imgur.com/5oveyaI.png'); }
+.perfil-editorial .akteram { background-image: url('https://2img.net/i.imgur.com/ECvwLyW.png'); }
+.perfil-editorial .akaeris { background-image: url('https://2img.net/i.imgur.com/PnlJcUW.png'); }
+.perfil-editorial .akcascata { background-image: url('https://2img.net/i.imgur.com/ZxHAfBQ.png'); }
 @media (max-width: 900px) {
-  .perfil-body {
-    grid-template-columns: 1fr;
-  }
-
-  .perfil-lateral {
-    width: 100%;
-  }
-
-  .perfil-avatar img {
-    margin: auto;
-  }
-
-  .perfil-rpg-campos {
-    grid-template-columns: 1fr;
-  }
+  .perfil-editorial .perfil-body { gap: 24px; padding: 26px 24px 0; }
+  .perfil-editorial .perfil-banner { padding: 36px 24px; }
+  .perfil-editorial .perfil-grid-datos { grid-template-columns: 1fr; }
+  .perfil-editorial > .perfil-zona, .perfil-editorial > .perfil-colecciones, .perfil-editorial .perfil-rpg { margin-left: 24px; margin-right: 24px; }
+  .perfil-editorial .perfil-recursos { margin-left: 0; }
 }
-
-/* =========================================
-   AURUM — INSIGNIAS DE GRUPO
-   ========================================= */
-
-.akadmin,
-.aklux,
-.akumbra,
-.aktuono,
-.akignis,
-.akteram,
-.akaeris,
-.akcascata {
-  display: block;
-  width: 240px;
-  height: 50px;
-  margin: 0 auto;
-  overflow: hidden;
-  text-indent: -9999px;
-  white-space: nowrap;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+@media (max-width: 650px) {
+  .perfil-editorial .perfil-banner { min-height: 250px; padding: 30px 18px; }
+  .perfil-editorial .perfil-body { grid-template-columns: 1fr; padding: 24px 18px 0; }
+  .perfil-editorial .perfil-lateral { grid-row: 1; justify-self: center; }
+  .perfil-editorial .perfil-grid-generales, .perfil-editorial .perfil-colecciones { grid-template-columns: 1fr; }
+  .perfil-editorial .perfil-pareja-body { flex-direction: column; align-items: stretch; }
+  .perfil-editorial .perfil-pareja-imagen { flex-basis: auto; }
+  .perfil-editorial > .perfil-zona, .perfil-editorial > .perfil-colecciones, .perfil-editorial .perfil-rpg { margin-left: 18px; margin-right: 18px; }
+  .perfil-editorial .perfil-ultima-visita { margin-left: 18px; margin-right: 18px; }
 }
-
-/* ADMINISTRACIÓN */
-
-.akadmin {
-  background-image: var(--ak-badge-admin);
-}
-
-/* LUX */
-
-.aklux {
-  background-image: var(--ak-badge-lux);
-}
-
-/* UMBRA */
-
-.akumbra {
-  background-image: var(--ak-badge-umbra);
-}
-
-/* TUONO */
-
-.aktuono {
-  background-image: var(--ak-badge-tuono);
-}
-
-/* IGNIS */
-
-.akignis {
-  background-image: var(--ak-badge-ignis);
-}
-
-/* TERAM */
-
-.akteram {
-  background-image: var(--ak-badge-teram);
-}
-
-/* AERIS */
-
-.akaeris {
-  background-image: var(--ak-badge-aeris);
-}
-
-/* CASCATA */
-
-.akcascata {
-  background-image: var(--ak-badge-cascata);
-}
+.perfil-editorial .perfil-zona:not(:has(.perfil-campo)) { display: none; }
+.perfil-editorial .perfil-pareja-imagen:empty { display: none; }
+.perfil-editorial .perfil-barra:has(.perfil-recursos:empty) .perfil-contactos { margin-right: auto; }
+.perfil-editorial .perfil-nacion:empty, .perfil-editorial .perfil-nivel:empty { display: none; }
+.perfil-editorial .perfil-nivel:has(.perfil-campo) + .perfil-rango { margin-top: 10px; }
+/* Un campo Nivel propio sustituye visualmente la banda de rango nativa. */
+.perfil-editorial .perfil-nivel:has(.perfil-campo) + .perfil-rango { display: none; }
