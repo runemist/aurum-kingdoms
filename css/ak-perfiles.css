@@ -275,3 +275,57 @@
 .perfil-editorial .perfil-grid-datos {
   gap: 10px 28px;
 }
+/* Ocultar las imágenes originales de estos cinco enlaces */
+.perfil-editorial .perfil-contactos
+:is(a:has(#i_icon_pm), #field_id2 a, #field_id3 a,
+    #field_id5 a, #field_id4 a) img {
+  display: none;
+}
+
+/* Tamaño y color comunes */
+.perfil-editorial .perfil-contactos
+:is(a:has(#i_icon_pm), #field_id2 a, #field_id3 a,
+    #field_id5 a, #field_id4 a)::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: var(--ak-aurum);
+
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Mensaje privado */
+.perfil-editorial .perfil-contactos a:has(#i_icon_pm)::before {
+  -webkit-mask-image: url("https://i.imgur.com/l6u9JhA.png");
+  mask-image: url("https://i.imgur.com/l6u9JhA.png");
+}
+
+/* Expediente */
+.perfil-editorial .perfil-contactos #field_id2 a::before {
+  -webkit-mask-image: url("https://i.imgur.com/zXCfXnZ.png");
+  mask-image: url("https://i.imgur.com/zXCfXnZ.png");
+}
+
+/* Cronología */
+.perfil-editorial .perfil-contactos #field_id3 a::before {
+  -webkit-mask-image: url("https://i.imgur.com/8eXtMmZ.png");
+  mask-image: url("https://i.imgur.com/8eXtMmZ.png");
+}
+
+/* Diario */
+.perfil-editorial .perfil-contactos #field_id5 a::before {
+  -webkit-mask-image: url("https://i.imgur.com/76Jfboy.png");
+  mask-image: url("https://i.imgur.com/76Jfboy.png");
+}
+
+/* Relaciones */
+.perfil-editorial .perfil-contactos #field_id4 a::before {
+  -webkit-mask-image: url("https://i.imgur.com/nYZk8Jy.png");
+  mask-image: url("https://i.imgur.com/nYZk8Jy.png");
+}
