@@ -266,17 +266,31 @@
 .perfil-editorial .perfil-grid-datos {
   gap: 10px 28px;
 }
-/* Ocultar las imágenes originales de estos cinco enlaces */
-.perfil-editorial .perfil-contactos
-:is(a:has(#i_icon_pm), #field_id2 a, #field_id3 a,
-    #field_id5 a, #field_id4 a) img {
+/* Ocultar Temas abiertos y el contacto por correo */
+.perfil-editorial .perfil-contactos a[href^="/st/"],
+.perfil-editorial .perfil-contacto-item:has(#i_icon_email),
+.perfil-editorial .perfil-contacto-item:has(a[href^="mailto:"]),
+.perfil-editorial .perfil-contacto-email {
   display: none;
 }
 
-/* Tamaño y color comunes */
-.perfil-editorial .perfil-contactos
-:is(a:has(#i_icon_pm), #field_id2 a, #field_id3 a,
-    #field_id5 a, #field_id4 a)::before {
+/* Ocultar los iconos originales de los enlaces */
+.perfil-editorial .perfil-contactos a img,
+.perfil-editorial .perfil-contactos a.perfil-enlace > span {
+  display: none;
+}
+
+/* Espacio de cada enlace */
+.perfil-editorial .perfil-contactos a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+/* Tamaño y color comunes de las máscaras */
+.perfil-editorial .perfil-contactos a::before {
   content: "";
   display: block;
   width: 50px;
@@ -293,30 +307,42 @@
 
 /* Mensaje privado */
 .perfil-editorial .perfil-contactos a:has(#i_icon_pm)::before {
-  -webkit-mask-image: url("https://i.imgur.com/QHs8LaF.png");
-  mask-image: url("https://i.imgur.com/QHs8LaF.png");
+  -webkit-mask-image: var(--ak-icon-mp);
+  mask-image: var(--ak-icon-mp);
 }
 
 /* Expediente */
 .perfil-editorial .perfil-contactos #field_id2 a::before {
-  -webkit-mask-image: url("https://i.imgur.com/RoKoVBo.png");
-  mask-image: url("https://i.imgur.com/RoKoVBo.png");
+  -webkit-mask-image: var(--ak-icon-expediente);
+  mask-image: var(--ak-icon-expediente);
 }
 
 /* Cronología */
 .perfil-editorial .perfil-contactos #field_id3 a::before {
-  -webkit-mask-image: url("https://i.imgur.com/8eXtMmZ.png");
-  mask-image: url("https://i.imgur.com/8eXtMmZ.png");
+  -webkit-mask-image: var(--ak-icon-cronologia);
+  mask-image: var(--ak-icon-cronologia);
 }
 
 /* Diario */
 .perfil-editorial .perfil-contactos #field_id5 a::before {
-  -webkit-mask-image: url("https://i.imgur.com/76Jfboy.png");
-  mask-image: url("https://i.imgur.com/76Jfboy.png");
+  -webkit-mask-image: var(--ak-icon-diario);
+  mask-image: var(--ak-icon-diario);
 }
 
 /* Relaciones */
 .perfil-editorial .perfil-contactos #field_id4 a::before {
-  -webkit-mask-image: url("https://i.imgur.com/nYZk8Jy.png");
-  mask-image: url("https://i.imgur.com/nYZk8Jy.png");
+  -webkit-mask-image: var(--ak-icon-relaciones);
+  mask-image: var(--ak-icon-relaciones);
+}
+
+/* Temas del personaje */
+.perfil-editorial .perfil-contactos a[href^="/sta/"]::before {
+  -webkit-mask-image: var(--ak-icon-temas);
+  mask-image: var(--ak-icon-temas);
+}
+
+/* Mensajes del personaje */
+.perfil-editorial .perfil-contactos a[href^="/spa/"]::before {
+  -webkit-mask-image: var(--ak-icon-mensajes);
+  mask-image: var(--ak-icon-mensajes);
 }
