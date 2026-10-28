@@ -13,8 +13,8 @@
     transparent
   );
   --ak-topic-line: color-mix(in srgb, var(--ak-topic-gold) 82%, transparent);
-  --ak-topic-frame-round: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='57' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M60 1l4 4-4 4-4-4zM60 111l4 4-4 4-4-4z' fill='%23c7aa78'/%3E%3C/svg%3E");
-  --ak-topic-frame-arch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 280'%3E%3Cpath d='M8 272V92C8 45 44 8 90 8s82 37 82 84v180H8z' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Cpath d='M14 266V94c0-43 34-78 76-78s76 35 76 78v172H14z' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M172 136l6 6-6 6-6-6z' fill='%230d1a21' stroke='%23c7aa78' stroke-width='2'/%3E%3C/svg%3E");
+  --ak-topic-frame-round: url("https://images.vexels.com/media/users/3/152464/isolated/preview/a61eb8b2c0b1929bd3dbdb9fbfb4e83b-marco-dorado-brillante-circulo.png?w=360");
+  --ak-topic-frame-arch: url("https://i.imgur.com/XROASk4.png");
   width: 100%;
   margin: 0 auto 32px;
   color: var(--ak-topic-text);
