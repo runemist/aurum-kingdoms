@@ -7,14 +7,10 @@
   --ak-topic-gold: var(--ak-aurum, #c7aa78);
   --ak-topic-text: var(--ak-text, #e8e3d9);
   --ak-topic-muted: var(--ak-muted, #aeb4b5);
-  --ak-topic-panel: color-mix(
-    in srgb,
-    var(--ak-panel-deep, #0d1a21) 90%,
-    transparent
-  );
+  --ak-topic-panel: color-mix(in srgb, var(--ak-panel-deep, #0d1a21) 90%, transparent);
   --ak-topic-line: color-mix(in srgb, var(--ak-topic-gold) 82%, transparent);
-  --ak-topic-frame-round: url("https://images.vexels.com/media/users/3/152464/isolated/preview/a61eb8b2c0b1929bd3dbdb9fbfb4e83b-marco-dorado-brillante-circulo.png?w=360");
-  --ak-topic-frame-arch: url("https://i.imgur.com/XROASk4.png");
+  --ak-topic-frame-round: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='57' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M60 1l4 4-4 4-4-4zM60 111l4 4-4 4-4-4z' fill='%23c7aa78'/%3E%3C/svg%3E");
+  --ak-topic-frame-arch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 280'%3E%3Cpath d='M8 272V92C8 45 44 8 90 8s82 37 82 84v180H8z' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Cpath d='M14 266V94c0-43 34-78 76-78s76 35 76 78v172H14z' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M172 136l6 6-6 6-6-6z' fill='%230d1a21' stroke='%23c7aa78' stroke-width='2'/%3E%3C/svg%3E");
   width: 100%;
   margin: 0 auto 32px;
   color: var(--ak-topic-text);
@@ -37,6 +33,7 @@
 #main-content .ak-topics-section {
   margin: 0 0 58px;
 }
+
 #main-content .ak-topics-section:last-child {
   margin-bottom: 18px;
 }
@@ -49,14 +46,14 @@
   margin: 0 0 30px;
   color: var(--ak-topic-text);
   font: 400 clamp(17px, 1.65vw, 24px)/1.2 var(--ak-font-serif, Georgia, serif);
-  letter-spacing: 0.24em;
+  letter-spacing: .24em;
   text-align: center;
   text-transform: uppercase;
 }
 
 #main-content .ak-topics-heading::before,
 #main-content .ak-topics-heading::after {
-  content: "";
+  content: '';
   width: 8px;
   height: 8px;
   flex: 0 0 8px;
@@ -84,6 +81,7 @@
 }
 
 /* Neutralizar la estructura nativa de Foroactivo. */
+
 #main-content .ak-topics-board li.row {
   position: relative;
   float: none;
@@ -136,7 +134,7 @@
   display: block;
   color: var(--ak-topic-text);
   font: 400 17px/1.25 var(--ak-font-serif, Georgia, serif);
-  letter-spacing: 0.025em;
+  letter-spacing: .025em;
   text-decoration: none;
   overflow-wrap: anywhere;
 }
@@ -227,7 +225,7 @@
 }
 
 #main-content .ak-topics-board .ak-topic-crop:not(:has(img))::before {
-  content: "✦";
+  content: '✦';
   position: absolute;
   inset: 0;
   display: grid;
@@ -262,6 +260,8 @@
   width: 100%;
   max-width: 190px;
   height: 280px;
+  min-width: 145px;
+  min-height: 280px;
   align-self: center;
   justify-self: center;
 }
@@ -286,14 +286,14 @@
   margin: 0 0 14px;
   color: var(--ak-topic-gold);
   font: 10px/1.2 var(--ak-font-serif, Georgia, serif);
-  letter-spacing: 0.2em;
+  letter-spacing: .2em;
   text-transform: uppercase;
 }
 
 #main-content .ak-topic-grid--staff a.topictitle {
   font-size: clamp(19px, 1.7vw, 25px);
   line-height: 1.28;
-  letter-spacing: 0.055em;
+  letter-spacing: .055em;
   text-transform: uppercase;
 }
 
@@ -330,6 +330,8 @@
   grid-row: 1 / 4;
   width: 112px;
   height: 112px;
+  min-width: 112px;
+  min-height: 112px;
   align-self: center;
 }
 
@@ -397,7 +399,7 @@
 }
 
 #main-content .ak-topic-grid--community .posts::before {
-  content: "▢";
+  content: '▢';
   margin-right: 7px;
   color: var(--ak-topic-gold);
 }
@@ -413,7 +415,7 @@
 
 #main-content .ak-topics-board li.row.ak-cerrado {
   --ak-topic-gold: #777b7c;
-  filter: saturate(0.65);
+  filter: saturate(.65);
 }
 
 #main-content .ak-topics-board .ak-topic-select,
@@ -441,6 +443,7 @@
   #main-content .ak-topic-grid--staff {
     grid-template-columns: minmax(0, 1fr);
   }
+
   #main-content .ak-topic-grid--staff li.row {
     min-height: 300px;
   }
@@ -449,7 +452,7 @@
 @media (max-width: 620px) {
   #main-content .ak-topics-heading {
     gap: 14px;
-    letter-spacing: 0.16em;
+    letter-spacing: .16em;
   }
 
   #main-content .ak-topic-grid--community {
@@ -464,6 +467,8 @@
   #main-content .ak-topic-grid--staff .ak-topic-media {
     width: 126px;
     height: 210px;
+    min-width: 126px;
+    min-height: 210px;
   }
 
   #main-content .ak-topic-grid--staff .ak-topic-crop {
@@ -488,6 +493,8 @@
     grid-row: 1;
     width: 150px;
     height: 230px;
+    min-width: 150px;
+    min-height: 230px;
   }
 
   #main-content .ak-topic-grid--staff .dterm {
@@ -510,5 +517,7 @@
   #main-content .ak-topic-grid--community .ak-topic-media {
     width: 96px;
     height: 96px;
+    min-width: 96px;
+    min-height: 96px;
   }
 }
