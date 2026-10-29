@@ -336,65 +336,145 @@
   color: var(--ak-text);
 }
 
-/* Código, citas y spoilers: encabezado y contenido con jerarquía clara. */
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox {
+/* Código, citas y spoilers — diseño Archivo.
+   Conserva las clases y la apertura/cierre nativos de Foroactivo. */
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox,
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
   max-width: 100%;
-  margin: 16px 0;
+  margin: 24px 0;
   padding: 0;
-  border: 1px solid color-mix(in srgb, var(--ak-aurum) 36%, transparent);
-  border-left: 2px solid var(--ak-aurum);
-  background: #10191d;
-  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 42%, var(--ak-post-base, #20272d));
+  border-radius: 5px;
+  background: var(--ak-post-base, #20272d);
+  background-image: none;
+  color: var(--ak-text, #ded9cc);
+  text-align: left;
+  box-shadow: none;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dt {
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
   margin: 0;
-  padding: 8px 13px;
-  border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 23%, transparent);
-  color: var(--ak-aurum);
-  font:
-    600 11px/1.4 var(--ak-font-sans);
-  letter-spacing: 0.1em;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 4px 4px 0 0;
+  background: color-mix(in srgb, var(--ak-aurum, #b0a290) 12%, var(--ak-post-base, #20272d));
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.6 var(--ak-font-sans, Arial, sans-serif);
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox dd {
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dd {
   margin: 0;
-  padding: 12px 14px;
-  color: var(--ak-text);
+  padding: 16px 20px;
+  border: 0;
+  background: transparent;
+  color: inherit;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox code,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox pre {
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) > dd {
+  border-radius: 0 0 4px 4px;
+  background: color-mix(in srgb, var(--ak-post-base, #20272d) 88%, #000);
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) code,
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) pre {
   display: block;
   max-width: 100%;
+  max-height: 360px;
   margin: 0;
-  white-space: pre;
-  overflow-x: auto;
-  color: #d8c9ab;
-  font:
-    12px/1.6 ui-monospace,
-    SFMono-Regular,
-    Consolas,
-    monospace;
-}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dd {
-  background: rgba(0, 0, 0, 0.12);
-}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler dt {
-  cursor: pointer;
-}
-#main-content
-  .post[id^="p"]:not([id^="ptrafic"])
-  .content
-  .codebox.spoiler
-  input {
-  cursor: pointer;
-  border: 1px solid var(--ak-aurum);
-  background: #172429;
-  color: var(--ak-aurum);
-}
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
+  padding: 0;
   border: 0;
-  border-left: 2px solid var(--ak-aurum);
-  background: color-mix(in srgb, var(--ak-aurum) 6%, transparent);
+  background: transparent;
+  color: var(--ak-text, #ded9cc);
+  font: 13px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow: auto;
+  user-select: text;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ak-aurum, #b0a290) transparent;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .ak-select-all,
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .selectCode,
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt a[onclick*="selectCode"] {
+  display: inline-block;
+  float: none;
+  margin: 0 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 65%, transparent);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.5 var(--ak-font-sans, Arial, sans-serif);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .ak-select-all:hover,
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .selectCode:hover {
+  background: color-mix(in srgb, var(--ak-aurum, #b0a290) 12%, transparent);
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt {
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt::before {
+  content: "✦";
+  color: var(--ak-aurum, #b0a290);
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dd {
+  padding: 0 20px;
+  background: transparent;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler .spoiler_content {
+  margin: 0;
+  padding: 16px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
+  padding: 22px 20px 18px;
+  overflow: visible;
+  font: inherit;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote > cite {
+  position: relative;
+  display: table;
+  max-width: 100%;
+  margin: -36px 0 16px;
+  padding: 4px 12px;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 60%, transparent);
+  border-radius: 3px;
+  background: var(--ak-post-base, #20272d);
+  background-image: none;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.6 var(--ak-font-sans, Arial, sans-serif);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote > cite::before {
+  content: none;
 }
 
 /* Pantallas estrechas: conserva el avatar de 250 × 400. */
