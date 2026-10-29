@@ -676,3 +676,152 @@
 #main-content .post[id^="p"] {
   scroll-margin-top: 78px;
 }
+
+/* =========================================================
+   AJUSTES FINALES · INFORMACIÓN DE LOS TEMAS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   ÚLTIMO MENSAJE
+   --------------------------------------------------------- */
+
+#main-content .ak-topic-grid--community .lastpost {
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-self: stretch;
+  gap: 0;
+  margin-top: 8px;
+  padding: 0 !important;
+  text-align: left;
+}
+
+#main-content .ak-topics-board .ak-topic-last-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.45;
+}
+
+#main-content .ak-topics-board .ak-topic-last-label,
+#main-content .ak-topics-board .ak-topic-last-author {
+  display: inline-flex;
+  align-items: baseline;
+  float: none !important;
+  margin: 0;
+}
+
+#main-content .ak-topics-board .ak-topic-last-author {
+  gap: 5px;
+}
+
+#main-content .ak-topics-board .ak-topic-last-author *,
+#main-content .ak-topics-board .ak-topic-last-author a > * {
+  float: none !important;
+}
+
+
+/* Texto que funciona como enlace al último mensaje. */
+
+#main-content .ak-topics-board .ak-topic-last-target {
+  color: var(--ak-aurum, #c7aa78);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#main-content .ak-topics-board .ak-topic-last-target:hover {
+  color: var(--ak-aurum, #c7aa78);
+  text-decoration: underline;
+}
+
+
+/* La fecha ocupa una línea independiente. */
+
+#main-content .ak-topics-board .ak-topic-last-time {
+  display: block;
+  flex-basis: 100%;
+  margin-top: 2px;
+}
+
+
+/* ---------------------------------------------------------
+   CANTIDAD DE MENSAJES
+   --------------------------------------------------------- */
+
+#main-content .ak-topic-grid--community .posts {
+  display: flex;
+  grid-column: 2;
+  grid-row: 3;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: 5px;
+  width: max-content;
+  margin-top: 7px;
+  padding: 0 !important;
+  color: var(--ak-topic-muted);
+  text-align: right;
+}
+
+#main-content .ak-topic-grid--community .posts::before {
+  content: '▢';
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--ak-topic-gold);
+}
+
+#main-content .ak-topics-board .ak-topic-replies-number,
+#main-content .ak-topics-board .ak-topic-replies-label {
+  display: inline-block;
+  margin: 0;
+}
+
+
+/* ---------------------------------------------------------
+   TEMAS CERRADOS
+   --------------------------------------------------------- */
+
+#main-content .ak-topics-board li.row.ak-cerrado {
+  --ak-topic-gold: #7f8587;
+  border-color: #7f8587;
+  filter: none;
+}
+
+
+/* Convertir el marco dorado en un marco gris. */
+
+#main-content
+  .ak-topics-board
+  li.row.ak-cerrado
+  .ak-topic-frame {
+  filter:
+    grayscale(1)
+    saturate(0)
+    brightness(.78)
+    contrast(.9);
+
+  opacity: .9;
+}
+
+
+/* Convertir el avatar del último posteador a grises. */
+
+#main-content
+  .ak-topics-board
+  li.row.ak-cerrado
+  .ak-topic-crop
+  img {
+  filter:
+    grayscale(1)
+    saturate(0)
+    brightness(.72)
+    contrast(.92);
+}
