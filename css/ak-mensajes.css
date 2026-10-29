@@ -396,9 +396,10 @@
   text-align: left;
   text-transform: none;
   letter-spacing: normal;
-  white-space: pre;
-  overflow-wrap: normal;
-  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+  overflow-y: auto;
   user-select: text;
   scrollbar-width: thin;
   scrollbar-color: var(--ak-aurum, #b0a290) transparent;
