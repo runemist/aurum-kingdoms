@@ -259,7 +259,7 @@
    ========================================================= */
 
 #main-content .ak-topics-board ul.ak-topic-grid--staff > li.row {
-  min-height: 250px;
+  min-height: 200px;
   padding: 15px;
   border: 1px solid var(--ak-topic-gold);
   border-radius: 10px;
@@ -528,12 +528,6 @@
    TEMAS NORMALES CERRADOS
    Las notas y anuncios conservan el tratamiento dorado.
    ========================================================= */
-
-#main-content .ak-topics-board li.row.ak-normal.ak-cerrado {
-  --ak-topic-gold: #7f8587;
-  --ak-topic-line: #7f8587;
-  border-color: #7f8587;
-}
 
 #main-content .ak-topics-board
   li.row.ak-normal.ak-cerrado
