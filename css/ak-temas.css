@@ -176,8 +176,6 @@
 #main-content .ak-topics-board .span-tab strong,
 #main-content .ak-topics-board .span-tab a,
 #main-content .ak-topics-board .ak-topic-last-author a {
-  color: var(--ak-topic-gold);
-  -webkit-text-fill-color: var(--ak-topic-gold);
   font-weight: 600;
   text-decoration: none;
 }
