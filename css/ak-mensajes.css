@@ -438,8 +438,29 @@
 }
 
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dd {
-  padding: 0 20px;
+  display: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
   background: transparent;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler:has(.spoiler_content.hidden) > dd {
+  display: block;
+  padding: 0 20px;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt::after {
+  content: "+";
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 20px/1 Georgia, serif;
+}
+
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler:has(.spoiler_content.hidden) > dt::after {
+  content: "−";
 }
 
 #main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler .spoiler_content {
@@ -456,7 +477,7 @@
   font: inherit;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote > cite {
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote cite {
   position: relative;
   display: table;
   max-width: 100%;
@@ -473,7 +494,7 @@
   overflow-wrap: anywhere;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote > cite::before {
+#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote cite::before {
   content: none;
 }
 
