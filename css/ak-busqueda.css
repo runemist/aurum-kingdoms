@@ -76,3 +76,72 @@
  #main-content .ak-search-links { width: 100%; margin-left: 0; }
  #main-content .ak-search-body > .content { padding: 16px; }
 }
+/* Resultados: datos a la izquierda y mensaje a la derecha */
+#main-content .ak-search-post {
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 18px 24px;
+  align-items: start;
+}
+
+#main-content .ak-search-post > .ak-post-heading {
+  grid-column: 1 / -1;
+}
+
+#main-content .ak-search-post > .ak-search-meta {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  padding: 22px;
+}
+
+#main-content .ak-search-meta > span:not(.ak-search-status),
+#main-content .ak-search-meta > .ak-search-forum {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#main-content .ak-search-meta .ak-search-links {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  margin: 4px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(
+    in srgb,
+    var(--ak-aurum, #b0a290) 30%,
+    transparent
+  );
+}
+
+#main-content .ak-search-links .ak-copy-post,
+#main-content .ak-search-links .ak-search-go {
+  justify-content: center;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+#main-content .ak-search-post > .ak-search-body {
+  grid-column: 2;
+}
+
+#main-content .ak-search-meta .ak-search-manual-link {
+  flex-basis: auto;
+  min-width: 0;
+}
+
+/* En pantallas pequeñas, los datos quedan encima del mensaje */
+@media (max-width: 800px) {
+  #main-content .ak-search-post {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #main-content .ak-search-post > .ak-search-meta,
+  #main-content .ak-search-post > .ak-search-body {
+    grid-column: 1;
+  }
+}
