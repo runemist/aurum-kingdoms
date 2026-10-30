@@ -9,7 +9,7 @@
 .ak-mp.ak-mp-read .ak-read-meta > span { min-width: 0; overflow-wrap: anywhere; }
 .ak-mp.ak-mp-read [data-ak-read-action] { display: inline-flex; }
 .ak-mp.ak-mp-read [data-ak-read-action] a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--mp-gold); font-size: 12px; text-decoration: none; }
-.ak-mp.ak-mp-read [data-ak-read-action] img { max-width: 100%; }
+.ak-mp.ak-mp-read [data-ak-read-action] img { max-width: 20px; }
 .ak-mp.ak-mp-read [data-ak-read-action].is-enhanced img { display: none; }
 .ak-mp.ak-mp-read .ak-read-reply { flex-shrink: 0; }
 .ak-mp.ak-mp-read .ak-read-reply a { padding: 11px 19px; border: 1px solid var(--mp-gold); border-radius: 4px; background: var(--mp-gold); color: #20272d; font: 15px/1.4 var(--mp-heading-font); }
