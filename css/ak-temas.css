@@ -714,3 +714,11 @@
     min-height: 96px;
   }
 }
+
+/* Búsqueda de temas: mismas tarjetas, sin reordenar los resultados. */
+#main-content .ak-topics-board--search .ak-topics-section {
+  margin-bottom: 24px;
+}
+#main-content .ak-topics-board--search .ak-topic-search-forum {
+  font-weight: 400;
+}
