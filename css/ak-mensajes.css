@@ -45,7 +45,7 @@
 #main-content .post[id^="p"]:not([id^="ptrafic"]) > .inner > .clear { display: none; }
 /* Cabeceras: título centrado sobre todo el ancho, controles en otra fila. */
 #main-content > h1.page-title,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {
+:where(#main-content) .ak-post-heading {
   box-sizing: border-box;
   border: 1px solid color-mix(in srgb, var(--ak-heading-accent) 40%, transparent);
   border-radius: 8px;
@@ -65,7 +65,7 @@
   overflow-wrap: anywhere;
 }
 #main-content > h1.page-title a { color: inherit !important; text-decoration: none; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading {
+:where(#main-content) .ak-post-heading {
   --ak-heading-accent: var(--ak-aurum);
   grid-column: 1 / -1;
   grid-row: 1;
@@ -75,7 +75,7 @@
   margin: 0 -24px 22px;
   padding: 26px 24px 18px;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2.topic-title {
+:where(#main-content) .ak-post-heading h2.topic-title {
   grid-column: 1;
   grid-row: 1;
   float: none;
@@ -91,10 +91,10 @@
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 a,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 a * { color: inherit !important; text-decoration: none; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading h2 img { display: none; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author {
+:where(#main-content) .ak-post-heading h2 a,
+:where(#main-content) .ak-post-heading h2 a * { color: inherit !important; text-decoration: none; }
+:where(#main-content) .ak-post-heading h2 img { display: none; }
+:where(#main-content) .ak-post-heading .author {
   grid-column: 1;
   grid-row: 2;
   margin: 0;
@@ -105,9 +105,9 @@
   font: 12px/1.6 var(--ak-font-sans);
   text-align: center;
 }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author a { color: var(--ak-aurum); }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .author img { max-width: 13px; max-height: 13px; vertical-align: middle; }
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .ak-post-heading .profile-icons {
+:where(#main-content) .ak-post-heading .author a { color: var(--ak-aurum); }
+:where(#main-content) .ak-post-heading .author img { max-width: 13px; max-height: 13px; vertical-align: middle; }
+:where(#main-content) .ak-post-heading .profile-icons {
   grid-column: 1;
   grid-row: 3;
   display: flex;
@@ -338,8 +338,8 @@
 
 /* Código, citas y spoilers — diseño Archivo.
    Conserva las clases y la apertura/cierre nativos de Foroactivo. */
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
+:where(#main-content) dl.codebox,
+:where(#main-content) blockquote {
   max-width: 100%;
   margin: 24px 0;
   padding: 0;
@@ -352,7 +352,7 @@
   box-shadow: none;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt {
+:where(#main-content) dl.codebox > dt {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -369,7 +369,7 @@
   text-transform: uppercase;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dd {
+:where(#main-content) dl.codebox > dd {
   margin: 0;
   padding: 16px 20px;
   border: 0;
@@ -377,13 +377,13 @@
   color: inherit;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) > dd {
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) > dd {
   border-radius: 0 0 4px 4px;
   background: color-mix(in srgb, var(--ak-post-base, #20272d) 88%, #000);
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) code,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox:not(.spoiler):not(.hidecode) pre {
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) code,
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) pre {
   display: block;
   max-width: 100%;
   max-height: 360px;
@@ -405,9 +405,9 @@
   scrollbar-color: var(--ak-aurum, #b0a290) transparent;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .ak-select-all,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .selectCode,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt a[onclick*="selectCode"] {
+:where(#main-content) dl.codebox > dt .ak-select-all,
+:where(#main-content) dl.codebox > dt .selectCode,
+:where(#main-content) dl.codebox > dt a[onclick*="selectCode"] {
   display: inline-block;
   float: none;
   margin: 0 0 0 auto;
@@ -423,22 +423,22 @@
   cursor: pointer;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .ak-select-all:hover,
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox > dt .selectCode:hover {
+:where(#main-content) dl.codebox > dt .ak-select-all:hover,
+:where(#main-content) dl.codebox > dt .selectCode:hover {
   background: color-mix(in srgb, var(--ak-aurum, #b0a290) 12%, transparent);
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt {
+:where(#main-content) dl.codebox.spoiler > dt {
   justify-content: flex-start;
   cursor: pointer;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt::before {
+:where(#main-content) dl.codebox.spoiler > dt::before {
   content: "✦";
   color: var(--ak-aurum, #b0a290);
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dd {
+:where(#main-content) dl.codebox.spoiler > dd {
   display: none;
   min-height: 0;
   margin: 0;
@@ -447,12 +447,12 @@
   background: transparent;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler:has(.spoiler_content.hidden) > dd {
+:where(#main-content) dl.codebox.spoiler:has(.spoiler_content.hidden) > dd {
   display: block;
   padding: 0 20px;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler > dt::after {
+:where(#main-content) dl.codebox.spoiler > dt::after {
   content: "+";
   flex: 0 0 auto;
   margin-left: auto;
@@ -460,11 +460,11 @@
   font: 400 20px/1 Georgia, serif;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler:has(.spoiler_content.hidden) > dt::after {
+:where(#main-content) dl.codebox.spoiler:has(.spoiler_content.hidden) > dt::after {
   content: "−";
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content .codebox.spoiler .spoiler_content {
+:where(#main-content) dl.codebox.spoiler .spoiler_content {
   margin: 0;
   padding: 16px 0;
   border: 0;
@@ -472,13 +472,13 @@
   color: inherit;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote {
+:where(#main-content) blockquote {
   padding: 22px 20px 18px;
   overflow: visible;
   font: inherit;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote cite {
+:where(#main-content) blockquote cite {
   position: relative;
   display: table;
   max-width: 100%;
@@ -495,7 +495,7 @@
   overflow-wrap: anywhere;
 }
 
-#main-content .post[id^="p"]:not([id^="ptrafic"]) .content blockquote cite::before {
+:where(#main-content) blockquote cite::before {
   content: none;
 }
 
