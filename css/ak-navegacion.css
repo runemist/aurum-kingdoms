@@ -1,99 +1,99 @@
 /* NAVBAR · módulo de prueba */
 body.ak-nav-testing {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+  margin-top: 0;
+  padding-top: 0;
 }
 body.ak-nav-testing #page-header {
-  display: none !important;
+  display: none;
 }
 body.ak-nav-testing #wrap {
-  margin-top: 72px !important;
+  margin-top: 72px;
 }
 body.ak-nav-testing:has(#ak-hero) #wrap {
-  padding-top: 0 !important;
+  padding-top: 0;
 }
 body.ak-nav-testing:has(#ak-hero) #ak-hero {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 /* Ocultación inicial mientras se construye la navbar.
    Retirar esta regla si se desactiva el JS de la navbar. */
 body:not(.ak-nav-testing) #fa_toolbar,
 body:not(.ak-nav-testing) #page-header {
-  visibility: hidden !important;
+  visibility: hidden;
 }
 
 /* Barra nativa: conservar el funcionamiento de notificaciones. */
 body.ak-nav-testing #fa_toolbar {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
   pointer-events: none;
-  z-index: 10001 !important;
+  z-index: 10001;
 }
 body.ak-nav-testing #fa_toolbar #fa_left,
 body.ak-nav-testing #fa_toolbar #fa_search,
 body.ak-nav-testing #fa_toolbar #fa_share,
 body.ak-nav-testing #fa_toolbar #fa_menu,
 body.ak-nav-testing #fa_toolbar #fa_hide {
-  display: none !important;
+  display: none;
 }
 
 /* Botón de notificaciones */
 body.ak-nav-testing #fa_toolbar #fa_notifications {
-  position: fixed !important;
-  top: 34px !important;
-  right: 24px !important;
+  position: fixed;
+  top: 34px;
+  right: 24px;
   transform: translateY(-50%);
-  display: inline-flex !important;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  width: auto !important;
-  height: auto !important;
-  margin: 0 !important;
-  padding: 10px 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  color: var(--ak-text) !important;
-  font: 11px/1.5 var(--ak-font-subtitulos) !important;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 10px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ak-text);
+  font: 11px/1.5 var(--ak-font-subtitulos);
   letter-spacing: .12em;
   text-transform: uppercase;
-  text-decoration: none !important;
+  text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
 }
 body.ak-nav-testing #fa_toolbar #fa_notifications:hover {
-  color: var(--ak-aurum) !important;
+  color: var(--ak-aurum);
 }
 body.ak-nav-testing #notif_unread {
-  color: var(--ak-aurum) !important;
-  font: inherit !important;
+  color: var(--ak-aurum);
+  font: inherit;
 }
 
 /* Panel derecho: mismo espacio que Enlaces rápidos.
    El display lo controla Foroactivo al abrir y cerrar. */
 body.ak-nav-testing #fa_toolbar #notif_list {
-  position: fixed !important;
-  top: 72px !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: auto !important;
-  transform: none !important;
-  width: min(300px, 85vw) !important;
-  max-width: none !important;
-  height: auto !important;
-  max-height: none !important;
-  margin: 0 !important;
-  padding: 30px 25px !important;
+  position: fixed;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  transform: none;
+  width: min(300px, 85vw);
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 30px 25px;
   box-sizing: border-box;
   overflow: auto;
-  border: 1px solid var(--ak-aurum) !important;
-  border-radius: 0 !important;
-  background: rgba(12, 20, 25, .97) !important;
-  box-shadow: 0 15px 35px #0006 !important;
-  color: var(--ak-text) !important;
+  border: 1px solid var(--ak-aurum);
+  border-radius: 0;
+  background: rgba(12, 20, 25, .97);
+  box-shadow: 0 15px 35px #0006;
+  color: var(--ak-text);
   pointer-events: auto;
 }
 body.ak-nav-testing #notif_list::before {
@@ -104,25 +104,25 @@ body.ak-nav-testing #notif_list::before {
   font: 24px/1.3 var(--ak-font-subtitulos);
 }
 body.ak-nav-testing #fa_toolbar #notif_list li {
-  margin: 0 !important;
-  padding: 13px 0 !important;
-  border: 0 !important;
-  border-bottom: 1px solid #ffffff12 !important;
-  background: transparent !important;
-  color: var(--ak-text) !important;
+  margin: 0;
+  padding: 13px 0;
+  border: 0;
+  border-bottom: 1px solid #ffffff12;
+  background: transparent;
+  color: var(--ak-text);
   font: 12px/1.6 var(--ak-font-subtitulos);
 }
 body.ak-nav-testing #fa_toolbar #notif_list li a {
-  color: var(--ak-text) !important;
-  text-decoration: none !important;
+  color: var(--ak-text);
+  text-decoration: none;
 }
 body.ak-nav-testing #fa_toolbar #notif_list li a:hover {
-  color: var(--ak-aurum) !important;
+  color: var(--ak-aurum);
 }
 @media (max-width: 760px) {
   body.ak-nav-testing #fa_toolbar #fa_notifications {
-    right: 12px !important;
-    font-size: 10px !important;
+    right: 12px;
+    font-size: 10px;
     letter-spacing: .05em;
   }
 }
@@ -277,8 +277,8 @@ body.ak-actions-ready #main-content .topic-actions .pagination a {
 }
 
 i.ti {
-  font-family: var(--ak-font-icons) !important;
-  font-style: normal !important;
+  font-family: var(--ak-font-icons);
+  font-style: normal;
 }
 .ti-home:before {
   content: "...";
@@ -286,55 +286,55 @@ i.ti {
 
 /* Acceso de invitados */
 body.ak-nav-testing #fa_toolbar #fa_right:has(a[href$="/login"]) {
-  position: fixed !important;
-  top: 0 !important;
-  right: 24px !important;
-  height: 70px !important;
-  width: 212px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 24px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  float: none !important;
+  position: fixed;
+  top: 0;
+  right: 24px;
+  height: 70px;
+  width: 212px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  float: none;
 }
 
 body.ak-nav-testing #fa_toolbar #fa_right a[href$="/login"],
 body.ak-nav-testing #fa_toolbar #fa_right a[href$="/register"] {
-  display: inline-flex !important;
-  align-items: center !important;
-  position: static !important;
-  transform: none !important;
-  pointer-events: auto !important;
-  margin: 0 !important;
-  padding: 10px 0 !important;
+  display: inline-flex;
+  align-items: center;
+  position: static;
+  transform: none;
+  pointer-events: auto;
+  margin: 0;
+  padding: 10px 0;
   white-space: nowrap;
-  font: 11px/1.5 var(--ak-font-subtitulos) !important;
+  font: 11px/1.5 var(--ak-font-subtitulos);
   letter-spacing: .12em;
   text-transform: uppercase;
-  text-decoration: none !important;
-  color: var(--ak-text) !important;
+  text-decoration: none;
+  color: var(--ak-text);
 }
 
 body.ak-nav-testing #fa_toolbar #fa_right a[href$="/login"]:hover,
 body.ak-nav-testing #fa_toolbar #fa_right a[href$="/register"]:hover {
-  color: var(--ak-aurum) !important;
+  color: var(--ak-aurum);
 }
 
 /* Reserva el espacio de acceso sin sumar el padding anterior */
 body.ak-nav-testing:has(#fa_right a[href$="/login"])
 #ak-nav-test .ak-nav-actions {
-  padding-right: 0 !important;
-  margin-right: 236px !important;
+  padding-right: 0;
+  margin-right: 236px;
 }
 
 /* Reglas antes generadas por JavaScript; precedencia conservada. */
-body.ak-nav-testing{padding-top:0!important;}
-.ak-nav-testing #page-header{display:none!important;}
-.ak-nav-testing #wrap{margin-top:72px!important;}
-.ak-nav-testing:has(#ak-hero) #wrap{padding-top:0!important;}
-.ak-nav-testing:has(#ak-hero) #ak-hero{margin-top:-4px!important;}
+body.ak-nav-testing{padding-top:;}
+.ak-nav-testing #page-header{display:non;}
+.ak-nav-testing #wrap{margin-top:72p;}
+.ak-nav-testing:has(#ak-hero) #wrap{padding-top:;}
+.ak-nav-testing:has(#ak-hero) #ak-hero{margin-top:-4p;}
 #ak-nav-test{position:fixed;inset:0 0 auto;height:72px;z-index:10000;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 24px;background:#10191ef5;border-bottom:1px solid var(--ak-aurum);color:var(--ak-text,#e6ddce);box-sizing:border-box;}
 #ak-nav-test button,#ak-nav-test a,.ak-nav-drawer a{font:11px/1.5 var(--ak-font-subtitulos);letter-spacing:.12em;text-transform:uppercase;color:var(--ak-text,#e6ddce);text-decoration:none;}
 #ak-nav-test button{background:none;border:0;cursor:pointer;padding:10px;color:inherit;}
@@ -345,16 +345,16 @@ body.ak-nav-testing{padding-top:0!important;}
 .ak-nav-center,.ak-nav-actions{display:flex;align-items:center;gap:24px;}
 .ak-nav-actions{padding-right:112px;}
 .ak-nav-drawer{position:fixed;top:72px;bottom:0;width:min(300px,85vw);z-index:9999;overflow:auto;padding:30px 25px;box-sizing:border-box;background:#0c1419f7;border:1px solid var(--ak-aurum);color:var(--ak-text,#e6ddce);box-shadow:0 15px 35px #0006;}
-.ak-nav-drawer[hidden]{display:none!important;}
+.ak-nav-drawer[hidden]{display:non;}
 #ak-nav-personal{left:0;}#ak-nav-quick{right:0;}
 .ak-nav-drawer h2{font:24px var(--ak-font-titulos);color:var(--ak-aurum);margin:0 0 25px;}
 .ak-nav-drawer h3{font:11px var(--ak-font-titulos);letter-spacing:.2em;text-transform:uppercase;color:var(--ak-aurum);margin:27px 0 8px;}
 .ak-nav-drawer a{display:block;padding:13px 0;border-bottom:1px solid #ffffff12;}
 .ak-nav-drawer img{display:block;width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 22px;border:1px solid var(--ak-aurum);}
-.ak-nav-testing #fa_toolbar{background:transparent!important;border:0!important;box-shadow:none!important;pointer-events:none;z-index:10001!important;}
-.ak-nav-testing #fa_left,.ak-nav-testing #fa_search,.ak-nav-testing #fa_share,.ak-nav-testing #fa_menu,.ak-nav-testing #fa_hide{display:none!important;}
-.ak-nav-testing #fa_notifications{position:fixed!important;right:24px;top:24px;pointer-events:auto;font:11px/1.5 var(--ak-font-subtitulos);color:var(--ak-text)!important;}
-.ak-nav-testing #notif_list{position:fixed!important;top:72px!important;right:20px!important;pointer-events:auto;max-width:calc(100vw - 40px);max-height:70vh;overflow:auto;background:#10191e!important;}
+.ak-nav-testing #fa_toolbar{background:transparen;border:;box-shadow:non;pointer-events:none;z-index:1000;}
+.ak-nav-testing #fa_left,.ak-nav-testing #fa_search,.ak-nav-testing #fa_share,.ak-nav-testing #fa_menu,.ak-nav-testing #fa_hide{display:non;}
+.ak-nav-testing #fa_notifications{position:fixe;right:24px;top:24px;pointer-events:auto;font:11px/1.5 var(--ak-font-subtitulos);color:var(--ak-text;}
+.ak-nav-testing #notif_list{position:fixe;top:72p;right:20p;pointer-events:auto;max-width:calc(100vw - 40px);max-height:70vh;overflow:auto;background:#10191;}
 @media(max-width:760px){#ak-nav-test{padding:0 12px;gap:5px;}.ak-nav-center{display:none;}.ak-nav-user{gap:7px;}.ak-nav-user strong{max-width:110px;font-size:14px;}.ak-nav-actions{gap:0;padding-right:100px;}.ak-nav-actions>a{display:none;}.ak-nav-testing #fa_notifications{right:12px;font-size:10px;}}
 
 /* AURUM · Nombre de usuario enlazado en la navbar. */
