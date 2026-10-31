@@ -188,10 +188,8 @@ body:has(#ak-hero) #ak-hero {
 }
 .ak-search-card-link { display: grid; grid-template-rows: minmax(0, 1fr) 3.4em; min-height: 0; min-width: 0; color: var(--ak-text); text-decoration: none; font: 15px/1.4 var(--ak-font-titulos); }
 .ak-search-card-media { position: relative; display: grid; place-items: center; min-height: 0; overflow: hidden; color: var(--ak-aurum); background: color-mix(in srgb, var(--ak-aurum) 8%, var(--ak-panel-deep)); background-position: center; background-size: cover; }
-.ak-search-card-media > i { font-size: 30px; }
 .ak-search-card-media > img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .2s; }
 .ak-search-card-media.has-image > img { opacity: 1; }
-.ak-search-card-media.has-forum-image > i { padding: 8px; background: var(--ak-panel-deep); border: 1px solid var(--ak-aurum); font-size: 22px; }
 .ak-search-card-title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; align-self: center; padding: 3px 10px; overflow-wrap: anywhere; }
 .ak-search-card > .ak-topic-author { display: block; margin: 0; padding: 0 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--ak-muted); text-decoration: none; font: 10px/1.5 var(--ak-font-nombres); }
 .ak-search-card-link:hover .ak-search-card-title { color: var(--ak-aurum); }
