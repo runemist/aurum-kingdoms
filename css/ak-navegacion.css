@@ -29,7 +29,7 @@ body.ak-nav-testing #fa_toolbar {
   border: 0;
   box-shadow: none;
   pointer-events: none;
-  z-index: 10001;
+  z-index: 0;
 }
 body.ak-nav-testing #fa_toolbar #fa_left,
 body.ak-nav-testing #fa_toolbar #fa_search,
