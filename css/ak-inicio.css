@@ -213,3 +213,21 @@ a.ak-award-winner:focus-visible { outline: 1px solid var(--ak-aurum); outline-of
   .ak-news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 480px) { .ak-updates-grid, .ak-news-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Banner a todo el ancho, tablón con el ancho interior original de #wrap.
+   El JS mueve #ak-hero antes de #wrap para evitar el recorte de sus padres. */
+body:has(#ak-hero[data-ak-full-width]) #wrap {
+  margin-top: 0;
+}
+body:has(#ak-hero) #ak-hero[data-ak-full-width] {
+  width: 100%;
+  max-width: none;
+  margin: 62px 0 0;
+}
+#ak-hero[data-ak-full-width] .ak-board,
+#ak-hero[data-ak-full-width] .ak-hero-head {
+  width: min(100%, var(--ak-board-content-width, 100%));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
