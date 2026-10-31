@@ -16,10 +16,9 @@
   padding: 19px clamp(16px, 3vw, 56px);
   border-top: 1px solid var(--ak-aurum);
   background-color: var(--ak-post-papel, #172127);
-  background-image: var(--ak-post-textura);
-  background-size: 30%;
-  background-position: center;
-  background-repeat: repeat;
+  background-image: url("https://i.imgur.com/1ocjsF8.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
   color: var(--ak-text);
   font: 13px/1.6 var(--ak-font-texto);
 }
