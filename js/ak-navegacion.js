@@ -87,7 +87,7 @@
     function entry(parent, label, href, glyph) {
       const url = safeURL(href); if (!url) return null;
       const a = document.createElement('a'); a.href = url;
-      if (glyph) a.append(icon(glyph));
+      if (glyph && !parent.classList.contains('ak-nav-personal-links')) a.append(icon(glyph));
       const text = document.createElement('span'); text.textContent = label; a.append(text);
       parent.append(a); return a;
     }
@@ -180,13 +180,20 @@
     quickButton.addEventListener('click', () => setPanel(opened === 'quick' ? '' : 'quick', true));
     notificationButton?.addEventListener('click', () => {
       if (opened === 'notifications') { setPanel(''); return; }
-      // El botón original conserva la carga y los eventos de Foroactivo.
-      document.getElementById('fa_notifications')?.click();
+      // La apertura es nuestra; no alternar el botón oculto ni provocar
+      // el marcado automático de lectura que hace la toolbar al cerrarse.
+      const api = window.FA?.Notification;
+      if (api && typeof api.register === 'function' &&
+          (typeof api.registered !== 'function' || !api.registered())) api.register();
+      document.getElementById('fa_right')?.classList.remove('notification');
       setPanel('notifications');
+      syncNative();
     });
     document.addEventListener('click', event => {
       const target = event.target;
       if (!(target instanceof Element)) return;
+      const mark = target.closest('[data-ak-mark-notifications]');
+      if (mark) { event.preventDefault(); markAllNotifications(mark); return; }
       if (!target.closest('#ak-nav-test, #ak-nav-personal, #ak-nav-quick, #notif_list, #ak-nav-notice')) setPanel('');
     });
     document.addEventListener('keydown', event => {
@@ -196,6 +203,69 @@
     });
     document.body.append(nav, personal, quick, notificationFallback);
     document.body.classList.add('ak-nav-testing');
+
+    let marking = false, markTimeout;
+    function nativeUnreadCount() {
+      const stored = window._toolbar?.notifications?.unread;
+      if (typeof stored === 'number' && Number.isFinite(stored)) return Math.max(0, stored);
+      const digits = (document.getElementById('notif_unread')?.textContent || '').match(/\d+/);
+      return digits ? Number(digits[0]) : 0;
+    }
+    function enhanceNotifications(list) {
+      if (!list) return;
+      if (list.getAttribute('aria-label') !== 'Notificaciones') list.setAttribute('aria-label', 'Notificaciones');
+      list.querySelectorAll('.contentText').forEach(node => {
+        if (node.dataset.akExpanded) return;
+        // Restaurar el contenido si el truncador nativo ya lo había acortado.
+        if (window.jQuery?.fn?.dotdotdot) window.jQuery(node).trigger('destroy');
+        node.classList.remove('ellipsis');
+        node.dataset.akExpanded = 'true';
+      });
+      list.querySelectorAll('a.delete').forEach(link => {
+        if (!link.hasAttribute('aria-label')) link.setAttribute('aria-label', 'Eliminar esta notificación');
+      });
+      const seeAll = list.querySelector('li.see_all');
+      if (!seeAll) return;
+      let row = list.querySelector('.ak-notif-mark');
+      if (!row) {
+        row = document.createElement('li'); row.className = 'ak-notif-mark';
+        const button = document.createElement('button'); button.type = 'button';
+        button.dataset.akMarkNotifications = 'true';
+        button.textContent = 'Marcar todas como leídas';
+        row.append(button); list.insertBefore(row, seeAll);
+      }
+      // No envolver ni reordenar los avisos: la toolbar usa sus índices.
+      if (list.lastElementChild !== seeAll) list.append(seeAll);
+      if (row.nextElementSibling !== seeAll) list.insertBefore(row, seeAll);
+      const button = row.querySelector('button');
+      const available = typeof window.FA?.Notification?.markAsRead === 'function';
+      button.disabled = marking || !available || nativeUnreadCount() === 0;
+      button.title = available ? '' : 'La función nativa de lectura no está disponible';
+    }
+    function markAllNotifications(button) {
+      const api = window.FA?.Notification;
+      if (marking || button.disabled || typeof api?.markAsRead !== 'function') return;
+      marking = true; button.disabled = true;
+      button.textContent = 'Marcando…';
+      try {
+        api.markAsRead();
+        // Solo la respuesta nativa actualiza el contador; no fingir éxito.
+        markTimeout = window.setTimeout(() => {
+          marking = false;
+          const current = document.querySelector('[data-ak-mark-notifications]');
+          if (current) {
+            current.textContent = 'Marcar todas como leídas';
+            current.title = nativeUnreadCount() ? 'No se confirmó la lectura. Puedes volver a intentarlo.' : '';
+            current.disabled = nativeUnreadCount() === 0;
+          }
+        }, 8000);
+        syncNative();
+      } catch (_) {
+        marking = false; button.disabled = false;
+        button.textContent = 'Marcar todas como leídas';
+        button.title = 'No se pudo completar la acción. Vuelve a intentarlo.';
+      }
+    }
 
     function syncNative() {
       const next = readUser();
@@ -212,24 +282,28 @@
         }
       }
       if (notificationButton) {
-        const native = document.getElementById('notif_unread');
-        // _userdata.notifications indica activación, no cantidad: no utilizarlo.
-        const digits = (native?.textContent || '').match(/\d+/);
-        countState(notificationButton, notificationBadge, 'Notificaciones', digits ? Number(digits[0]) : 0);
+        const count = nativeUnreadCount();
+        countState(notificationButton, notificationBadge, 'Notificaciones', count);
+        if (marking && count === 0) {
+          marking = false; window.clearTimeout(markTimeout);
+          const button = document.querySelector('[data-ak-mark-notifications]');
+          if (button && button.textContent !== 'Marcar todas como leídas') button.textContent = 'Marcar todas como leídas';
+        }
       }
       const nativeList = document.getElementById('notif_list');
-      if (nativeList && nativeList.getAttribute('aria-label') !== 'Notificaciones') nativeList.setAttribute('aria-label', 'Notificaciones');
+      enhanceNotifications(nativeList);
       const hideFallback = opened !== 'notifications' || !!nativeList;
       if (notificationFallback.hidden !== hideFallback) notificationFallback.hidden = hideFallback;
     }
     let scheduled = false;
-    const observer = new MutationObserver(() => {
+    const observer = new MutationObserver(records => {
+      if (!records.some(record => record.type !== 'attributes' || record.attributeName !== 'class' || record.target.id === 'fa_notifications')) return;
       if (scheduled) return;
       scheduled = true;
       window.setTimeout(() => { scheduled = false; syncNative(); }, 40);
     });
     observer.observe(document.body, { childList: true, subtree: true, characterData: true,
-      attributes: true, attributeFilter: ['src', 'href'] });
+      attributes: true, attributeFilter: ['src', 'href', 'class'] });
     syncNative();
 
     let busy = false, lastCheck = 0;
