@@ -1,4 +1,4 @@
-/* AURUM · Edición de perfil, Archivo personal.
+/* AURUM - Edición de perfil, Archivo personal.
    Añade presentación al formulario original, sin reconstruir sus controles. */
 (function () {
   'use strict';
