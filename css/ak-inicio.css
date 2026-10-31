@@ -4,9 +4,12 @@ body:has(#ak-hero) #ak-hero {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   min-height: 680px;
-  margin-left: calc(50% - 50vw);
+  margin-left: 0;
   padding: 50px 0 28px;
   background: url(https://2img.net/i.imgur.com/yswBoAE.png);
   background-size: cover;
