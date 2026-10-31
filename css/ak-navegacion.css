@@ -105,11 +105,11 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
 #ak-nav-test .ak-nav-mini-avatar {
   display: block;
   flex-shrink: 0;
-  width: 25px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   margin: 0;
   border: 1px solid var(--ak-aurum);
-  border-radius: 14px 14px 0 0;
+  border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
 }
@@ -167,12 +167,14 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
   align-items: center;
   gap: 10px;
   padding: 10px 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 15%, transparent);
+  border: 0;
   color: var(--ak-text);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .08em;
   font: 12px/1.5 var(--ak-font-subtitulos);
 }
-.ak-nav-personal-links .ti { color: var(--ak-aurum); font-size: 19px; }
+
 .ak-nav-personal-links a:hover { color: var(--ak-aurum); }
 /* Enlaces rápidos: franja de ancho completo, editable en el JS. */
 #ak-nav-quick { left: 0; right: 0; width: 100%; padding: 20px 28px; }
@@ -199,12 +201,12 @@ body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list * {
   visibility: visible !important;
 }
 /* Estas dos prioridades solo arbitran el display inline del panel nativo. */
-body.ak-nav-testing #notif_list { display: none !important; }
-body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list { display: block !important; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) { display: none !important; }
+body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list { display: flex !important; flex-direction: column; }
 body.ak-nav-testing #fa_toolbar #fa_right #notif_list,
 body.ak-nav-testing #fa_toolbar #notif_list,
 body.ak-nav-testing #fa_right #notif_list,
-body.ak-nav-testing #notif_list,
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list),
 #ak-nav-notice {
   position: fixed;
   top: var(--ak-nav-height);
@@ -230,10 +232,124 @@ body.ak-nav-testing #notif_list,
   scrollbar-width: thin;
   scrollbar-color: var(--ak-aurum) transparent;
 }
-body.ak-nav-testing #notif_list::before { content: 'Notificaciones'; display: block; margin-bottom: 14px; color: var(--ak-aurum); text-transform: uppercase; font: 17px/1.4 var(--ak-font-titulos); }
-body.ak-nav-testing #notif_list li { margin: 0; padding: 12px 0; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 15%, transparent); background: transparent; color: var(--ak-text); font: 12px/1.6 var(--ak-font-subtitulos); }
-body.ak-nav-testing #notif_list a { color: var(--ak-text); text-decoration: none; }
-body.ak-nav-testing #notif_list a:hover { color: var(--ak-aurum); }
+/* La toolbar recalcula left en línea al refrescar o redimensionar. */
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) {
+  left: auto !important;
+  right: 0 !important;
+  top: var(--ak-nav-height) !important;
+  bottom: 0 !important;
+  transform: none !important;
+  z-index: 10001;
+  list-style: none;
+  text-align: left;
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list)::before {
+  content: 'Notificaciones';
+  position: static;
+  width: auto;
+  height: auto;
+  border: 0;
+  background: none;
+  transform: none;
+  order: 0;
+  display: block;
+  flex-shrink: 0;
+  margin-bottom: 14px;
+  color: var(--ak-aurum);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font: 17px/1.4 var(--ak-font-titulos);
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) > li {
+  order: 1;
+  flex-shrink: 0;
+  width: auto;
+  margin: 0;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 15%, transparent);
+  background: transparent;
+  color: var(--ak-text);
+  list-style: none;
+  text-align: left;
+  font: 12px/1.6 var(--ak-font-texto);
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .content { position: relative; margin: 0; padding: 0 24px 0 0; background: transparent; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .content hr { display: none; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .contentText {
+  width: auto;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  color: var(--ak-text);
+  font: 12px/1.6 var(--ak-font-texto);
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .contentText a { color: var(--ak-aurum); text-decoration: none; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .contentText a:hover { text-decoration: underline; }
+/* Los span coloreados por Foroactivo conservan su color inline de grupo. */
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .contentTime {
+  margin: 7px 0 0;
+  padding: 0;
+  color: var(--ak-muted);
+  font: 10px/1.4 var(--ak-font-subtitulos);
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  background: none;
+  color: var(--ak-muted);
+  text-decoration: none;
+  font: 18px/1 var(--ak-font-texto);
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .delete::before { content: '×'; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .delete:hover { color: var(--ak-aurum); }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) > .ak-notif-mark {
+  order: 2;
+  margin-top: auto;
+  padding: 20px 0 8px;
+  border: 0;
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) > .see_all {
+  order: 3;
+  padding: 0;
+  border: 0;
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button,
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum) 45%, transparent);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--ak-aurum) 7%, transparent);
+  color: var(--ak-aurum);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font: 10px/1.5 var(--ak-font-subtitulos);
+  cursor: pointer;
+}
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button:hover,
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a:hover { background: color-mix(in srgb, var(--ak-aurum) 15%, transparent); }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button:disabled { opacity: .5; cursor: default; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) a:focus-visible,
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) button:focus-visible { outline: 1px solid var(--ak-aurum); outline-offset: 2px; }
 /* Ruta contextual y estilos de acciones de publicación conservados. */
 #ak-nav-test .ak-nav-middle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 0; }
 #ak-nav-test .ak-nav-route { display: flex; align-items: center; gap: 7px; max-width: 300px; min-width: 0; }
@@ -262,6 +378,7 @@ body.ak-nav-testing #notif_list a:hover { color: var(--ak-aurum); }
   #ak-nav-test .ak-nav-icon { width: 30px; height: 34px; }
   #ak-nav-test .ak-nav-icon > .ti { font-size: 21px; }
   #ak-nav-test .ak-nav-profile strong { max-width: 45px; font-size: 10px; }
+  #ak-nav-test .ak-nav-mini-avatar { width: 28px; height: 28px; }
   #ak-nav-test .ak-nav-route { display: none; }
   #ak-nav-quick { padding: 16px; }
   .ak-nav-quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -350,3 +467,9 @@ body.ak-actions-ready #main-content .topic-actions .pagination a {
   text-decoration: none;
 }
 
+
+/* Eliminar la flecha decorativa original del panel nativo. */
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list)::after {
+  content: none;
+  display: none;
+}
