@@ -1,9 +1,14 @@
-/* AURUM · Editar perfil · Archivo personal */
+/* AURUM · Editar perfil · Archivo personal compacto */
+/* Comenzar justo debajo de la navbar, solo en edición de perfil. */
+body.ak-profile-editing #wrap { margin-top: var(--ak-nav-height, 72px); padding-top: 0; }
+body.ak-profile-editing.ak-nav-testing:not(:has(#ak-hero)) #wrap { padding-top: 0; }
+body.ak-profile-editing #page-body,
+body.ak-profile-editing #main-content { margin-top: 0; padding-top: 0; }
 .ak-edit-layout {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
@@ -13,8 +18,8 @@
 .ak-edit-layout *, .ak-edit-layout *::before, .ak-edit-layout *::after { box-sizing: border-box; }
 .ak-edit-content { min-width: 0; }
 .ak-edit-layout .ak-edit-title {
-  margin: 0 0 24px;
-  padding: 0 0 16px;
+  margin: 0 0 14px;
+  padding: 12px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 45%, transparent);
   color: var(--ak-text);
   text-transform: uppercase;
@@ -22,28 +27,31 @@
 }
 /* Menú nativo: se conservan sus enlaces y la pestaña activa. */
 .ak-edit-layout #tabs {
-  position: sticky;
-  top: calc(var(--ak-nav-height, 72px) + 16px);
+  position: static;
+  align-self: stretch;
+  height: auto;
   float: none;
   width: auto;
   min-width: 0;
-  max-height: calc(100dvh - var(--ak-nav-height, 72px) - 32px);
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
   margin: 0;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid color-mix(in srgb, var(--ak-aurum) 30%, transparent);
   border-radius: 5px;
   background: var(--ak-post-base, #0c1419);
   scrollbar-width: thin;
   scrollbar-color: var(--ak-aurum) transparent;
 }
-.ak-edit-layout #tabs ul { display: flex; flex-direction: column; gap: 3px; margin: 0; padding: 0; list-style: none; }
+.ak-edit-layout #tabs ul { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
 .ak-edit-layout #tabs li { float: none; display: block; width: 100%; margin: 0; padding: 0; border: 0; background: none; }
 .ak-edit-layout #tabs a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   float: none;
   margin: 0;
-  padding: 11px 12px;
+  padding: 8px 10px;
   border: 1px solid transparent;
   border-radius: 3px;
   background: transparent;
@@ -51,6 +59,7 @@
   text-decoration: none;
   font: 12px/1.5 var(--ak-font-subtitulos);
 }
+.ak-edit-layout #tabs .ak-edit-tab-icon { flex-shrink: 0; color: var(--ak-aurum); font: normal 18px/1 var(--ak-font-icons, 'tabler-icons'); }
 .ak-edit-layout #tabs a span { display: inline; float: none; margin: 0; padding: 0; background: none; color: inherit; }
 .ak-edit-layout #tabs .activetab a,
 .ak-edit-layout #tabs a:hover {
@@ -72,7 +81,7 @@
 /* Categorías con controles editables o acciones nativas. */
 .ak-edit-layout .ak-edit-category {
   min-width: 0;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   border: 1px solid color-mix(in srgb, var(--ak-aurum) 30%, transparent);
   border-radius: 5px;
   background: var(--ak-post-papel, #172127);
@@ -82,7 +91,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 18px;
+  padding: 10px 16px;
   color: var(--ak-aurum);
   list-style: none;
   cursor: pointer;
@@ -105,25 +114,29 @@
   width: auto;
   min-width: 0;
   margin: 0 0 14px;
-  padding: 18px;
-  border: 1px solid color-mix(in srgb, var(--ak-aurum) 25%, transparent);
-  border-radius: 4px;
-  background: var(--ak-post-papel, #172127);
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--ak-text);
 }
-.ak-edit-layout #cp-main .ak-edit-category > .panel { margin: 0; border: 0; border-radius: 0; background: transparent; }
+.ak-edit-layout #cp-main .ak-edit-group-body { padding: 10px 16px; }
+.ak-edit-layout #cp-main .ak-edit-group-body .panel { margin: 0; padding: 0; border: 0; background: transparent; }
+.ak-edit-layout #cp-main .ak-edit-group-body .panel + .panel { margin-top: 12px; }
 .ak-edit-layout #cp-main .panel > .inner { min-width: 0; margin: 0; padding: 0; background: transparent; }
+.ak-edit-layout #cp-main .page-title { margin: 0 0 12px; padding: 8px 0; border: 0; background: transparent; color: var(--ak-aurum); font: 20px/1.4 var(--ak-font-titulos); }
+.ak-edit-layout #cp-main form { margin: 0; padding: 0; min-height: 0; }
 .ak-edit-layout fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 .ak-edit-layout fieldset > dl {
   display: grid;
   grid-template-columns: minmax(130px, 25%) minmax(0, 1fr);
-  gap: 18px;
+  gap: 14px;
   align-items: start;
   margin: 0;
-  padding: 12px 0;
+  padding: 5px 0;
   border: 0;
 }
-.ak-edit-layout fieldset > dl > dt { float: none; width: auto; margin: 0; padding: 9px 0 0; color: var(--ak-text); font: 13px/1.5 var(--ak-font-subtitulos); }
+.ak-edit-layout fieldset > dl > dt { float: none; width: auto; margin: 0; padding: 6px 0 0; color: var(--ak-text); font: 13px/1.5 var(--ak-font-subtitulos); }
 .ak-edit-layout fieldset > dl > dd { float: none; width: auto; min-width: 0; margin: 0; padding: 0; color: var(--ak-text); }
 .ak-edit-layout input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
 .ak-edit-layout textarea,
@@ -131,25 +144,27 @@
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  min-height: 36px;
-  padding: 8px 10px;
+  min-height: 32px;
+  padding: 6px 9px;
   border: 1px solid color-mix(in srgb, var(--ak-aurum) 30%, transparent);
   border-radius: 3px;
   background: var(--ak-post-base, #0c1419);
   color: var(--ak-text);
   font: 13px/1.5 var(--ak-font-texto);
 }
-.ak-edit-layout textarea { min-height: 120px; resize: vertical; }
+.ak-edit-layout textarea { min-height: 88px; resize: vertical; }
 .ak-edit-layout select { width: auto; margin: 3px 4px 3px 0; }
 .ak-edit-layout input.ak-edit-short:not([type="hidden"]) { width: 6em; }
 .ak-edit-layout input[type="checkbox"], .ak-edit-layout input[type="radio"] { accent-color: var(--ak-aurum); }
 .ak-edit-layout input:focus, .ak-edit-layout select:focus, .ak-edit-layout textarea:focus { outline: 1px solid var(--ak-aurum); outline-offset: 2px; }
-.ak-edit-layout .italic { display: inline-block; margin-top: 6px; color: var(--ak-muted); font: 11px/1.5 var(--ak-font-texto); }
+.ak-edit-layout .italic { display: block; margin-top: 3px; color: var(--ak-muted); font: 11px/1.5 var(--ak-font-texto); }
 .ak-edit-layout .italic:empty { display: none; }
+/* Quitar el salto de línea nativo antes de las ayudas; conservar los de campos de imagen. */
+.ak-edit-layout fieldset > dl > dd > br:has(+ .italic) { display: none; }
 .ak-edit-layout a { color: var(--ak-aurum); }
 .ak-edit-layout .profile_field_list { margin: 0; padding: 0; list-style: none; }
 .ak-edit-layout .profile_field_list li { display: block; margin: 6px 0; }
-.ak-edit-layout .submit-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin: 22px 0; padding: 18px 0 0; border-top: 1px solid color-mix(in srgb, var(--ak-aurum) 30%, transparent); }
+.ak-edit-layout .submit-buttons { display: block; margin: 0; padding: 0; border: 0; }
 .ak-edit-layout .button1,
 .ak-edit-layout .button2,
 .ak-edit-layout button:not(.sceditor-button) {
@@ -165,7 +180,7 @@
   font: 11px/1.5 var(--ak-font-subtitulos);
   cursor: pointer;
 }
-.ak-edit-layout .submit-buttons .button1 { background: var(--ak-aurum); color: var(--ak-post-base, #0c1419); }
+
 .ak-edit-layout .button1:hover, .ak-edit-layout .button2:hover { filter: brightness(1.12); }
 .ak-edit-layout a:focus-visible, .ak-edit-layout summary:focus-visible { outline: 1px solid var(--ak-aurum); outline-offset: 3px; }
 .ak-edit-layout table { width: 100%; max-width: 100%; border-collapse: collapse; }
@@ -180,9 +195,63 @@
 }
 @media (max-width: 700px) {
   .ak-edit-layout { grid-template-columns: minmax(0, 1fr); }
-  .ak-edit-layout #tabs { position: static; max-height: 230px; }
+  .ak-edit-layout #tabs { position: static; height: auto; max-height: none; }
   .ak-edit-layout #tabs ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ak-edit-layout fieldset > dl { grid-template-columns: minmax(0, 1fr); gap: 7px; }
   .ak-edit-layout fieldset > dl > dt { padding-top: 0; }
   .ak-edit-layout .ak-edit-title { font-size: 24px; }
 }
+
+/* Acciones arriba y abajo; controles nativos conservados. */
+.ak-edit-layout #cp-main .ak-edit-native-action { display: none; }
+.ak-edit-layout .ak-edit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  border: 0;
+}
+.ak-edit-layout .ak-edit-actions-top { margin: 0 0 10px; }
+.ak-edit-layout .ak-edit-actions-bottom { margin: 12px 0 0; }
+.ak-edit-layout .ak-edit-actions .ak-edit-action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--ak-aurum) 9%, transparent);
+  color: var(--ak-aurum);
+  cursor: pointer;
+}
+.ak-edit-layout .ak-edit-action .ti { font: normal 19px/1 var(--ak-font-icons, 'tabler-icons'); }
+.ak-edit-layout .ak-edit-actions .ak-edit-action:hover { background: color-mix(in srgb, var(--ak-aurum) 18%, transparent); }
+.ak-edit-layout .ak-edit-action:disabled { opacity: .4; cursor: default; }
+.ak-edit-layout .ak-edit-action::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 2;
+  width: max-content;
+  max-width: 220px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background: var(--ak-post-base, #0c1419);
+  color: var(--ak-text);
+  text-transform: none;
+  letter-spacing: 0;
+  font: 11px/1.4 var(--ak-font-subtitulos);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ak-edit-layout .ak-edit-action:hover::after,
+.ak-edit-layout .ak-edit-action:focus-visible::after { opacity: 1; visibility: visible; }
+.ak-edit-layout .ak-edit-actions-bottom .ak-edit-action::after { top: auto; bottom: calc(100% + 6px); }
+.ak-edit-layout .ak-edit-action:focus-visible { outline: 1px solid var(--ak-aurum); outline-offset: 3px; }
