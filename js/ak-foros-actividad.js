@@ -1,7 +1,7 @@
 /* AURUM · Áreas privadas y contenidos del tablón. Cargar una vez desde overall_header. */
 (() => {
   'use strict';
-  const CONFIG = { busquedas: '/f9-busquedas', limiteUltimos: 20, limiteBusquedas: 6 };
+  const CONFIG = { busquedas: '/f9-busquedas', limiteUltimos: 20, limiteBusquedas: 14, maxPaginas: 20 };
   const groups = new Set(['aeris', 'cascata', 'ignis', 'lux', 'teram', 'tuono', 'umbra']);
   const ready = fn => document.readyState === 'loading'
     ? document.addEventListener('DOMContentLoaded', fn, { once: true }) : fn();
@@ -149,64 +149,112 @@
     if (response.url && new URL(response.url, location.href).origin !== location.origin) throw new Error('Destino externo');
     return new DOMParser().parseFromString(await response.text(), 'text/html');
   }
+  const normalize = text => (text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const forumPattern = /^\/f9(?:p\d+)?(?:-|\/|$)/;
   function readSearchTopics(doc) {
     const seen = new Set(); const topics = [];
     doc.querySelectorAll('li.row a.topictitle, .forumline a.topictitle').forEach(link => {
       const href = topicURL(link.getAttribute('href')); const key = href.match(/^\/t\d+/)?.[0];
-      const title = link.textContent.trim();
-      if (!key || !title || seen.has(key)) return;
+      const title = link.textContent.trim(); const row = link.closest('li.row, tr');
+      if (!row || !key || !title || seen.has(key)) return;
       seen.add(key);
-      const row = link.closest('li.row, tr');
-      const poster = Array.from(row?.querySelectorAll('.span-tab a[href], .topic-author a[href]') || [])
+      const kind = normalize(row.querySelector('.ak-topic-type')?.textContent);
+      const state = normalize(Array.from(row.querySelectorAll('.dterm[title], .ak-topic-state, dl.icon > dt img, .topic-folder img'))
+        .map(el => [el.getAttribute('title'), el.getAttribute('alt'), el.getAttribute('aria-label')].filter(Boolean).join(' ')).join(' '));
+      if (row.matches('.ak-cerrado, .ak-especial, .ak-nota, .ak-anuncio, .ak-global') ||
+          /cerrad|locked|closed|verrouill/.test(state) || /nota|importante|anuncio|sticky|announcement/.test(kind)) return;
+      const poster = Array.from(row.querySelectorAll('.span-tab a[href], .topic-author a[href]'))
         .find(a => profileURL(a.getAttribute('href')));
-      topics.push({ href, title, author: authorData(poster) });
+      topics.push({ href, key, title, author: authorData(poster) });
     });
-    return topics.slice(0, CONFIG.limiteBusquedas);
+    return topics;
+  }
+  function nextPage(doc, current) {
+    const start = url => Number(new URL(url, location.href).pathname.match(/p(\d+)(?:-|$)/)?.[1] || new URL(url, location.href).searchParams.get('start') || 0);
+    return Array.from(doc.querySelectorAll('.pagination a[href], a[rel="next"][href]'))
+      .filter(a => !a.closest('li.row, tr'))
+      .map(a => localURL(a.getAttribute('href'), forumPattern))
+      .filter(href => href && start(href) > start(current))
+      .sort((a, b) => start(a) - start(b))[0] || '';
   }
   async function topicImage(topic, media) {
     try {
+      // La URL del listado abre el tema desde su primera página, no desde la última respuesta.
       const doc = await loadDocument(topic.href);
       const content = doc.querySelector('.post[id^="p"] .postbody .content, .post .postbody .content, .postbody .content');
-      const img = Array.from(content?.querySelectorAll('img') || []).find(image => {
-        const src = image.getAttribute('src') || '';
-        return imageURL(src) && !/\/smiles\/|\/smilies\/|\/emoticons\//i.test(src) && !image.closest('blockquote, .signature_div');
-      });
+      const img = Array.from(content?.querySelectorAll('img.ak-busqueda-portada, .ak-busqueda-portada img') || [])
+        .find(image => !image.closest('blockquote, .signature_div'));
       const src = img && imageURL(img.getAttribute('src'), new URL(topic.href, location.href));
       if (!src) return;
       const image = document.createElement('img'); image.alt = ''; image.loading = 'lazy'; image.decoding = 'async';
       image.addEventListener('load', () => media.classList.add('has-image'), { once: true });
       image.addEventListener('error', () => { image.remove(); media.classList.remove('has-image'); }, { once: true });
       image.src = src; media.append(image);
-    } catch (_) { /* La tarjeta permanece legible sin imagen. */ }
+    } catch (_) { /* Se mantiene la tarjeta sin tomar imágenes ajenas a su portada. */ }
+  }
+  function searchCard(topic) {
+    const card = document.createElement('article'); card.className = 'ak-search-card';
+    const link = document.createElement('a'); link.className = 'ak-search-card-link'; link.href = topic.href; link.title = topic.title;
+    const media = document.createElement('span'); media.className = 'ak-search-card-media'; media.setAttribute('aria-hidden', 'true');
+    const icon = document.createElement('i'); icon.className = 'ti ti-search'; media.append(icon);
+    const title = document.createElement('span'); title.className = 'ak-search-card-title'; title.textContent = topic.title;
+    link.append(media, title); card.append(link);
+    if (topic.author?.name) card.append(authorNode(topic.author));
+    else { const blank = document.createElement('span'); blank.className = 'ak-topic-author'; blank.setAttribute('aria-hidden', 'true'); card.append(blank); }
+    return { card, media, topic };
+  }
+  function moreCard() {
+    const item = searchCard({ href: CONFIG.busquedas, title: 'Ver más búsquedas' });
+    item.card.classList.add('ak-search-card--more');
+    const forumLink = Array.from(document.querySelectorAll('a.forumtitle[href]'))
+      .find(a => localURL(a.getAttribute('href'), /^\/f9(?:-|\/|$)/));
+    const cover = forumLink?.closest('li.row')?.querySelector('.ak-forum-cover');
+    const background = cover && (cover.style.backgroundImage || getComputedStyle(cover).backgroundImage);
+    if (background && background !== 'none') {
+      item.media.style.backgroundImage = background;
+      item.media.classList.add('has-forum-image');
+    }
+    item.media.querySelector('i').className = 'ti ti-arrow-right';
+    item.card.querySelector('.ak-topic-author').textContent = 'Todas las búsquedas';
+    return item.card;
   }
   async function searchTopics() {
     const target = document.getElementById('ak-search-grid'); if (!target) return;
-    const more = document.createElement('a'); more.className = 'ak-search-more'; more.href = CONFIG.busquedas; more.textContent = 'Ver todas las búsquedas';
-    target.replaceChildren(more);
+    if (target.dataset.akSearchReady) return;
+    target.dataset.akSearchReady = 'true';
+    const more = moreCard(); target.replaceChildren(more); target.setAttribute('aria-busy', 'true');
+    const found = []; const seen = new Set(); const pages = new Set();
+    let current = CONFIG.busquedas; let partial = false; let readable = false;
     try {
-      const doc = await loadDocument(CONFIG.busquedas);
-      const topics = readSearchTopics(doc);
-      if (!topics.length) {
-        const list = doc.querySelector('.ak-topics-board, .forumbg, .forumline');
-        const p = document.createElement('p'); p.className = 'ak-empty';
-        p.textContent = list ? 'Todavía no hay búsquedas visibles para tu cuenta.' : 'No se pudo consultar el listado de Búsquedas.';
-        target.prepend(p); return;
+      while (current && found.length < CONFIG.limiteBusquedas && pages.size < CONFIG.maxPaginas) {
+        if (pages.has(current)) break;
+        pages.add(current);
+        let doc;
+        try { doc = await loadDocument(current); } catch (_) { partial = true; break; }
+        if (!doc.querySelector('.ak-topics-board, .forumbg, .forumline')) { partial = true; break; }
+        readable = true;
+        for (const topic of readSearchTopics(doc)) {
+          if (!seen.has(topic.key)) { seen.add(topic.key); found.push(topic); }
+          if (found.length === CONFIG.limiteBusquedas) break;
+        }
+        current = nextPage(doc, current);
       }
       const fragment = document.createDocumentFragment();
-      topics.forEach(topic => {
-        const card = document.createElement('article'); card.className = 'ak-search-card';
-        const link = document.createElement('a'); link.className = 'ak-search-card-link'; link.href = topic.href;
-        const media = document.createElement('span'); media.className = 'ak-search-card-media'; media.setAttribute('aria-hidden', 'true');
-        const icon = document.createElement('i'); icon.className = 'ti ti-search'; media.append(icon);
-        const title = document.createElement('span'); title.className = 'ak-search-card-title'; title.textContent = topic.title;
-        link.append(media, title); card.append(link);
-        if (topic.author?.name) card.append(authorNode(topic.author));
-        fragment.append(card); topicImage(topic, media);
-      });
-      target.prepend(fragment);
-    } catch (_) {
-      const p = document.createElement('p'); p.className = 'ak-empty'; p.textContent = 'No se pudieron cargar las búsquedas. Puedes abrir el subforo.'; target.prepend(p);
-    }
+      const entries = found.map(searchCard);
+      entries.forEach(item => fragment.append(item.card)); target.prepend(fragment);
+      if (!found.length) {
+        const message = document.createElement('p'); message.className = 'ak-empty ak-search-notice';
+        message.textContent = readable && !partial ? 'No hay búsquedas abiertas disponibles.' : 'No se pudieron consultar las búsquedas. Puedes abrir el subforo.';
+        target.before(message);
+      } else if (partial) {
+        const message = document.createElement('p'); message.className = 'ak-search-notice'; message.textContent = 'Algunas búsquedas no pudieron cargarse.'; target.before(message);
+      }
+      // Como máximo cuatro lecturas de portadas simultáneas; el orden visual se conserva.
+      let cursor = 0;
+      await Promise.all(Array.from({ length: Math.min(4, entries.length) }, async () => {
+        while (cursor < entries.length) { const item = entries[cursor++]; await topicImage(item.topic, item.media); }
+      }));
+    } finally { target.setAttribute('aria-busy', 'false'); }
   }
 
   ready(() => { privateAreas(); recentTopics(); searchTopics(); });
