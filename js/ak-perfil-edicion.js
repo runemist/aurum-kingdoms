@@ -35,8 +35,9 @@
     layout.setAttribute('aria-label', 'Configuración de perfil');
     var content = document.createElement('div'); content.className = 'ak-edit-content';
     var title = document.createElement('h1'); title.className = 'ak-edit-title'; title.textContent = 'Editar perfil';
+    var header = document.createElement('div'); header.className = 'ak-edit-header';
     main.insertBefore(layout, main.firstChild);
-    layout.appendChild(tabs); layout.appendChild(content); content.appendChild(title);
+    layout.appendChild(tabs); layout.appendChild(content); content.appendChild(header); header.appendChild(title);
     // Solo trasladar el panel: los módulos anteriores (p. ej. publicidad)
     // no deben quedar entre el título y los formularios. Se conservan fuera.
     var reachedTabs = carrier === main;
@@ -77,7 +78,15 @@
     content.querySelectorAll('dl > dt [style]').forEach(function (label) { label.style.removeProperty('color'); });
 
     var sections = [];
-    var activeTab = normalize(tabs.querySelector('.activetab')?.textContent);
+    var activeLink = tabs.querySelector('.activetab a, a[aria-current="page"]');
+    var activeName = activeLink ? activeLink.textContent.replace(/\s+/g, ' ').trim() : '';
+    var activeTab = normalize(activeName);
+    title.textContent = activeName || 'Editar perfil';
+    if (activeTab === 'firma') layout.classList.add('ak-edit-signature');
+    // Evitar repetir el nombre de la pestaña debajo de la cabecera.
+    content.querySelectorAll('#cp-main .page-title').forEach(function (heading) {
+      if (normalize(heading.textContent) === activeTab) heading.hidden = true;
+    });
     var isInformation = activeTab === 'informaciones';
     if (isInformation) {
       content.querySelectorAll('#cp-main form').forEach(function (form) {
@@ -138,13 +147,12 @@
         .filter(function (control) { return control.form === form; });
       if (!originals.length) return;
       var top = document.createElement('div'); top.className = 'ak-edit-actions ak-edit-actions-top'; top.setAttribute('role', 'group'); top.setAttribute('aria-label', 'Acciones del formulario');
-      var bottom = document.createElement('div'); bottom.className = 'ak-edit-actions ak-edit-actions-bottom'; bottom.setAttribute('role', 'group'); bottom.setAttribute('aria-label', 'Acciones del formulario');
       originals.forEach(function (original) {
         var reset = original.type === 'reset';
         var raw = (original.value || original.textContent || '').trim();
         var label = reset ? 'Reiniciar formulario' : /registrar|guardar|submit|save/i.test(raw) ? 'Guardar cambios' : raw || 'Enviar formulario';
         original.classList.add('ak-edit-native-action');
-        [top, bottom].forEach(function (bar) {
+        [top].forEach(function (bar) {
           var button = document.createElement('button'); button.type = 'button'; button.className = 'ak-edit-action';
           button.setAttribute('aria-label', label); button.dataset.tooltip = label;
           var icon = document.createElement('i'); icon.className = 'ti ' + (reset ? 'ti-rotate-clockwise' : 'ti-device-floppy'); icon.setAttribute('aria-hidden', 'true'); button.appendChild(icon);
@@ -153,11 +161,11 @@
           bar.appendChild(button); actionPairs.push({ original: original, button: button });
         });
       });
-      form.prepend(top);
+      header.appendChild(top);
       var footer = originals[originals.length - 1].closest('.submit-buttons');
       // Quitar únicamente el espaciado de texto entre los controles originales.
       Array.from(footer.childNodes).forEach(function (node) { if (node.nodeType === 3 && !node.textContent.trim()) node.remove(); });
-      footer.appendChild(bottom);
+
     });
     function refresh() {
       actionPairs.forEach(function (pair) { pair.button.disabled = pair.original.disabled; });
