@@ -106,19 +106,66 @@
     });
     return topics.slice(0, CONFIG.limiteUltimos);
   }
+  const avatarCache = new Map();
+  function readAvatar(profile) {
+    if (!profile) return Promise.resolve('');
+    if (!avatarCache.has(profile)) {
+      avatarCache.set(profile, loadDocument(profile).then(doc => {
+        const img = doc.querySelector('.perfil-avatar img, .profile-avatar img, .module .avatar img');
+        return imageURL(img?.getAttribute('src'), new URL(profile, location.href));
+      }).catch(() => ''));
+    }
+    return avatarCache.get(profile);
+  }
+  async function fillAvatars(entries) {
+    let cursor = 0;
+    await Promise.all(Array.from({ length: Math.min(4, entries.length) }, async () => {
+      while (cursor < entries.length) {
+        const item = entries[cursor++];
+        const src = await readAvatar(item.author.href);
+        if (!src || !item.photo.isConnected) continue;
+        const image = document.createElement('img');
+        image.alt = ''; image.loading = 'lazy'; image.decoding = 'async';
+        image.addEventListener('error', () => image.remove(), { once: true });
+        image.src = src; item.photo.append(image);
+      }
+    }));
+  }
   function renderRecent(target, topics) {
-    const fragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment(); const avatars = [];
     topics.forEach(topic => {
       const row = document.createElement('div'); row.className = 'ak-topic';
-      const link = document.createElement('a'); link.href = topic.href; link.textContent = topic.title; link.title = topic.title;
-      row.append(link);
-      const info = document.createElement('div'); info.className = 'ak-topic-info';
-      if (topic.author?.name) info.append(authorNode(topic.author));
-      if (topic.date) { const time = document.createElement('span'); time.className = 'ak-topic-date'; time.textContent = topic.date; info.append(time); }
-      if (info.childNodes.length) row.append(info);
-      fragment.append(row);
+      const author = topic.author;
+      const photo = document.createElement(author?.href ? 'a' : 'span'); photo.className = 'ak-latest-avatar';
+      if (author?.href) { photo.href = author.href; photo.setAttribute('aria-label', 'Ver perfil de ' + author.name); }
+      else photo.setAttribute('aria-hidden', 'true');
+      if (author?.color) photo.style.setProperty('--ak-author-color', author.color);
+      // Un único perfil recuperado por autor; no se confunde con el creador del tema.
+      if (author?.href) avatars.push({ photo, author });
+      const copy = document.createElement('div'); copy.className = 'ak-latest-copy';
+      const link = document.createElement('a'); link.className = 'ak-latest-title'; link.href = topic.href; link.textContent = topic.title; link.title = topic.title;
+      copy.append(link);
+      if (author?.name) {
+        const by = document.createElement('div'); by.className = 'ak-latest-by';
+        by.append(document.createTextNode('por '), authorNode(author)); copy.append(by);
+      }
+      if (topic.date) { const time = document.createElement('span'); time.className = 'ak-topic-date'; time.textContent = topic.date; copy.append(time); }
+      row.append(photo, copy); fragment.append(row);
     });
-    target.replaceChildren(fragment);
+    target.replaceChildren(fragment); fillAvatars(avatars);
+  }
+  function boardBackground() {
+    const board = document.querySelector('#ak-hero .ak-board'); const wrap = document.getElementById('wrap');
+    if (!board || !wrap) return;
+    const value = getComputedStyle(wrap).backgroundColor;
+    const parts = value.match(/^rgba?\(([^)]+)\)$/)?.[1].split(',').map(v => v.trim());
+    if (!parts || parts.length < 3) {
+      if (value && value !== 'transparent') board.style.setProperty('--ak-board-background', 'color-mix(in srgb, ' + value + ' 94%, transparent)');
+      return;
+    }
+    if (parts.length === 4 && Number(parts[3]) === 0) return;
+    // Mismo RGB que #wrap, con opacidad del 94%; la transparencia no afecta al texto.
+    board.style.setProperty('--ak-board-background', 'rgba(' + parts.slice(0, 3).join(',') + ',0.94)');
   }
   function recentTopics() {
     const target = document.getElementById('ak-latest-list');
@@ -203,7 +250,7 @@
     return { card, media, topic };
   }
   function moreCard() {
-    const item = searchCard({ href: CONFIG.busquedas, title: 'VER TODAS LAS BÚSQUEDAS' });
+    const item = searchCard({ href: CONFIG.busquedas, title: 'Ver todas las búsquedas' });
     item.card.classList.add('ak-search-card--more');
     const forumLink = Array.from(document.querySelectorAll('a.forumtitle[href]'))
       .find(a => localURL(a.getAttribute('href'), /^\/f9(?:-|\/|$)/));
@@ -213,7 +260,6 @@
       item.media.style.backgroundImage = background;
       item.media.classList.add('has-forum-image');
     }
-
     return item.card;
   }
   async function searchTopics() {
@@ -255,5 +301,5 @@
     } finally { target.setAttribute('aria-busy', 'false'); }
   }
 
-  ready(() => { privateAreas(); recentTopics(); searchTopics(); });
+  ready(() => { boardBackground(); privateAreas(); recentTopics(); searchTopics(); });
 })();
