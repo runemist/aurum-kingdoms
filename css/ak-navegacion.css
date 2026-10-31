@@ -4,7 +4,7 @@ body.ak-nav-testing {
   padding-top: 0;
 }
 body.ak-nav-testing #page-header {
-  display: none;
+  display: none !important;
 }
 body.ak-nav-testing #wrap {
   margin-top: 72px;
