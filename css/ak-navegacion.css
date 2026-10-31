@@ -20,7 +20,7 @@ body.ak-nav-testing:has(#ak-hero) #ak-hero {
    Retirar esta regla si se desactiva el JS de la navbar. */
 body:not(.ak-nav-testing) #fa_toolbar,
 body:not(.ak-nav-testing) #page-header {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 /* Barra nativa: conservar el funcionamiento de notificaciones. */
