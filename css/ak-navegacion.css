@@ -202,7 +202,11 @@ body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list * {
 }
 /* Estas dos prioridades solo arbitran el display inline del panel nativo. */
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) { display: none !important; }
-body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list { display: flex !important; flex-direction: column; }
+body.ak-nav-testing[data-ak-nav-open="notifications"]
+:is(#fa_toolbar #fa_right #notif_list, #notif_list) {
+  display: flex !important;
+  flex-direction: column;
+}
 body.ak-nav-testing #fa_toolbar #fa_right #notif_list,
 body.ak-nav-testing #fa_toolbar #notif_list,
 body.ak-nav-testing #fa_right #notif_list,
