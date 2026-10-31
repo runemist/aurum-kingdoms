@@ -36,7 +36,7 @@ body.ak-nav-testing #fa_toolbar #fa_search,
 body.ak-nav-testing #fa_toolbar #fa_share,
 body.ak-nav-testing #fa_toolbar #fa_menu,
 body.ak-nav-testing #fa_toolbar #fa_hide {
-  display: none;
+  display: none !important;
 }
 
 /* Botón de notificaciones */
