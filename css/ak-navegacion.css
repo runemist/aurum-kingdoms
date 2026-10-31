@@ -85,7 +85,7 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
 }
 #ak-nav-test .ak-nav-icon:hover::after,
 #ak-nav-test .ak-nav-icon:focus-visible::after { opacity: 1; visibility: visible; }
-#ak-nav-test .ak-nav-user .ak-nav-icon::after { left: auto; right: 0; transform: none; }
+#ak-nav-test .ak-nav-user .ak-nav-icon::after { left: 0; right: auto; transform: none; }
 #ak-nav-test .ak-nav-badge {
   position: absolute;
   top: -2px;
@@ -144,7 +144,12 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
   scrollbar-color: var(--ak-aurum) transparent;
 }
 .ak-nav-drawer[hidden] { display: none; }
-#ak-nav-personal { right: 0; }
+#ak-nav-personal {
+  left: 0;
+  right: auto;
+  bottom: 0;
+  height: calc(100dvh - var(--ak-nav-height));
+}
 .ak-nav-drawer h2 { margin: 0 0 14px; color: var(--ak-aurum); font: 17px/1.4 var(--ak-font-titulos); text-transform: uppercase; }
 #ak-nav-personal h2 { text-align: center; overflow-wrap: anywhere; }
 #ak-nav-personal .ak-nav-portrait {
@@ -177,26 +182,38 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
 .ak-nav-quick-grid .ti { color: var(--ak-aurum); font-size: 29px; }
 .ak-nav-quick-grid a:hover { color: var(--ak-aurum); }
 /* Toolbar nativa: permanece activa para cargar y gestionar notificaciones. */
-body.ak-nav-testing #fa_toolbar { position: fixed; top: 0; left: 0; width: 0; height: 0; margin: 0; padding: 0; background: transparent; border: 0; box-shadow: none; pointer-events: none; z-index: 10001; }
+body.ak-nav-testing #fa_toolbar { position: fixed; top: 0; left: 0; width: 0; height: 0; margin: 0; padding: 0; background: transparent; border: 0; box-shadow: none; pointer-events: none; visibility: hidden !important; z-index: 10001; }
 body.ak-nav-testing #fa_toolbar #fa_left,
 body.ak-nav-testing #fa_toolbar #fa_search,
 body.ak-nav-testing #fa_toolbar #fa_share,
 body.ak-nav-testing #fa_toolbar #fa_menu,
 body.ak-nav-testing #fa_toolbar #fa_hide,
 body.ak-nav-testing #fa_toolbar #fa_notifications { display: none; }
+/* La toolbar sigue cargada, pero sus controles y contenido quedan ocultos. */
+body.ak-nav-testing #fa_toolbar :not(#notif_list):not(#notif_list *) {
+  visibility: hidden !important;
+  pointer-events: none;
+}
+body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list,
+body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list * {
+  visibility: visible !important;
+}
 /* Estas dos prioridades solo arbitran el display inline del panel nativo. */
 body.ak-nav-testing #notif_list { display: none !important; }
 body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list { display: block !important; }
+body.ak-nav-testing #fa_toolbar #fa_right #notif_list,
 body.ak-nav-testing #fa_toolbar #notif_list,
+body.ak-nav-testing #fa_right #notif_list,
+body.ak-nav-testing #notif_list,
 #ak-nav-notice {
   position: fixed;
   top: var(--ak-nav-height);
   right: 0;
-  bottom: auto;
+  bottom: 0;
   left: auto;
   transform: none;
   width: min(360px, 96vw);
-  height: auto;
+  height: calc(100dvh - var(--ak-nav-height));
   max-width: none;
   max-height: calc(100dvh - var(--ak-nav-height));
   box-sizing: border-box;
@@ -214,9 +231,9 @@ body.ak-nav-testing #fa_toolbar #notif_list,
   scrollbar-color: var(--ak-aurum) transparent;
 }
 body.ak-nav-testing #notif_list::before { content: 'Notificaciones'; display: block; margin-bottom: 14px; color: var(--ak-aurum); text-transform: uppercase; font: 17px/1.4 var(--ak-font-titulos); }
-body.ak-nav-testing #fa_toolbar #notif_list li { margin: 0; padding: 12px 0; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 15%, transparent); background: transparent; color: var(--ak-text); font: 12px/1.6 var(--ak-font-subtitulos); }
-body.ak-nav-testing #fa_toolbar #notif_list a { color: var(--ak-text); text-decoration: none; }
-body.ak-nav-testing #fa_toolbar #notif_list a:hover { color: var(--ak-aurum); }
+body.ak-nav-testing #notif_list li { margin: 0; padding: 12px 0; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--ak-aurum) 15%, transparent); background: transparent; color: var(--ak-text); font: 12px/1.6 var(--ak-font-subtitulos); }
+body.ak-nav-testing #notif_list a { color: var(--ak-text); text-decoration: none; }
+body.ak-nav-testing #notif_list a:hover { color: var(--ak-aurum); }
 /* Ruta contextual y estilos de acciones de publicación conservados. */
 #ak-nav-test .ak-nav-middle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 0; }
 #ak-nav-test .ak-nav-route { display: flex; align-items: center; gap: 7px; max-width: 300px; min-width: 0; }
@@ -235,16 +252,16 @@ body.ak-nav-testing #fa_toolbar #notif_list a:hover { color: var(--ak-aurum); }
   #ak-nav-test .ak-nav-route { max-width: 160px; }
 }
 @media (max-width: 600px) {
-  #ak-nav-test { grid-template-columns: auto minmax(0, 1fr); gap: 6px; padding: 0 8px; }
-  #ak-nav-test .ak-nav-left { display: none; }
+  #ak-nav-test { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 6px; padding: 0 8px; }
+  #ak-nav-test .ak-nav-left { display: flex; }
   #ak-nav-test .ak-nav-middle,
-  #ak-nav-test .ak-nav-center { grid-column: 1; }
-  #ak-nav-test .ak-nav-right { grid-column: 2; gap: 4px; }
+  #ak-nav-test .ak-nav-center { grid-column: 2; }
+  #ak-nav-test .ak-nav-right { grid-column: 3; gap: 4px; }
   #ak-nav-test .ak-nav-center { gap: 2px; }
   #ak-nav-test .ak-nav-user { gap: 4px; }
   #ak-nav-test .ak-nav-icon { width: 30px; height: 34px; }
   #ak-nav-test .ak-nav-icon > .ti { font-size: 21px; }
-  #ak-nav-test .ak-nav-profile strong { max-width: 60px; font-size: 10px; }
+  #ak-nav-test .ak-nav-profile strong { max-width: 45px; font-size: 10px; }
   #ak-nav-test .ak-nav-route { display: none; }
   #ak-nav-quick { padding: 16px; }
   .ak-nav-quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
