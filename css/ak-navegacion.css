@@ -1,6 +1,7 @@
-/* AURUM · Navegación v2. Fuente Tabler ya instalada en el foro.. */
+/* AURUM · Navegación. CSS revisado a partir de la versión instalada. */
 :root { --ak-nav-height: 72px; }
-body.ak-nav-testing { margin-top: 0; padding-top: 0; }
+/* Foroactivo escribe margin-top inline en body al activar la toolbar. */
+body.ak-nav-testing { margin-top: 0 !important; padding-top: 0; }
 /* El CSS general declara este display con important. */
 body.ak-nav-testing #page-header { display: none !important; }
 body.ak-nav-testing #wrap { margin-top: var(--ak-nav-height); }
@@ -183,48 +184,72 @@ body.ak-nav-testing:not(:has(#ak-hero)) #main-content > .page-title { margin-top
 .ak-nav-quick-grid a { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 8px; color: var(--ak-text); text-decoration: none; text-align: center; font: 12px/1.4 var(--ak-font-subtitulos); }
 .ak-nav-quick-grid .ti { color: var(--ak-aurum); font-size: 29px; }
 .ak-nav-quick-grid a:hover { color: var(--ak-aurum); }
-/* Toolbar nativa: permanece activa para cargar y gestionar notificaciones. */
-body.ak-nav-testing #fa_toolbar { position: fixed; top: 0; left: 0; width: 0; height: 0; margin: 0; padding: 0; background: transparent; border: 0; box-shadow: none; pointer-events: none; visibility: hidden !important; z-index: 10001; }
+/* TOOLBAR NATIVA
+   Sigue activa, sin altura propia ni controles visibles.
+   Overflow visible permite que su lista fija salga del contenedor de altura 0. */
+body.ak-nav-testing #fa_toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  box-shadow: none;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 10001;
+}
+/* Control de volver a mostrar la toolbar nativa: también se oculta. */
+body.ak-nav-testing #fa_toolbar_hidden,
 body.ak-nav-testing #fa_toolbar #fa_left,
 body.ak-nav-testing #fa_toolbar #fa_search,
 body.ak-nav-testing #fa_toolbar #fa_share,
 body.ak-nav-testing #fa_toolbar #fa_menu,
 body.ak-nav-testing #fa_toolbar #fa_hide,
-body.ak-nav-testing #fa_toolbar #fa_notifications { display: none; }
-/* La toolbar sigue cargada, pero sus controles y contenido quedan ocultos. */
-body.ak-nav-testing #fa_toolbar :not(#notif_list):not(#notif_list *) {
-  visibility: hidden !important;
+body.ak-nav-testing #fa_toolbar #fa_notifications {
+  display: none;
+}
+body.ak-nav-testing #fa_toolbar #fa_right {
+  width: 0;
+  min-width: 0;
+  height: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
   pointer-events: none;
+  visibility: hidden;
 }
-body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list,
-body.ak-nav-testing[data-ak-nav-open="notifications"] #notif_list * {
-  visibility: visible !important;
-}
-/* Estas dos prioridades solo arbitran el display inline del panel nativo. */
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) { display: none !important; }
-body.ak-nav-testing[data-ak-nav-open="notifications"]
-:is(#fa_toolbar #fa_right #notif_list, #notif_list) {
-  display: flex !important;
-  flex-direction: column;
-}
-body.ak-nav-testing #fa_toolbar #fa_right #notif_list,
-body.ak-nav-testing #fa_toolbar #notif_list,
-body.ak-nav-testing #fa_right #notif_list,
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list),
-#ak-nav-notice {
+/* Panel nativo: una regla de cierre y otra de apertura, con la misma base. */
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) {
+  display: none;
   position: fixed;
   top: var(--ak-nav-height);
   right: 0;
   bottom: 0;
-  left: auto;
+  /* Única posición inline que recalcula el JS nativo. */
+  left: auto !important;
   transform: none;
+  z-index: 10001;
   width: min(360px, 96vw);
-  height: calc(100dvh - var(--ak-nav-height));
+  min-width: 0;
   max-width: none;
+  height: calc(100dvh - var(--ak-nav-height));
+  min-height: 0;
   max-height: calc(100dvh - var(--ak-nav-height));
   box-sizing: border-box;
   margin: 0;
   padding: 22px;
+  overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid color-mix(in srgb, var(--ak-aurum) 60%, transparent);
   border-top: 0;
@@ -232,20 +257,37 @@ body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list),
   background: var(--ak-post-papel, #172127);
   color: var(--ak-text);
   box-shadow: 0 12px 25px #0004;
-  pointer-events: auto;
+  list-style: none;
+  text-align: left;
+  pointer-events: none;
+  visibility: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--ak-aurum) transparent;
 }
-/* La toolbar recalcula left en línea al refrescar o redimensionar. */
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) {
-  left: auto !important;
-  right: 0 !important;
-  top: var(--ak-nav-height) !important;
-  bottom: 0 !important;
-  transform: none !important;
-  z-index: 10001;
-  list-style: none;
-  text-align: left;
+body.ak-nav-testing[data-ak-nav-open="notifications"]
+:is(#fa_toolbar #fa_right #notif_list, #notif_list) {
+  display: flex;
+  flex-direction: column;
+  visibility: visible;
+  pointer-events: auto;
+}
+body.ak-nav-testing[data-ak-nav-open="notifications"]
+:is(#fa_toolbar #fa_right #notif_list, #notif_list) * {
+  visibility: visible;
+  pointer-events: auto;
+}
+/* Mensaje de respaldo si no está disponible el panel nativo. */
+#ak-nav-notice {
+  right: 0;
+  left: auto;
+  bottom: 0;
+  width: min(360px, 96vw);
+  height: calc(100dvh - var(--ak-nav-height));
+}
+/* El CSS general existente declara #fa_toolbar a con color important.
+   Se compensa solo para los enlaces del panel; los span de grupo siguen intactos. */
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) a {
+  color: var(--ak-aurum) !important;
 }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list)::before {
   content: 'Notificaciones';
@@ -311,7 +353,6 @@ body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .delete 
   width: 20px;
   height: 20px;
   background: none;
-  color: var(--ak-muted);
   text-decoration: none;
   font: 18px/1 var(--ak-font-texto);
 }
