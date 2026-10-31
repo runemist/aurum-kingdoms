@@ -3,17 +3,24 @@
 #footer_widgets.ak-footer-ready {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
-  align-items: start;
+  align-items: center;
+  grid-template-rows: minmax(0, 1fr);
   gap: 28px;
   width: 100%;
   max-width: none;
+  height: 250px;
   box-sizing: border-box;
   clear: both;
   float: none;
   margin: 0;
-  padding: 28px clamp(16px, 3vw, 56px);
+  padding: 19px clamp(16px, 3vw, 56px);
   border-top: 1px solid var(--ak-aurum);
-  background: var(--ak-panel-deep, #172127);
+  background-color: var(--ak-post-papel, #172127);
+  --ak-footer-fondo: url("../images/ak-pie-botanico.webp");
+  background-image: var(--ak-footer-fondo);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--ak-text);
   font: 13px/1.6 var(--ak-font-texto);
 }
@@ -21,6 +28,8 @@
 #footer_widgets.ak-footer-ready .widget {
   grid-column: 1 / -1;
   min-width: 0;
+  min-height: 0;
+  height: 100%;
   width: auto;
   float: none;
   margin: 0;
@@ -31,6 +40,9 @@
 #footer_widgets.ak-footer-ready .module,
 #footer_widgets.ak-footer-ready .module > .inner {
   width: auto;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
   min-width: 0;
   float: none;
   margin: 0;
@@ -46,10 +58,12 @@
 .ak-affiliates {
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
+  align-items: center;
+  height: 100%;
   gap: 28px;
   min-width: 0;
 }
-.ak-aff-center { display: grid; gap: 20px; min-width: 0; }
+.ak-aff-center { display: grid; align-content: center; gap: 14px; min-width: 0; }
 .ak-aff-center > section { min-width: 0; }
 #footer_widgets.ak-footer-ready h2 {
   margin: 0 0 12px;
@@ -66,7 +80,9 @@
   grid-auto-flow: column;
   justify-content: start;
   gap: 8px;
+  width: max-content;
   max-width: 100%;
+  margin: 0 auto;
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 6px;
@@ -74,7 +90,7 @@
   scrollbar-color: var(--ak-aurum) transparent;
 }
 .ak-aff-directory-grid { grid-template-rows: 75px; grid-auto-columns: 75px; }
-.ak-aff-elite-grid { grid-template-rows: repeat(3, 50px); grid-auto-columns: 50px; }
+.ak-aff-elite-grid { grid-template-rows: repeat(2, 50px); grid-auto-columns: 50px; }
 .ak-aff-sisters-grid > *,
 .ak-aff-directory-grid > *,
 .ak-aff-elite-grid > * {
@@ -102,15 +118,25 @@
 .ak-aff-directory-grid:focus-visible,
 .ak-aff-elite-grid:focus-visible { outline: 1px solid var(--ak-aurum); outline-offset: -2px; }
 .ak-footer-credits {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
   min-width: 0;
   padding-left: 24px;
   border-left: 1px solid color-mix(in srgb, var(--ak-aurum) 25%, transparent);
 }
-.ak-footer-credits-copy { overflow-wrap: anywhere; }
+.ak-footer-credits-copy { min-height: 0; overflow-y: auto; overflow-wrap: anywhere; padding-right: 6px; scrollbar-width: thin; scrollbar-color: var(--ak-aurum) transparent; }
 .ak-footer-credits-copy p { margin: 0 0 12px; }
 .ak-footer-credits-copy a { color: var(--ak-aurum); }
 @media (max-width: 1100px) {
-  #footer_widgets.ak-footer-ready { grid-template-columns: minmax(0, 1fr); }
+  #footer_widgets.ak-footer-ready { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; height: auto; min-height: 250px; }
+  #footer_widgets.ak-footer-ready .widget,
+  #footer_widgets.ak-footer-ready .module,
+  #footer_widgets.ak-footer-ready .module > .inner,
+  .ak-affiliates { height: auto; }
+  .ak-footer-credits { height: auto; max-height: 250px; }
   #footer_widgets.ak-footer-ready .ak-footer-credit-widget { grid-column: 1; grid-row: 2; }
   .ak-footer-credits { padding: 20px 0 0; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--ak-aurum) 25%, transparent); }
 }
