@@ -160,12 +160,15 @@
   width: 100%;
   height: 100%;
   margin: 0;
-  border: 0;
+  border: 1px solid var(--ak-aurum);
   object-fit: cover;
 }
 
 .ak-affiliates a {
   transition: opacity .2s ease;
+  border: 1px solid var(--ak-aurum);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .ak-affiliates a:hover {
