@@ -196,7 +196,6 @@
     const card = document.createElement('article'); card.className = 'ak-search-card';
     const link = document.createElement('a'); link.className = 'ak-search-card-link'; link.href = topic.href; link.title = topic.title;
     const media = document.createElement('span'); media.className = 'ak-search-card-media'; media.setAttribute('aria-hidden', 'true');
-    const icon = document.createElement('i'); icon.className = 'ti ti-search'; media.append(icon);
     const title = document.createElement('span'); title.className = 'ak-search-card-title'; title.textContent = topic.title;
     link.append(media, title); card.append(link);
     if (topic.author?.name) card.append(authorNode(topic.author));
@@ -204,7 +203,7 @@
     return { card, media, topic };
   }
   function moreCard() {
-    const item = searchCard({ href: CONFIG.busquedas, title: 'Ver más búsquedas' });
+    const item = searchCard({ href: CONFIG.busquedas, title: 'VER TODAS LAS BÚSQUEDAS' });
     item.card.classList.add('ak-search-card--more');
     const forumLink = Array.from(document.querySelectorAll('a.forumtitle[href]'))
       .find(a => localURL(a.getAttribute('href'), /^\/f9(?:-|\/|$)/));
@@ -214,8 +213,7 @@
       item.media.style.backgroundImage = background;
       item.media.classList.add('has-forum-image');
     }
-    item.media.querySelector('i').className = 'ti ti-arrow-right';
-    item.card.querySelector('.ak-topic-author').textContent = 'Todas las búsquedas';
+
     return item.card;
   }
   async function searchTopics() {
