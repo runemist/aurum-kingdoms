@@ -1,5 +1,5 @@
 /* AURUM · Editar perfil · Archivo personal compacto */
-/* Comenzar justo debajo de la navbar, solo en edición de perfil. */
+/* Comenzar justo debajo de la navbar, solo en edición de perfil */
 body.ak-profile-editing #wrap { margin-top: var(--ak-nav-height, 72px); padding-top: 0; }
 body.ak-profile-editing.ak-nav-testing:not(:has(#ak-hero)) #wrap { padding-top: 0; }
 body.ak-profile-editing #page-body,
