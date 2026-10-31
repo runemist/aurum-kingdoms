@@ -37,13 +37,33 @@
     var title = document.createElement('h1'); title.className = 'ak-edit-title'; title.textContent = 'Editar perfil';
     main.insertBefore(layout, main.firstChild);
     layout.appendChild(tabs); layout.appendChild(content); content.appendChild(title);
+    // Solo trasladar el panel: los módulos anteriores (p. ej. publicidad)
+    // no deben quedar entre el título y los formularios. Se conservan fuera.
+    var reachedTabs = carrier === main;
     originalChildren.forEach(function (node) {
+      if (node === carrier) reachedTabs = true;
       if (node === tabs) return;
+      if (!reachedTabs) return;
       // El envoltorio del menú queda vacío al trasladar tabs.
       if (node === carrier && !carrier.textContent.trim() && !carrier.querySelector('input,select,textarea,iframe,img')) { carrier.remove(); return; }
       content.appendChild(node);
     });
     tabs.setAttribute('aria-label', 'Secciones del perfil');
+    var tabIcons = {
+      'informaciones': 'ti-user', 'preferencias': 'ti-settings',
+      'firma': 'ti-pencil', 'avatar': 'ti-photo',
+      'amigos e ignorados': 'ti-users', 'miembros que sigue': 'ti-user-plus',
+      'notificaciones': 'ti-bell', 'temas supervisados': 'ti-eye',
+      'favoritos': 'ti-star', 'borradores de mensajes': 'ti-file-text',
+      'borradores de temas': 'ti-files', 'hoja de personaje': 'ti-book'
+    };
+    tabs.querySelectorAll('a').forEach(function (a) {
+      if (a.querySelector('.ak-edit-tab-icon')) return;
+      var name = normalize(a.textContent);
+      var icon = document.createElement('i');
+      icon.className = 'ti ak-edit-tab-icon ' + (tabIcons[name] || 'ti-folder');
+      icon.setAttribute('aria-hidden', 'true'); a.prepend(icon);
+    });
     tabs.querySelectorAll('.activetab a').forEach(function (a) { a.setAttribute('aria-current', 'page'); });
     document.body.classList.add('ak-profile-editing');
     content.querySelectorAll('#cp-main').forEach(function (node) { node.classList.add('ak-edit-native-main'); });
@@ -57,26 +77,89 @@
     content.querySelectorAll('dl > dt [style]').forEach(function (label) { label.style.removeProperty('color'); });
 
     var sections = [];
-    // El HTML recibido coloca cada h1 de categoría justo antes de su panel.
-    Array.from(content.querySelectorAll('#cp-main form > h1, #cp-main form > h2, #cp-main form > h3')).forEach(function (heading) {
-      var panel = heading.nextElementSibling;
-      if (!panel || !panel.classList.contains('panel')) return;
-      var name = normalize(heading.textContent);
-      var details = document.createElement('details'); details.className = 'ak-edit-category';
-      details.dataset.akCategory = name;
-      var summary = document.createElement('summary');
-      var label = document.createElement('span'); label.textContent = heading.textContent.trim(); summary.appendChild(label);
-      details.appendChild(summary);
-      heading.before(details); heading.remove(); details.appendChild(panel);
-      details.open = /registro|personalizado/.test(name);
-      sections.push({ details: details, panel: panel, name: name });
+    var activeTab = normalize(tabs.querySelector('.activetab')?.textContent);
+    var isInformation = activeTab === 'informaciones';
+    if (isInformation) {
+      content.querySelectorAll('#cp-main form').forEach(function (form) {
+        var pairs = Array.from(form.children).filter(function (node) {
+          return /^H[1-3]$/.test(node.tagName) && node.nextElementSibling?.classList.contains('panel');
+        }).map(function (heading) { return { heading: heading, panel: heading.nextElementSibling, name: normalize(heading.textContent) }; });
+        var registration = pairs.find(function (item) { return /registro/.test(item.name); });
+        var custom = pairs.find(function (item) { return /personalizado/.test(item.name); });
+        var contact = pairs.find(function (item) { return /contacto/.test(item.name); });
+        var exportData = pairs.find(function (item) { return /exportacion/.test(item.name); });
+        if (!pairs.length || (!registration && !custom && !contact)) return;
+        var fragment = document.createDocumentFragment();
+        var groups = {};
+        [
+          ['registro', 'Información de Registro'],
+          ['contacto', 'Campos de Contacto'],
+          ['personaje', 'Datos del Personaje'],
+          ['historia', 'Historia y Curiosidades'],
+          ['pareja', 'Campos de Pareja']
+        ].forEach(function (definition) {
+          var details = document.createElement('details'); details.className = 'ak-edit-category';
+          details.dataset.akCategory = normalize(definition[1]);
+          var summary = document.createElement('summary');
+          var label = document.createElement('span'); label.textContent = definition[1]; summary.appendChild(label);
+          var body = document.createElement('div'); body.className = 'ak-edit-group-body';
+          details.append(summary, body); details.open = false; fragment.appendChild(details);
+          var section = { details: details, panel: body, name: normalize(definition[1]), kind: definition[0] };
+          sections.push(section); groups[definition[0]] = section;
+        });
+        pairs[0].heading.before(fragment);
+        if (registration) { groups.registro.panel.appendChild(registration.panel); registration.heading.remove(); }
+        if (exportData) { groups.registro.panel.appendChild(exportData.panel); exportData.heading.remove(); }
+        if (contact) { groups.contacto.panel.appendChild(contact.panel); contact.heading.remove(); }
+        if (custom) {
+          groups.personaje.panel.appendChild(custom.panel); custom.heading.remove();
+          var storyFields = document.createElement('fieldset'); groups.historia.panel.appendChild(storyFields);
+          var coupleFields = document.createElement('fieldset'); groups.pareja.panel.appendChild(coupleFields);
+          Array.from(custom.panel.querySelectorAll('fieldset > dl')).forEach(function (row) {
+            var name = normalize(row.querySelector('dt')?.textContent);
+            if (name === 'historia' || name === 'curiosidades') storyFields.appendChild(row);
+            else if (name.indexOf('pareja') !== -1) coupleFields.appendChild(row);
+          });
+        }
+      });
+    }
+
+    // Botones compactos: los iconos delegan en el control nativo original.
+    // Así se conservan name/value, validación, clics y eventos de envío/reset.
+    var actionPairs = [];
+    content.querySelectorAll('form').forEach(function (form) {
+      var originals = Array.from(form.querySelectorAll('.submit-buttons input[type="submit"], .submit-buttons input[type="reset"], .submit-buttons button[type="submit"], .submit-buttons button[type="reset"]'))
+        .filter(function (control) { return control.form === form; });
+      if (!originals.length) return;
+      var top = document.createElement('div'); top.className = 'ak-edit-actions ak-edit-actions-top'; top.setAttribute('role', 'group'); top.setAttribute('aria-label', 'Acciones del formulario');
+      var bottom = document.createElement('div'); bottom.className = 'ak-edit-actions ak-edit-actions-bottom'; bottom.setAttribute('role', 'group'); bottom.setAttribute('aria-label', 'Acciones del formulario');
+      originals.forEach(function (original) {
+        var reset = original.type === 'reset';
+        var raw = (original.value || original.textContent || '').trim();
+        var label = reset ? 'Reiniciar formulario' : /registrar|guardar|submit|save/i.test(raw) ? 'Guardar cambios' : raw || 'Enviar formulario';
+        original.classList.add('ak-edit-native-action');
+        [top, bottom].forEach(function (bar) {
+          var button = document.createElement('button'); button.type = 'button'; button.className = 'ak-edit-action';
+          button.setAttribute('aria-label', label); button.dataset.tooltip = label;
+          var icon = document.createElement('i'); icon.className = 'ti ' + (reset ? 'ti-rotate-clockwise' : 'ti-device-floppy'); icon.setAttribute('aria-hidden', 'true'); button.appendChild(icon);
+          button.disabled = original.disabled;
+          button.addEventListener('click', function () { if (!original.disabled) original.click(); });
+          bar.appendChild(button); actionPairs.push({ original: original, button: button });
+        });
+      });
+      form.prepend(top);
+      var footer = originals[originals.length - 1].closest('.submit-buttons');
+      // Quitar únicamente el espaciado de texto entre los controles originales.
+      Array.from(footer.childNodes).forEach(function (node) { if (node.nodeType === 3 && !node.textContent.trim()) node.remove(); });
+      footer.appendChild(bottom);
     });
     function refresh() {
+      actionPairs.forEach(function (pair) { pair.button.disabled = pair.original.disabled; });
       sections.forEach(function (section) {
         // hidden de la propia categoría no debe impedir que vuelva a aparecer.
         var wasHidden = section.details.hidden;
         if (wasHidden) section.details.hidden = false;
-        if (/personalizado|contacto/.test(section.name)) {
+        if (section.kind !== 'registro') {
           section.panel.querySelectorAll('fieldset > dl').forEach(function (row) {
             var dt = row.querySelector('dt');
             if (!dt) return;
