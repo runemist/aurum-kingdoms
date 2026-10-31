@@ -201,7 +201,7 @@ body.ak-nav-testing #fa_toolbar {
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: none;
   pointer-events: none;
   visibility: hidden;
@@ -320,7 +320,7 @@ body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) > li {
   text-align: left;
   font: 12px/1.6 var(--ak-font-texto);
 }
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .content { position: relative; margin: 0; padding: 0 24px 0 0; background: transparent; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .content { display: flex; flex-direction: column; position: relative; max-width: 90%; margin: 0; padding: 0 24px 0 0; background: transparent; }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .content hr { display: none; }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .contentText {
   width: auto;
@@ -370,11 +370,12 @@ body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) > .see_a
   border: 0;
 }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button,
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a {
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a,
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   min-height: 40px;
   box-sizing: border-box;
   margin: 0;
@@ -391,8 +392,8 @@ body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all
   cursor: pointer;
 }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button:hover,
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a:hover { background: color-mix(in srgb, var(--ak-aurum) 15%, transparent); }
-body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .ak-notif-mark button:disabled { opacity: .5; cursor: default; }
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) .see_all a:hover, 
+body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) button:hover { background: color-mix(in srgb, var(--ak-aurum) 15%, transparent); }
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) a:focus-visible,
 body.ak-nav-testing :is(#fa_toolbar #fa_right #notif_list, #notif_list) button:focus-visible { outline: 1px solid var(--ak-aurum); outline-offset: 2px; }
 /* Ruta contextual y estilos de acciones de publicación conservados. */
