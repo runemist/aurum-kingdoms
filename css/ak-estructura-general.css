@@ -1,0 +1,230 @@
+/* AURUM · Estructura general. Cargar después de ak-configuracion.css. */
+/* Paleta: los grupos cambian --ak-aurum sólo dentro de su contenedor. */
+
+.ak-admin {
+  --ak-aurum: var(--ak-admin);
+}
+.ak-aeris {
+  --ak-aurum: var(--ak-aeris);
+}
+.ak-cascata {
+  --ak-aurum: var(--ak-cascata);
+}
+.ak-ignis {
+  --ak-aurum: var(--ak-ignis);
+}
+.ak-lux {
+  --ak-aurum: var(--ak-lux);
+}
+.ak-teram {
+  --ak-aurum: var(--ak-teram);
+}
+.ak-tuono {
+  --ak-aurum: var(--ak-tuono);
+}
+.ak-umbra {
+  --ak-aurum: var(--ak-umbra);
+}
+.ak-humanos {
+  --ak-aurum: var(--ak-humanos);
+}
+/* Foroactivo ya indica el grupo en posts y perfiles. */
+#main-content .post.post-group-1,
+.perfilreal:has(.group-1) {
+  --ak-aurum: var(--ak-admin);
+}
+#main-content .post.post-group-3,
+.perfilreal:has(.group-3) {
+  --ak-aurum: var(--ak-aeris);
+}
+#main-content .post.post-group-4,
+.perfilreal:has(.group-4) {
+  --ak-aurum: var(--ak-cascata);
+}
+#main-content .post.post-group-5,
+.perfilreal:has(.group-5) {
+  --ak-aurum: var(--ak-ignis);
+}
+#main-content .post.post-group-6,
+.perfilreal:has(.group-6) {
+  --ak-aurum: var(--ak-lux);
+}
+#main-content .post.post-group-7,
+.perfilreal:has(.group-7) {
+  --ak-aurum: var(--ak-teram);
+}
+#main-content .post.post-group-8,
+.perfilreal:has(.group-8) {
+  --ak-aurum: var(--ak-tuono);
+}
+#main-content .post.post-group-9,
+.perfilreal:has(.group-9) {
+  --ak-aurum: var(--ak-umbra);
+}
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  background: var(--ak-post-papel);
+  background-image: var(--ak-post-textura);
+  background-size: 300px auto;
+  background-repeat: repeat;
+  color: var(--ak-text);
+}
+#wrap {
+  width: min(1320px, calc(100% - 32px));
+  margin: 98px auto 0;
+  padding: clamp(14px, 2.5vw, 32px);
+  box-sizing: border-box;
+  background: #172127c9;
+}
+#page-header {
+  display: block !important;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  width: 100%;
+  margin: 0;
+}
+#page-header .navbar {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--ak-panel-deep);
+  border-bottom: 1px solid var(--ak-aurum);
+}
+#page-header .navlinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px 17px;
+  padding: 12px 18px;
+}
+#page-header .navlinks li {
+  float: none;
+  margin: 0;
+}
+#page-header a.mainmenu {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ak-text);
+  font:
+    12px/1.5 var(--ak-font-subtitulos);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+#page-header a.mainmenu img {
+  display: none;
+}
+#page-header a.mainmenu:hover {
+  color: var(--ak-aurum);
+}
+#fa_toolbar {
+  background: #121b20 !important;
+  border-bottom: 1px solid var(--ak-aurum);
+  color: var(--ak-text) !important;
+  min-height: 30px;
+}
+#fa_toolbar a,
+#fa_toolbar #fa_welcome {
+  color: var(--ak-text) !important;
+}
+#ak-hero {
+  min-height: 390px;
+  padding: 32px 16px;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at 50% 22%, #34434b, #111b20 72%);
+}
+#ak-hero .ak-hero-head {
+  width: 100%;
+  text-align: center;
+}
+#ak-hero .ak-hero-head h1 {
+  margin: 0;
+  color: var(--ak-text);
+  font:
+    400 clamp(48px, 8vw, 104px)/1 var(--ak-font-titulos);
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-align: center;
+}
+#ak-hero .ak-hero-head p {
+  margin: 12px 0 30px;
+  color: var(--ak-aurum);
+  font:
+    12px var(--ak-font-texto);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+#ak-hero .ak-board {
+  max-width: 1100px;
+  margin: auto;
+  background: rgba(10, 17, 21, 0.95);
+  border: 1px solid var(--ak-aurum);
+}
+.ak-board > input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.ak-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ak-aurum);
+}
+.ak-tabs label {
+  flex: 1;
+  padding: 12px 5px;
+  color: var(--ak-muted);
+  text-align: center;
+  cursor: pointer;
+  font:
+    12px var(--ak-font-subtitulos);
+  text-transform: uppercase;
+}
+.ak-board > .ak-panel {
+  display: none;
+  padding: 18px;
+}
+#ak-tab-last:checked ~ #ak-board-panel-0,
+#ak-tab-news:checked ~ #ak-board-panel-1,
+#ak-tab-search:checked ~ #ak-board-panel-2,
+#ak-tab-awards:checked ~ #ak-board-panel-3 {
+  display: block;
+}
+#ak-tab-last:checked ~ .ak-tabs label[for="ak-tab-last"],
+#ak-tab-news:checked ~ .ak-tabs label[for="ak-tab-news"],
+#ak-tab-search:checked ~ .ak-tabs label[for="ak-tab-search"],
+#ak-tab-awards:checked ~ .ak-tabs label[for="ak-tab-awards"] {
+  color: var(--ak-text);
+  box-shadow: inset 0 -2px var(--ak-aurum);
+}
+#main-content .forabg a.forumtitle,
+#main-content .forumbg a.topictitle {
+  color: var(--ak-text);
+}
+#main-content .forabg a.forumtitle:hover,
+#main-content .forumbg a.topictitle:hover {
+  color: var(--ak-aurum);
+}
+@media (max-width: 700px) {
+  #wrap {
+    width: calc(100% - 16px);
+    margin-top: 120px;
+    padding: 12px;
+  }
+  #page-header .navlinks {
+    gap: 5px 10px;
+  }
+  .ak-tabs label {
+    font-size: 9px;
+  }
+}
+
+/* Ocultar las tarjetas emergentes de los usuarios */
+.tooltipster-base{
+  display: none !important;
+}

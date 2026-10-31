@@ -1,0 +1,109 @@
+@font-face {
+  font-family: "Historical";
+  src: url("https://runemist.github.io/aurum-kingdoms/fonts/Historical-Academies.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Soft-Mouth";
+  src: url("https://runemist.github.io/aurum-kingdoms/fonts/Soft-Mouth.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Celestial";
+  src: url("https://runemist.github.io/aurum-kingdoms/fonts/Celestial.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* AURUM · Variables comunes. Editar este archivo para cambiar la configuración global.
+   Paleta, superficies, efectos, fuentes, imágenes y medidas compartidas. */
+:root {
+  --ak-aurum: #c7aa78;
+  --ak-admin: #c7aa78;
+  --ak-aeris: #819EAC;
+  --ak-cascata: #48A9B5;
+  --ak-ignis: #A34C3C;
+  --ak-lux: #975873;
+  --ak-teram: #4E7652;
+  --ak-tuono: #A47A2E;
+  --ak-umbra: #6D4E91;
+  --ak-humanos: #A39AA3;
+  --ak-text: #e6ddce;
+  --ak-muted: #b7ae9f;
+  --ak-panel-deep: #10171C;
+  --ak-newest-photo: none;
+  --ak-photo-symbol: "✧";
+
+  
+  --ak-post-textura: url(https://2img.net/i.imgur.com/lGC2LBR.png);
+  --ak-post-base: #0c1419;
+  --ak-post-papel: #172127;
+
+  
+  /* Cuatro familias editables. Los iconos y el código conservan su fuente técnica. */
+  --ak-font-titulos: Georgia, serif;
+  --ak-font-nombres: Georgia, serif;
+  --ak-font-texto: Georgia, serif;
+  --ak-font-subtitulos: Arial, sans-serif;
+
+  /* Alias para contenido publicado anteriormente. */
+  --ak-font-serif: var(--ak-font-texto);
+  --ak-font-sans: var(--ak-font-subtitulos);
+  --ak-fuente-titulos: var(--ak-font-titulos);
+  --ak-fuente-texto: var(--ak-font-texto);
+
+  --ak-font-icons: "tabler-icons";
+
+  --ak-logo-general: url("https://2img.net/i.imgur.com/BpRngKJ.png");
+  --ak-logo: var(--ak-logo-general);
+
+  --ak-logo-aeris: url("https://2img.net/i.imgur.com/PiqWL8F.png");
+  --ak-logo-cascata: url("https://2img.net/i.imgur.com/dzDixgG.png");
+  --ak-logo-ignis: url("https://2img.net/i.imgur.com/7Jtx9BN.png");
+  --ak-logo-lux: url("https://2img.net/i.imgur.com/3zsrC1G.png");
+  --ak-logo-teram: url("https://2img.net/i.imgur.com/ddRgPXj.png");
+  --ak-logo-tuono: url("https://2img.net/i.imgur.com/2K9pgsd.png");
+  --ak-logo-umbra: url("https://2img.net/i.imgur.com/VVgXjeR.png");
+  --ak-logo-humanos: url("https://2img.net/i.imgur.com/5gBY7os.png");
+  
+  --ak-icon-mp: url("https://2img.net/i.imgur.com/YkNywj4.png");
+  --ak-icon-expediente: url("https://2img.net/i.imgur.com/B7cjYeB.png");
+  --ak-icon-cronologia: url("https://2img.net/i.imgur.com/BgrtV9k.png");
+  --ak-icon-diario: url("https://2img.net/i.imgur.com/lpf4ymZ.png");
+  --ak-icon-relaciones: url("https://2img.net/i.imgur.com/qCctbV8.png");
+  --ak-icon-temas: url("https://2img.net/i.imgur.com/feqYlff.png");
+  --ak-icon-mensajes: url("https://2img.net/i.imgur.com/lbZQ0Mx.png");
+  --ak-icon-redes: url("https://2img.net/i.imgur.com/VyIFtLx.png");
+  
+  --ak-borde-nota: url("https://2img.net/i.imgur.com/rXUEbi1.png");
+  --ak-borde-anuncio: url("https://2img.net/i.imgur.com/XROASk4.png");
+}
+  
+.admin, .ak-admin { --ak-logo: var(--ak-logo-general); }
+.aeris, .ak-aeris { --ak-logo: var(--ak-logo-aeris, var(--ak-logo-general)); }
+.cascata, .ak-cascata { --ak-logo: var(--ak-logo-cascata, var(--ak-logo-general)); }
+.ignis, .ak-ignis { --ak-logo: var(--ak-logo-ignis, var(--ak-logo-general)); }
+.lux, .ak-lux { --ak-logo: var(--ak-logo-lux, var(--ak-logo-general)); }
+.teram, .ak-teram { --ak-logo: var(--ak-logo-teram, var(--ak-logo-general)); }
+.tuono, .ak-tuono { --ak-logo: var(--ak-logo-tuono, var(--ak-logo-general)); }
+.umbra, .ak-umbra { --ak-logo: var(--ak-logo-umbra, var(--ak-logo-general)); }
+.humanos, .ak-humanos { --ak-logo: var(--ak-logo-humanos, var(--ak-logo-general)); }
+
+/* Clases de acento reutilizables: solo cambian la variable. */
+.admin { --ak-aurum: var(--ak-admin); }
+.aeris { --ak-aurum: var(--ak-aeris); }
+.cascata { --ak-aurum: var(--ak-cascata); }
+.ignis { --ak-aurum: var(--ak-ignis); }
+.lux { --ak-aurum: var(--ak-lux); }
+.teram { --ak-aurum: var(--ak-teram); }
+.tuono { --ak-aurum: var(--ak-tuono); }
+.umbra { --ak-aurum: var(--ak-umbra); }
+.humanos { --ak-aurum: var(--ak-humanos); }

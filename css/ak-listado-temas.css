@@ -1,0 +1,724 @@
+/* =========================================================
+   AURUM · LISTA DE TEMAS
+   ========================================================= */
+
+#main-content .ak-topics-board {
+  --ak-topic-gold: var(--ak-aurum, #c7aa78);
+  --ak-topic-text: var(--ak-text, #e8e3d9);
+  --ak-topic-muted: var(--ak-muted, #aeb4b5);
+  --ak-topic-panel: color-mix(
+    in srgb,
+    var(--ak-panel-deep, #0d1a21) 90%,
+    transparent
+  );
+  --ak-topic-line: color-mix(
+    in srgb,
+    var(--ak-topic-gold) 82%,
+    transparent
+  );
+  --ak-topic-frame-round: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='57' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Ccircle cx='60' cy='60' r='52' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M60 1l4 4-4 4-4-4zM60 111l4 4-4 4-4-4z' fill='%23c7aa78'/%3E%3C/svg%3E");
+  --ak-topic-frame-arch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 280'%3E%3Cpath d='M8 272V92C8 45 44 8 90 8s82 37 82 84v180H8z' fill='none' stroke='%23c7aa78' stroke-width='2'/%3E%3Cpath d='M14 266V94c0-43 34-78 76-78s76 35 76 78v172H14z' fill='none' stroke='%23c7aa78' stroke-width='1'/%3E%3Cpath d='M172 136l6 6-6 6-6-6z' fill='%230d1a21' stroke='%23c7aa78' stroke-width='2'/%3E%3C/svg%3E");
+  width: 100%;
+  margin: 0 auto 32px;
+  color: var(--ak-topic-text);
+}
+
+#main-content .ak-topics-board,
+#main-content .ak-topics-board * {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ESTRUCTURA GENERAL
+   ========================================================= */
+
+#main-content .ak-topics-board .ak-topics-source,
+#main-content .ak-topics-board .ak-topic-grid {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: transparent;
+}
+
+#main-content .ak-topics-board .ak-topics-source {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+#main-content .ak-topics-board .ak-topics-section {
+  margin: 0 0 58px;
+}
+
+#main-content .ak-topics-board .ak-topics-section:last-child {
+  margin-bottom: 18px;
+}
+
+#main-content .ak-topics-board .ak-topics-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 0 0 30px;
+  color: var(--ak-topic-text);
+  font: 400 clamp(17px, 1.65vw, 24px) / 1.2
+    var(--ak-font-titulos);
+  letter-spacing: .24em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#main-content .ak-topics-board .ak-topics-heading::before,
+#main-content .ak-topics-board .ak-topics-heading::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  background: var(--ak-topic-gold);
+  transform: rotate(45deg);
+}
+
+#main-content .ak-topics-board .ak-topic-grid--staff {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+#main-content .ak-topics-board .ak-topic-grid--community {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 26px;
+  row-gap: 28px;
+}
+
+
+/* =========================================================
+   REINICIO DE LA ESTRUCTURA NATIVA DE FOROACTIVO
+   ========================================================= */
+
+#main-content .ak-topics-board ul.topiclist.topics > li.row {
+  position: relative;
+  float: none;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+#main-content .ak-topics-board ul.topiclist.topics > li.row::before,
+#main-content .ak-topics-board ul.topiclist.topics > li.row::after,
+#main-content .ak-topics-board ul.topiclist.topics > li.row > dl::before,
+#main-content .ak-topics-board ul.topiclist.topics > li.row > dl::after {
+  content: none;
+}
+
+#main-content .ak-topics-board ul.topiclist.topics > li.row > dl {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+#main-content .ak-topics-board ul.topiclist.topics > li.row > dl > dd {
+  float: none;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+
+/* =========================================================
+   TÍTULOS Y METADATOS
+   ========================================================= */
+
+#main-content .ak-topics-board .topic-title {
+  margin: 0;
+  padding: 0 0 8px;
+  border-bottom: 1px solid var(--ak-topic-line);
+}
+
+#main-content .ak-topics-board a.topictitle {
+  display: block;
+  color: var(--ak-topic-text);
+  font: 400 17px / 1.25 var(--ak-font-titulos);
+  letter-spacing: .025em;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+#main-content .ak-topics-board a.topictitle:hover {
+  color: var(--ak-topic-gold);
+}
+
+#main-content .ak-topics-board .span-tab,
+#main-content .ak-topics-board .lastpost,
+#main-content .ak-topics-board .posts {
+  color: var(--ak-topic-muted);
+  font: 11px / 1.45 var(--ak-font-subtitulos);
+}
+
+#main-content .ak-topics-board .span-tab {
+  display: block;
+  margin-top: 8px;
+}
+
+#main-content .ak-topics-board .span-tab strong,
+#main-content .ak-topics-board .span-tab a,
+#main-content .ak-topics-board .ak-topic-last-author a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#main-content .ak-topics-board .span-tab a:hover,
+#main-content .ak-topics-board .ak-topic-last-author a:hover {
+  text-decoration: underline;
+}
+
+#main-content .ak-topics-board .views,
+#main-content .ak-topics-board .dterm > br,
+#main-content .ak-topics-board .dterm .pagination,
+#main-content .ak-topics-board .ak-topic-native-heading {
+  display: none;
+}
+
+
+/* =========================================================
+   CAPAS DE IMAGEN
+   El marco y el retrato son elementos independientes.
+   ========================================================= */
+
+#main-content .ak-topics-board .ak-topic-media {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  background: transparent;
+}
+
+#main-content .ak-topics-board .ak-topic-frame {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: block;
+  overflow: visible;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+#main-content .ak-topics-board .ak-topic-crop {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  background: var(--ak-topic-panel);
+}
+
+#main-content .ak-topics-board .ak-topic-crop .lastpost-avatar,
+#main-content .ak-topics-board .ak-topic-crop .lastpost-avatar > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#main-content .ak-topics-board .ak-topic-crop .lastpost-avatar > img {
+  object-fit: cover;
+  object-position: center 24%;
+}
+
+#main-content .ak-topics-board .ak-topic-crop:not(:has(img))::before {
+  content: "✦";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ak-topic-gold);
+  font: 30px var(--ak-font-texto);
+}
+
+
+/* =========================================================
+   NOTAS Y ANUNCIOS · DOS TARJETAS
+   ========================================================= */
+
+#main-content .ak-topics-board ul.ak-topic-grid--staff > li.row {
+  min-height: 200px;
+  padding: 15px;
+  border: 1px solid var(--ak-topic-gold);
+  border-radius: 10px;
+  background: var(--ak-topic-panel);
+}
+
+#main-content .ak-topics-board ul.ak-topic-grid--staff > li.row > dl {
+  grid-template-columns: 142px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 20px;
+  align-content: center;
+  align-items: start;
+}
+
+#main-content .ak-topics-board
+  ul.ak-topic-grid--staff
+  > li.row
+  > dl
+  > dd.ak-topic-media {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 142px;
+  min-width: 142px;
+  max-width: 142px;
+  height: 218px;
+  min-height: 218px;
+  align-self: center;
+  justify-self: center;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .ak-topic-frame {
+  background-image: var(--ak-topic-frame-arch);
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .ak-topic-crop {
+  inset: 12px 12px 11px;
+  border-radius: 999px 999px 0 0;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .dterm {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .ak-topic-type {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--ak-topic-gold);
+  font: 10px / 1.2 var(--ak-font-texto);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  a.topictitle {
+  font-size: clamp(19px, 1.7vw, 25px);
+  line-height: 1.28;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .lastpost {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin-top: 18px;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--staff
+  .posts {
+  display: none;
+}
+
+
+/* =========================================================
+   TEMAS DE LA COMUNIDAD · TRES COLUMNAS
+   ========================================================= */
+
+#main-content .ak-topics-board ul.ak-topic-grid--community > li.row {
+  min-height: 128px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--ak-topic-line);
+}
+
+#main-content .ak-topics-board
+  ul.ak-topic-grid--community
+  > li.row
+  > dl {
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: 16px;
+  align-content: center;
+}
+
+#main-content .ak-topics-board
+  ul.ak-topic-grid--community
+  > li.row
+  > dl
+  > dd.ak-topic-media {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 112px;
+  min-width: 112px;
+  max-width: 112px;
+  height: 112px;
+  min-height: 112px;
+  align-self: center;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .ak-topic-frame {
+  background-image: var(--ak-topic-frame-round);
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .ak-topic-crop {
+  inset: 10px;
+  border-radius: 50%;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .dterm {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .ak-topic-type {
+  display: none;
+}
+
+
+/* =========================================================
+   ÚLTIMO MENSAJE
+   ========================================================= */
+
+#main-content .ak-topics-board .ak-topic-last-source,
+#main-content .ak-topics-board .ak-topic-last-link {
+  display: none;
+}
+
+#main-content .ak-topics-board dd.lastpost > span,
+#main-content .ak-topics-board dd.lastpost span > span {
+  padding: 0;
+}
+
+#main-content .ak-topics-board .ak-topic-last-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 1.45;
+}
+
+#main-content .ak-topics-board .ak-topic-last-label,
+#main-content .ak-topics-board .ak-topic-last-author {
+  display: inline-flex;
+  align-items: baseline;
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+
+#main-content .ak-topics-board .ak-topic-last-author {
+  gap: 5px;
+}
+
+#main-content .ak-topics-board .ak-topic-last-author *,
+#main-content .ak-topics-board .ak-topic-last-author a > * {
+  float: none;
+}
+
+#main-content .ak-topics-board .ak-topic-last-target {
+  color: var(--ak-aurum, #c7aa78);
+  -webkit-text-fill-color: var(--ak-aurum, #c7aa78);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#main-content .ak-topics-board .ak-topic-last-target:hover {
+  color: var(--ak-aurum, #c7aa78);
+  text-decoration: underline;
+}
+
+#main-content .ak-topics-board .ak-topic-last-time {
+  display: block;
+  flex-basis: 100%;
+  margin-top: 2px;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .lastpost {
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
+  align-items: flex-start;
+  justify-content: flex-start;
+  justify-self: stretch;
+  gap: 0;
+  margin-top: 8px;
+  padding: 0;
+  text-align: left;
+}
+
+
+/* =========================================================
+   CANTIDAD DE MENSAJES
+   ========================================================= */
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .posts {
+  display: flex;
+  grid-column: 2;
+  grid-row: 3;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: 5px;
+  width: max-content;
+  margin-top: 7px;
+  padding: 0;
+  color: var(--ak-topic-muted);
+  text-align: right;
+}
+
+#main-content .ak-topics-board
+  .ak-topic-grid--community
+  .posts::before {
+  content: "▢";
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--ak-topic-gold);
+}
+
+#main-content .ak-topics-board .ak-topic-replies-number,
+#main-content .ak-topics-board .ak-topic-replies-label {
+  display: inline-block;
+  margin: 0;
+}
+
+
+/* =========================================================
+   TEMAS NORMALES CERRADOS
+   Las notas y anuncios conservan el tratamiento dorado.
+   ========================================================= */
+
+#main-content .ak-topics-board
+  li.row.ak-normal.ak-cerrado
+  .ak-topic-frame {
+  filter: grayscale(1) saturate(0) brightness(.78) contrast(.9);
+  opacity: .9;
+}
+
+#main-content .ak-topics-board
+  li.row.ak-normal.ak-cerrado
+  .ak-topic-crop
+  img {
+  filter: grayscale(1) saturate(0) brightness(.72) contrast(.92);
+}
+
+
+/* =========================================================
+   CONTROLES Y ESTADOS AUXILIARES
+   ========================================================= */
+
+#main-content .ak-topics-board .ak-topic-state {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#main-content .ak-topics-board .ak-topic-select,
+#main-content .ak-topics-board .ak-topic-check {
+  position: absolute;
+  z-index: 5;
+  top: 8px;
+  right: 8px;
+}
+
+#main-content .ak-topics-board .ak-no-topics {
+  grid-column: 1 / -1;
+  padding: 28px;
+  color: var(--ak-topic-muted);
+  text-align: center;
+}
+
+/* El enlace usa #p12345, que corresponde al inicio real del post. */
+#main-content .post[id^="p"] {
+  scroll-margin-top: 78px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1150px) {
+  #main-content .ak-topics-board .ak-topic-grid--community {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  #main-content .ak-topics-board .ak-topic-grid--staff {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 620px) {
+  #main-content .ak-topics-board .ak-topics-heading {
+    gap: 14px;
+    letter-spacing: .16em;
+  }
+
+  #main-content .ak-topics-board .ak-topic-grid--community {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row {
+    min-height: 220px;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row
+    > dl {
+    grid-template-columns: 124px minmax(0, 1fr);
+    column-gap: 16px;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row
+    > dl
+    > dd.ak-topic-media {
+    width: 124px;
+    min-width: 124px;
+    max-width: 124px;
+    height: 190px;
+    min-height: 190px;
+  }
+
+  #main-content .ak-topics-board
+    .ak-topic-grid--staff
+    .ak-topic-crop {
+    inset: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row {
+    min-height: 0;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row
+    > dl {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    row-gap: 16px;
+    text-align: center;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--staff
+    > li.row
+    > dl
+    > dd.ak-topic-media {
+    grid-column: 1;
+    grid-row: 1;
+    width: 132px;
+    min-width: 132px;
+    max-width: 132px;
+    height: 198px;
+    min-height: 198px;
+  }
+
+  #main-content .ak-topics-board
+    .ak-topic-grid--staff
+    .dterm {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #main-content .ak-topics-board
+    .ak-topic-grid--staff
+    .lastpost {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  #main-content .ak-topics-board
+    .ak-topic-grid--staff
+    .ak-topic-last-copy {
+    justify-content: center;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--community
+    > li.row
+    > dl {
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 13px;
+  }
+
+  #main-content .ak-topics-board
+    ul.ak-topic-grid--community
+    > li.row
+    > dl
+    > dd.ak-topic-media {
+    width: 96px;
+    min-width: 96px;
+    max-width: 96px;
+    height: 96px;
+    min-height: 96px;
+  }
+}
+
+/* Búsqueda de temas: mismas tarjetas, sin reordenar los resultados. */
+#main-content .ak-topics-board--search .ak-topics-section {
+  margin-bottom: 24px;
+}
+#main-content .ak-topics-board--search .ak-topic-search-forum {
+  font-weight: 400;
+}

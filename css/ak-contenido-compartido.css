@@ -1,0 +1,162 @@
+/* Código, citas y spoilers — diseño Archivo.
+   Conserva las clases y la apertura/cierre nativos de Foroactivo. */
+:where(#main-content) dl.codebox,
+:where(#main-content) blockquote {
+  max-width: 100%;
+  margin: 24px 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 42%, var(--ak-post-base, #20272d));
+  border-radius: 5px;
+  background: var(--ak-post-base, #20272d);
+  background-image: none;
+  color: var(--ak-text, #ded9cc);
+  text-align: left;
+  box-shadow: none;
+}
+
+:where(#main-content) dl.codebox > dt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
+  margin: 0;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 4px 4px 0 0;
+  background: color-mix(in srgb, var(--ak-aurum, #b0a290) 12%, var(--ak-post-base, #20272d));
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.6 var(--ak-font-subtitulos);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+:where(#main-content) dl.codebox > dd {
+  margin: 0;
+  padding: 16px 20px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) > dd {
+  border-radius: 0 0 4px 4px;
+  background: color-mix(in srgb, var(--ak-post-base, #20272d) 88%, #000);
+}
+
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) code,
+:where(#main-content) dl.codebox:not(.spoiler):not(.hidecode) pre {
+  display: block;
+  max-width: 100%;
+  max-height: 360px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ak-text, #ded9cc);
+  font: 13px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+  overflow-y: auto;
+  user-select: text;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ak-aurum, #b0a290) transparent;
+}
+
+:where(#main-content) dl.codebox > dt .ak-select-all,
+:where(#main-content) dl.codebox > dt .selectCode,
+:where(#main-content) dl.codebox > dt a[onclick*="selectCode"] {
+  display: inline-block;
+  float: none;
+  margin: 0 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 65%, transparent);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.5 var(--ak-font-subtitulos);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+:where(#main-content) dl.codebox > dt .ak-select-all:hover,
+:where(#main-content) dl.codebox > dt .selectCode:hover {
+  background: color-mix(in srgb, var(--ak-aurum, #b0a290) 12%, transparent);
+}
+
+:where(#main-content) dl.codebox.spoiler > dt {
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+:where(#main-content) dl.codebox.spoiler > dt::before {
+  content: "✦";
+  color: var(--ak-aurum, #b0a290);
+}
+
+:where(#main-content) dl.codebox.spoiler > dd {
+  display: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+:where(#main-content) dl.codebox.spoiler:has(.spoiler_content.hidden) > dd {
+  display: block;
+  padding: 0 20px;
+}
+
+:where(#main-content) dl.codebox.spoiler > dt::after {
+  content: "+";
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 20px/1 var(--ak-font-texto);
+}
+
+:where(#main-content) dl.codebox.spoiler:has(.spoiler_content.hidden) > dt::after {
+  content: "−";
+}
+
+:where(#main-content) dl.codebox.spoiler .spoiler_content {
+  margin: 0;
+  padding: 16px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+:where(#main-content) blockquote {
+  padding: 22px 20px 18px;
+  overflow: visible;
+  font: inherit;
+}
+
+:where(#main-content) blockquote cite {
+  position: relative;
+  display: table;
+  max-width: 100%;
+  margin: -36px 0 16px;
+  padding: 4px 12px;
+  border: 1px solid color-mix(in srgb, var(--ak-aurum, #b0a290) 60%, transparent);
+  border-radius: 3px;
+  background: var(--ak-post-base, #20272d);
+  background-image: none;
+  color: var(--ak-aurum, #b0a290);
+  font: 400 11px/1.6 var(--ak-font-subtitulos);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+:where(#main-content) blockquote cite::before {
+  content: none;
+}
