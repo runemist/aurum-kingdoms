@@ -66,7 +66,7 @@
     const right = document.createElement('div'); right.className = 'ak-nav-right';
     const actions = document.createElement('div'); actions.className = 'ak-nav-actions';
     const account = document.createElement('div'); account.className = 'ak-nav-user';
-    nav.append(left, center, right); right.append(actions, account);
+    nav.append(left, center, right); left.append(account); right.append(actions);
 
     function control(tag, label, glyph, href) {
       const element = document.createElement(tag);
