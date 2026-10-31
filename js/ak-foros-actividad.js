@@ -301,5 +301,27 @@
     } finally { target.setAttribute('aria-busy', 'false'); }
   }
 
-  ready(() => { boardBackground(); privateAreas(); recentTopics(); searchTopics(); });
+  // La portada sale de los contenedores que recortan el ancho del foro.
+  // Solo el fondo se extiende; el tablón conserva el ancho del contenido.
+  function fullWidthBanner() {
+    const hero = document.getElementById('ak-hero');
+    const wrap = document.getElementById('wrap');
+    const content = document.getElementById('main-content');
+    if (!hero || !wrap || !content || !wrap.contains(hero)) return;
+    function updateWidth() {
+      const width = content.getBoundingClientRect().width;
+      if (width > 0) hero.style.setProperty('--ak-board-content-width', width + 'px');
+    }
+    updateWidth();
+    hero.dataset.akFullWidth = 'true';
+    wrap.before(hero);
+    if (window.ResizeObserver) {
+      const observer = new ResizeObserver(updateWidth);
+      observer.observe(content);
+    } else {
+      window.addEventListener('resize', updateWidth);
+    }
+  }
+
+  ready(() => { fullWidthBanner(); boardBackground(); privateAreas(); recentTopics(); searchTopics(); });
 })();
