@@ -16,7 +16,7 @@
   padding: 19px clamp(16px, 3vw, 56px);
   border-top: 1px solid var(--ak-aurum);
   background-color: var(--ak-post-papel, #172127);
-  --ak-footer-fondo: url("../images/ak-pie-botanico.webp");
+  --ak-footer-fondo: url("../img/banner/ak-pie-botanico.webp");
   background-image: var(--ak-footer-fondo);
   background-size: cover;
   background-position: center;
