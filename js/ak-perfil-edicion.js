@@ -93,10 +93,12 @@
         var groups = {};
         [
           ['registro', 'Información de Registro'],
+          ['encabezado', 'Encabezado'],
           ['contacto', 'Campos de Contacto'],
           ['personaje', 'Datos del Personaje'],
           ['historia', 'Historia y Curiosidades'],
-          ['pareja', 'Campos de Pareja']
+          ['pareja', 'Campos de Pareja'],
+          ['items', 'Items']
         ].forEach(function (definition) {
           var details = document.createElement('details'); details.className = 'ak-edit-category';
           details.dataset.akCategory = normalize(definition[1]);
@@ -113,11 +115,15 @@
         if (contact) { groups.contacto.panel.appendChild(contact.panel); contact.heading.remove(); }
         if (custom) {
           groups.personaje.panel.appendChild(custom.panel); custom.heading.remove();
+          var headerFields = document.createElement('fieldset'); groups.encabezado.panel.appendChild(headerFields);
+          var itemFields = document.createElement('fieldset'); groups.items.panel.appendChild(itemFields);
           var storyFields = document.createElement('fieldset'); groups.historia.panel.appendChild(storyFields);
           var coupleFields = document.createElement('fieldset'); groups.pareja.panel.appendChild(coupleFields);
           Array.from(custom.panel.querySelectorAll('fieldset > dl')).forEach(function (row) {
             var name = normalize(row.querySelector('dt')?.textContent);
-            if (name === 'historia' || name === 'curiosidades') storyFields.appendChild(row);
+            if (name === 'frase del personaje' || name === 'banner') headerFields.appendChild(row);
+            else if (['medallas', 'regalos', 'inventario'].indexOf(name) !== -1) itemFields.appendChild(row);
+            else if (name === 'historia' || name === 'curiosidades') storyFields.appendChild(row);
             else if (name.indexOf('pareja') !== -1) coupleFields.appendChild(row);
           });
         }
