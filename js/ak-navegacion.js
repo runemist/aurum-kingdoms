@@ -364,7 +364,37 @@
 (() => {
   'use strict';
 
+  function enhancePublishing() {
+    document.querySelectorAll('#main-content .topic-actions .buttons a[href]').forEach(link => {
+      let url;
+      try { url = new URL(link.getAttribute('href'), location.href); } catch (_) { return; }
+      const image = link.querySelector('img');
+      const nativeLabel = image?.getAttribute('alt') || image?.getAttribute('title') || '';
+      const mode = url.searchParams.get('mode');
+      const closed = /cerrad|locked|closed/i.test(nativeLabel + ' ' + (image?.className || ''));
+      if (url.origin !== location.origin || !/^\/post\/?$/.test(url.pathname)) return;
+      if (mode !== 'newtopic' && mode !== 'reply' && !closed) return;
+      if (link.dataset.akPublishingReady) return;
+      const label = closed ? 'Tema cerrado' : mode === 'newtopic' ? 'Nuevo tema' : 'Responder';
+      const icon = closed ? 'ti-lock' : mode === 'newtopic' ? 'ti-message-plus' : 'ti-message-reply';
+      link.classList.add('ak-publish-button');
+      link.classList.toggle('is-closed', closed);
+      link.setAttribute('aria-label', label); link.title = label;
+      // El enlace y sus permisos originales permanecen intactos, incluso para administración.
+      if (image) image.hidden = true;
+      Array.from(link.childNodes).forEach(node => {
+        if (node.nodeType === 3) node.textContent = '';
+        else if (node.nodeType === 1 && node.tagName === 'SPAN' && /^(Nuevo tema|Responder|Tema cerrado)$/i.test(node.textContent.trim())) node.remove();
+      });
+      const glyph = document.createElement('i'); glyph.className = 'ti ak-publish-icon ' + icon; glyph.setAttribute('aria-hidden', 'true');
+      const text = document.createElement('span'); text.className = 'ak-publish-label'; text.textContent = label;
+      link.append(glyph, text); link.dataset.akPublishingReady = 'true';
+    });
+    document.body.classList.add('ak-actions-ready');
+  }
+
   function install() {
+    enhancePublishing();
     const nav = document.getElementById('ak-nav-test');
     const center = nav?.querySelector('.ak-nav-center');
     if (!center) return false;
@@ -406,25 +436,6 @@
       }
     }
 
-    document.querySelectorAll('#main-content .topic-actions .buttons a[href]')
-      .forEach(link => {
-        const url = new URL(link.href, location.href);
-        if (url.pathname !== '/post') return;
-        const mode = url.searchParams.get('mode');
-        if (mode !== 'newtopic' && mode !== 'reply') return;
-        const image = link.querySelector('img');
-        const alt = image?.alt || '';
-        const label = /cerrad|locked|closed/i.test(alt)
-          ? (alt || 'Tema cerrado')
-          : mode === 'newtopic' ? 'Nuevo tema' : 'Responder';
-        link.classList.add('ak-publish-button');
-        link.setAttribute('aria-label', label);
-        link.title = label;
-        if (image) image.hidden = true;
-        const text = document.createElement('span');
-        text.textContent = label;
-        link.append(text);
-      });
     document.body.classList.add('ak-actions-ready');
     return true;
   }
