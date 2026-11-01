@@ -373,3 +373,19 @@
     gap: 20px;
   }
 }
+/* Ignorar los saltos entre normas, conservando los interiores. */
+.ak-tab-afiliaciones .ak-afil-lista > br {
+  display: none;
+}
+
+/* Mantener los números completos en una línea. */
+.ak-tab-afiliaciones .ak-afil-normas > b {
+  white-space: nowrap;
+}
+
+/* Bajar el título y su subtítulo sin desplazar el banner. */
+.ak-tab-afiliaciones .ak-afil-header > .ak-afil-tit,
+.ak-tab-afiliaciones .ak-afil-header > b {
+  position: relative;
+  top: 15px;
+}
