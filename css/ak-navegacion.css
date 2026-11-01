@@ -205,7 +205,7 @@ body.ak-nav-testing #fa_toolbar {
   box-shadow: none;
   pointer-events: none;
   visibility: hidden;
-  z-index: 10001;
+  z-index: 0;
 }
 /* Control de volver a mostrar la toolbar nativa: también se oculta. */
 body.ak-nav-testing #fa_toolbar_hidden,
